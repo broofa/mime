@@ -80,7 +80,6 @@ exports.types = {
   ".gem"  : "application/octet-stream",
   ".gemspec": "text/x-script.ruby",
   ".gif"  : "image/gif",
-  ".gif"  : "image/gif",
   ".gl"  : "video/gl",
   ".gtar"  : "application/x-gtar",
   ".gz"   : "application/x-gzip",
