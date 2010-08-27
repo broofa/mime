@@ -1,0 +1,12 @@
+{
+  "name"          : "mime",
+  "description"   : "A super simple utility library for dealing with mime-types",
+  "url"           : "http://github.com/bentomas/node-mime",
+  "keywords"      : ["util", "mime"],
+  "author"        : "Benjamin Thomas <benjamin@benjaminthomas.org>",
+  "contributors"  : [],
+  "dependencies"  : [],
+  "lib"           : ".",
+  "main"          : "mime.js",
+  "version"       : "1.0.0"
+}
