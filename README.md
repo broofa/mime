@@ -9,8 +9,8 @@ A library for doing simple mime-type lookups.
 
 ... and extension lookups by mime-type
 
-    mime.lookup('text/html');                 // => 'htm'
-    mime.lookup('application/octet-stream');  // => 'bin'
+    mime.extension('text/html');                 // => 'htm'
+    mime.extension('application/octet-stream');  // => 'bin'
 
 It also includes rudimentary logic for determining charsets. (Useful in a web
 framework):
