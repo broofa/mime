@@ -12,7 +12,6 @@ function _init(mimeFile) {
   var extensions = exports.extensions = {};
 
   if (!mimeFile) mimeFile = path.join(__dirname, 'mime.types');
-  sys.log(mimeFile);
 
   var content = fs.readFileSync(mimeFile, 'binary');
   var lines = content.split(/[\r\n]+/), line;
@@ -25,7 +24,7 @@ function _init(mimeFile) {
       // All remaining fields are extensions
       while (mimeType && (ext = line.shift())) {
         if (types[ext]) {
-          sys.log('Warning: multiple mime-types for "' + ext + '"');
+          throw Error('"' + ext + '"');
         }
         types[ext] = mimeType;
         // For extension map, we use the first extension listed
@@ -38,30 +37,11 @@ function _init(mimeFile) {
 }
 _init();
 
-/* Functions for translating file extensions into mime types
- *
- * based on simonw's djangode: http://github.com/simonw/djangode
- * with extensions/mimetypes added from felixge's
- *   node-paperboy: http://github.com/felixge/node-paperboy
+/**
+ * Lookup a mime type based on extension
  */
-exports.lookup = function(filename, fallback) {
-  // the path library's extname function won't return an extension if the
-  // entire string IS the extesion, so we check for that case
-  if (filename.charAt(0) === '.' && filename.substr(1).indexOf('.') < 0) {
-    var ext = filename.substr(1);
-  }
-  // either the string doesn't have an extension or it is the extension, we
-  // assume the latter.  Most of the time we're right.
-  else if (filename.indexOf('.') < 0) {
-    var ext = filename;
-  }
-  // simple lookup
-  else {
-    var ext = path.extname(filename).substr(1);
-  }
-
-  ext = ext.toLowerCase();
-
+exports.lookup = function(path, fallback) {
+  var ext = path.replace(/.*[\.\/]/, '').toLowerCase();
   return exports.types[ext] || fallback || exports.default_type;
 };
 
@@ -82,4 +62,3 @@ var charsets = exports.charsets = {
     return /^text\//.test(mimeType) ? 'UTF-8' : fallback;
   }
 };
-
