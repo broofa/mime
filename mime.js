@@ -24,7 +24,7 @@ function _init(mimeFile) {
       // All remaining fields are extensions
       while (mimeType && (ext = line.shift())) {
         if (types[ext]) {
-          throw Error('"' + ext + '"');
+          throw Error('Extension "' + ext + '" maps to multiple types');
         }
         types[ext] = mimeType;
         // For extension map, we use the first extension listed
