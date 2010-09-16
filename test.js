@@ -3,16 +3,16 @@ var mime = require('./mime');
 exports["test mime lookup"] = function(test) {
   // easy
   test.equal('text/plain', mime.lookup('text.txt'));
-  
+
   // hidden file or multiple periods
   test.equal('text/plain', mime.lookup('.text.txt'));
 
   // just an extension
   test.equal('text/plain', mime.lookup('.txt'));
-  
+
   // just an extension without a dot
   test.equal('text/plain', mime.lookup('txt'));
-  
+
   // default
   test.equal('application/octet-stream', mime.lookup('text.nope'));
 
@@ -22,16 +22,29 @@ exports["test mime lookup"] = function(test) {
   test.finish();
 };
 
+exports["test extension lookup"] = function(test) {
+  // easy
+  test.equal('txt', mime.extension(mime.types.text));
+
+  // hidden file or multiple periods
+  test.equal('html', mime.extension(mime.types.htm));
+
+  // just an extension without a dot
+  test.equal('bin', mime.extension('application/octet-stream'));
+
+  test.finish();
+};
+
 exports["test mime lookup uppercase"] = function(test) {
   // easy
   test.equal('text/plain', mime.lookup('TEXT.TXT'));
-  
+
   // just an extension
   test.equal('text/plain', mime.lookup('.TXT'));
-  
+
   // just an extension without a dot
   test.equal('text/plain', mime.lookup('TXT'));
-  
+
   // default
   test.equal('application/octet-stream', mime.lookup('TEXT.NOPE'));
 
@@ -44,12 +57,12 @@ exports["test mime lookup uppercase"] = function(test) {
 exports["test charset lookup"] = function(test) {
   // easy
   test.equal('UTF-8', mime.charsets.lookup('text/plain'));
-  
+
   // none
-  test.ok(typeof mime.charsets.lookup('text/nope') == 'undefined');
+  test.ok(typeof mime.charsets.lookup(mime.types.js) == 'undefined');
 
   // fallback
-  test.equal('fallback', mime.charsets.lookup('text/fallback', 'fallback'));
+  test.equal('fallback', mime.charsets.lookup('application/octet-stream', 'fallback'));
 
   test.finish();
 };
