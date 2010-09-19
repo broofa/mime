@@ -236,6 +236,7 @@ exports.types =
   , "tiff"    : "image/tiff"
   , "torrent" : "application/x-bittorrent"
   , "tr"      : "text/troff"
+  , "ts"      : "video/MP2T"
   , "tsi"     : "audio/TSP-audio"
   , "tsp"     : "application/dsptype"
   , "tsv"     : "text/tab-separated-values"
