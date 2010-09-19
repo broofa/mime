@@ -129,6 +129,7 @@ exports.types =
   , "lzh"     : "application/octet-stream"
   , "m"       : "text/plain"
   , "m3u"     : "audio/x-mpegurl"
+  , "m3u8"    : "application/x-mpegURL"
   , "m4v"     : "video/mp4"
   , "man"     : "text/troff"
   , "mathml"  : "application/mathml+xml"
