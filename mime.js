@@ -131,6 +131,7 @@ exports.types =
   , "m"       : "text/plain"
   , "m3u"     : "audio/x-mpegurl"
   , "m4a"     : "audio/mp4"
+  , "m4p"     : "application/mp4"
   , "m4v"     : "video/mp4"
   , "man"     : "text/troff"
   , "mathml"  : "application/mathml+xml"
