@@ -47,6 +47,7 @@ exports.types =
   , "bcpio"   : "application/x-bcpio"
   , "bin"     : "application/octet-stream"
   , "bmp"     : "image/bmp"
+  , "buffer"  : "application/octet-stream"
   , "bz2"     : "application/x-bzip2"
   , "c"       : "text/x-c"
   , "cab"     : "application/vnd.ms-cab-compressed"
