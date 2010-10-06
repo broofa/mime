@@ -25,11 +25,7 @@ exports["test mime lookup"] = function(test) {
 exports["test extension lookup"] = function(test) {
   // easy
   test.equal('txt', mime.extension(mime.types.text));
-
-  // hidden file or multiple periods
   test.equal('html', mime.extension(mime.types.htm));
-
-  // just an extension without a dot
   test.equal('bin', mime.extension('application/octet-stream'));
 
   test.finish();
