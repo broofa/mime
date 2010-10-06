@@ -2,18 +2,17 @@ A library for doing simple mime-type lookups.
 
     var mime = require('mime');
 
-    // all these return 'text/plain'
-    mime.lookup('/path/to/file.txt');
-    mime.lookup('file.txt');
-    mime.lookup('.txt');
+    mime.lookup('/path/to/file.txt');         // => 'text/plain'
+    mime.lookup('file.txt');                  // => 'text/plain'
+    mime.lookup('.txt');                      // => 'text/plain'
+    mime.lookup('htm');                       // => 'text/html'
 
-It can also look up common charsets for specific mime-types. (Useful in a web
+... and extension lookups by mime-type
+
+    mime.extension('text/html');                 // => 'html'
+    mime.extension('application/octet-stream');  // => 'bin'
+
+It also includes rudimentary logic for determining charsets. (Useful in a web
 framework):
 
-    var mime = require('mime');
-
-    // returns 'UTF-8'
-    mime.charset.lookup('text/plain');
-
-Please help me make sure my lookup tables are complete!  Any additions will be
-appreciatively merged!
+    mime.charset.lookup('text/plain');        // => 'UTF-8'
