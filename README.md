@@ -16,3 +16,7 @@ It also includes rudimentary logic for determining charsets. (Useful in a web
 framework):
 
     mime.charset.lookup('text/plain');        // => 'UTF-8'
+
+Install with [npm](http://github.com/isaacs/npm):
+
+    npm install mime
