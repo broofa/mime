@@ -1,1 +1,1 @@
-mime.js
+module.exports = require('./mime');
