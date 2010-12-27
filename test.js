@@ -50,6 +50,13 @@ exports["test mime lookup uppercase"] = function(test) {
   test.finish();
 };
 
+exports["test custom types"] = function(test) {
+  test.equal('application/octet-stream', mime.lookup('file.buffer'));
+  test.equal('audio/mp4', mime.lookup('file.m4a'));
+
+  test.finish();
+};
+
 exports["test charset lookup"] = function(test) {
   // easy
   test.equal('UTF-8', mime.charsets.lookup('text/plain'));
