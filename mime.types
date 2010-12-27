@@ -108,7 +108,7 @@ application/mediaservercontrol+xml		mscml
 # application/moss-signature
 # application/mosskey-data
 # application/mosskey-request
-application/mp4					mp4s m4p
+application/mp4					mp4s
 # application/mpeg4-generic
 # application/mpeg4-iod
 # application/mpeg4-iod-xmt
@@ -121,7 +121,7 @@ application/mxf					mxf
 # application/nss
 # application/ocsp-request
 # application/ocsp-response
-application/octet-stream	bin dms lha lrf lzh so iso dmg dist distz pkg bpk dump elc deploy buffer 
+application/octet-stream	bin dms lha lrf lzh so iso dmg dist distz pkg bpk dump elc deploy
 application/oda					oda
 application/oebps-package+xml			opf
 application/ogg					ogx
@@ -1030,7 +1030,7 @@ audio/basic					au snd
 # audio/lpc
 audio/midi					mid midi kar rmi
 # audio/mobile-xmf
-audio/mp4					mp4a m4a
+audio/mp4					mp4a
 # audio/mp4a-latm
 # audio/mpa
 # audio/mpa-robust
