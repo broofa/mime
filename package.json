@@ -1,5 +1,5 @@
 { "name"          : "mime"
-, "description"   : "A super simple utility library for dealing with mime-types"
+, "description"   : "A comprehensive library for mime-type mapping"
 , "url"           : "http://github.com/bentomas/node-mime"
 , "keywords"      : ["util", "mime"]
 , "author"        : "Benjamin Thomas <benjamin@benjaminthomas.org>"

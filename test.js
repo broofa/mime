@@ -1,5 +1,4 @@
 var mime = require('./mime');
-debugger;
 exports["test mime lookup"] = function(test) {
   // easy
   test.equal('text/plain', mime.lookup('text.txt'));
@@ -26,7 +25,7 @@ exports["test extension lookup"] = function(test) {
   // easy
   test.equal('txt', mime.extension(mime.types.text));
   test.equal('html', mime.extension(mime.types.htm));
-  test.equal('buffer', mime.extension('application/octet-stream'));
+  test.equal('bin', mime.extension('application/octet-stream'));
 
   test.finish();
 };
