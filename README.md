@@ -34,7 +34,7 @@ Install with [npm](http://github.com/isaacs/npm):
 
 Does anyone outside your project/team _actually_ care about it?  If not, consider using the mime.load() or mime.define() APIs, below, to declare your types w/in your project.
 
-... if so, does anyone the node.js community care about it?  If not, then please file a bug here listing the modules and projects that would benefit.  If it makes sense, the type can be added as part of the node.types file.
+... if so, does anyone outside the node.js community care about it?  If not, then please file a bug here listing the modules and projects that would benefit.  If it makes sense, the type can be added as part of the node.types file.
 
 ... finally, if it's something that affects the broader community, please file a bug with the Apache project to amend their mime.types file, and create a bug here linking to the Apache bug.
 
