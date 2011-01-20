@@ -22,7 +22,7 @@ Install with [npm](http://github.com/isaacs/npm):
 ### Mapping mime-type to extension
 
     mime.extension('text/html');                 // => 'html'
-    mime.extension('application/octet-stream');  // => 'buffer'
+    mime.extension('application/octet-stream');  // => 'bin'
 
 ### Determining charsets
 
