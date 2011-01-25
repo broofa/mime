@@ -26,7 +26,7 @@ Install with [npm](http://github.com/isaacs/npm):
 
 ### Determining charsets
 
-    mime.charset.lookup('text/plain');        // => 'UTF-8'
+    mime.charsets.lookup('text/plain');        // => 'UTF-8'
 
 (The logic for charset lookup is pretty rudimentary.  Feel free to suggest improvements.)
 
