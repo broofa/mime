@@ -8,9 +8,9 @@ Install with [npm](http://github.com/isaacs/npm):
 
     npm install mime
 
-## Usage
+## API
 
-### Mapping file/extension to mime-type
+### mime.lookup(path) - map file/extension to mime-type
 
     var mime = require('mime');
 
@@ -19,12 +19,12 @@ Install with [npm](http://github.com/isaacs/npm):
     mime.lookup('.txt');                      // => 'text/plain'
     mime.lookup('htm');                       // => 'text/html'
 
-### Mapping mime-type to extension
+### mime.extension(type) - map mime-type to extension
 
     mime.extension('text/html');                 // => 'html'
     mime.extension('application/octet-stream');  // => 'bin'
 
-### Determining charsets
+### mime.charsets.lookup() - map mime-type to charset
 
     mime.charsets.lookup('text/plain');        // => 'UTF-8'
 
@@ -32,11 +32,13 @@ Install with [npm](http://github.com/isaacs/npm):
 
 ## "Can you add support for [some type/extension]?"
 
-Does anyone outside your project/team _actually_ care about it?  If not, consider using the mime.load() or mime.define() APIs, below, to declare your types w/in your project.
+Support for new types is handled thusly:
 
-... if so, does anyone outside the node.js community care about it?  If not, then please file a bug here listing the modules and projects that would benefit.  If it makes sense, the type can be added as part of the node.types file.
+  * For types where there's no obvious need outside your project, use mime.define() or mime.load() to add support in your code.
+  * For types where there's an obvious need w/in the node.js community, we'll add support here (in the node.types file)
+  * For types that affect the software community as a whole - e.g. a new type approved by [IANA](http://www.iana.org/assignments/media-types/) - file a [bug with Apache](http://httpd.apache.org/bug_report.html) and create an issue here that links to it.
 
-... finally, if it's something that affects the broader community, please file a bug with the Apache project to amend their mime.types file, and create a bug here linking to the Apache bug.
+If you're unsure or disagree with what we suggest here, feel free to open an issue and we'll figure it out there. :-)
 
 ### mime.define()
 
@@ -51,7 +53,7 @@ mime.define() takes a map of mime-type to extensions:
     mime.lookup('x-sft');                 // => 'text/x-some-format'
     mime.extension('text/x-some-format'); // => 'x-sf'
 
-### mime.define()
+### mime.load()
 
 mime.load() can be used to load any Apache-format .types file:
 
