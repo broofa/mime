@@ -40,9 +40,7 @@ Support for new types is handled thusly:
 
 If you're unsure or disagree with what we suggest here, feel free to open an issue and we'll figure it out there. :-)
 
-### mime.define()
-
-mime.define() takes a map of mime-type to extensions:
+### mime.define() - Add custom mime/extension mappings
 
     mime.define({
         'text/x-some-format': ['x-sf', 'x-sft', 'x-sfml'],
@@ -53,8 +51,6 @@ mime.define() takes a map of mime-type to extensions:
     mime.lookup('x-sft');                 // => 'text/x-some-format'
     mime.extension('text/x-some-format'); // => 'x-sf'
 
-### mime.load()
-
-mime.load() can be used to load any Apache-format .types file:
+### mime.load(filepath) - Load mappings from an Apache ".types" format file
 
     mime.load('./my_project.types');
