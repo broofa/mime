@@ -1,6 +1,6 @@
 # mime
 
-Support for mapping between file types and MIME types.  This module uses the latest version of the Apache "mime.types" file (maps over 620 types to 800+ extensions).  It is also trivially easy to add your own types and extensions, should you need to do that.
+Support for mapping between file extensions and MIME types.  This module uses the latest version of the Apache "mime.types" file (maps over 620 types to 800+ extensions).  It is also trivially easy to add your own types and extensions, should you need to do that.
 
 ## Install
 
