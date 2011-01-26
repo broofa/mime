@@ -1,6 +1,6 @@
 # mime
 
-A comprehensive library for mime-type mapping
+Support for mapping between file types and MIME types.  This module uses the latest version of the Apache "mime.types" file (maps over 620 types to 800+ extensions).  It is also trivially easy to add your own types and extensions, should you need to do that.
 
 ## Install
 
@@ -10,7 +10,7 @@ Install with [npm](http://github.com/isaacs/npm):
 
 ## API
 
-### mime.lookup(path) - map file/extension to mime-type
+### mime.lookup(path) - lookup the type for a file or extension
 
     var mime = require('mime');
 
@@ -19,7 +19,7 @@ Install with [npm](http://github.com/isaacs/npm):
     mime.lookup('.txt');                      // => 'text/plain'
     mime.lookup('htm');                       // => 'text/html'
 
-### mime.extension(type) - map mime-type to extension
+### mime.extension(type) - lookup the default extension for type
 
     mime.extension('text/html');                 // => 'html'
     mime.extension('application/octet-stream');  // => 'bin'
@@ -28,17 +28,15 @@ Install with [npm](http://github.com/isaacs/npm):
 
     mime.charsets.lookup('text/plain');        // => 'UTF-8'
 
-(The logic for charset lookup is pretty rudimentary.  Feel free to suggest improvements.)
+(The logic for charset lookups is pretty rudimentary.  Feel free to suggest improvements.)
 
 ## "Can you add support for [some type/extension]?"
 
-Support for new types is handled thusly:
+Start by adding support for the type in your project using the mime.define() or mime.load() methods (documented below).
 
-  * For types where there's no obvious need outside your project, use mime.define() or mime.load() to add support in your code.
-  * For types where there's an obvious need w/in the node.js community, we'll add support here (in the node.types file)
-  * For types that affect the software community as a whole - e.g. a new type approved by [IANA](http://www.iana.org/assignments/media-types/) - file a [bug with Apache](http://httpd.apache.org/bug_report.html) and create an issue here that links to it.
+If there's a type that is shared across node.js modules, by different people, create an issue here and we'll add it if it makes sense.
 
-If you're unsure or disagree with what we suggest here, feel free to open an issue and we'll figure it out there. :-)
+If the type in question applies to projects outside the node.js community (e.g. if [IANA](http://www.iana.org/assignments/media-types/) approves a new type) file a [bug with Apache](http://httpd.apache.org/bug_report.html) and create an issue here that links to it.
 
 ### mime.define() - Add custom mime/extension mappings
 
