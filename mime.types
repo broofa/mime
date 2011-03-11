@@ -1226,7 +1226,6 @@ text/csv					csv
 # text/example
 text/html					html htm
 # text/javascript
-text/cache-manifest			manifest
 # text/parityfec
 text/plain					txt text conf def list log in
 # text/prs.fallenstein.rst
