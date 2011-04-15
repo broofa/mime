@@ -1,6 +1,6 @@
 application/mp4  m4p
 application/octet-stream  bin buffer
 audio/mp4  m4a
-text/cache-manifest  manifest
+text/cache-manifest  manifest appcache
 application/x-mpegURL  m3u8
 video/MP2T  ts
