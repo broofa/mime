@@ -10,7 +10,8 @@ Install with [npm](http://github.com/isaacs/npm):
 
 ## API
 
-### mime.lookup(path) - lookup the type for a file or extension
+### mime.lookup(path)
+Get the mime type associated with a file. This is method is case-insensitive. Everything in path up to and including the last '/' or '.' is ignored, so you can pass it paths, filenames, or extensions, like so:
 
     var mime = require('mime');
 

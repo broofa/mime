@@ -50,7 +50,7 @@ exports["test mime lookup uppercase"] = function(test) {
 };
 
 exports["test custom types"] = function(test) {
-  test.equal('application/octet-stream', mime.lookup('file.buffer'));
+  test.equal('application/octet-stream', mime.lookup('file.bin'));
   test.equal('audio/mp4', mime.lookup('file.m4a'));
 
   test.finish();

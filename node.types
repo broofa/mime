@@ -1,7 +1,37 @@
-application/mp4  m4p
-application/octet-stream  bin buffer
-audio/mp4  m4a
+###
+# EDITORS: When proposing new types be added here, please short "What"/"Why"
+# info explaining why the enhancements should be made (as opposed to, say,
+# simply using mime.load() to customize node-mime in your local project).
+# Thanks!
+###
+
+# What: HTML5 application cache manifest
+# Why: De-facto standard. Required by Mozilla browser when serving HTML5 apps
+# per https://developer.mozilla.org/en/offline_resources_in_firefox
 text/cache-manifest  appcache manifest
+
+# What: Music formats used by iTunes.
+# Why: #1 music service, millions of these files around
+application/mp4  m4p
+audio/mp4  m4a
+
+# REMOVE? Looks like this was an aborted proposal from mozilla for their webapp
+# support.  Can't find much info about it.
 application/x-web-app-manifest+json  webapp
+
+# What: A music playlist format
+# Why: A de-facto standard, supported by a variety of music players.
+# See http://en.wikipedia.org/wiki/M3U
 application/x-mpegURL  m3u8
+
+# What: Video format
+# Why: Part of RFC1890
 video/MP2T  ts
+
+# PROMOTED - This is now an Apache supported type (i.e. it's in
+# mime.types).  Possible compatibility issue for anyone relying on ".buffer"
+# extension that we'd defined here previously - If this is an issue for you,
+# 'suggest you use mime.load() to load a local types file with an definition
+# appropriate for your project.
+#
+# application/octet-stream  bin buffer
