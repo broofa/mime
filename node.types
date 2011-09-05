@@ -27,11 +27,3 @@ application/x-mpegURL  m3u8
 # What: Video format
 # Why: Part of RFC1890
 video/MP2T  ts
-
-# PROMOTED - This is now an Apache supported type (i.e. it's in
-# mime.types).  Possible compatibility issue for anyone relying on ".buffer"
-# extension that we'd defined here previously - If this is an issue for you,
-# 'suggest you use mime.load() to load a local types file with an definition
-# appropriate for your project.
-#
-# application/octet-stream  bin buffer
