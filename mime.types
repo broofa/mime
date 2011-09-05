@@ -142,7 +142,7 @@ application/mxf					mxf
 # application/nss
 # application/ocsp-request
 # application/ocsp-response
-application/octet-stream	bin dms lha lrf lzh so iso dmg dist distz pkg bpk dump elc deploy
+application/octet-stream	bin dms lha lrf lzh so iso dmg dist distz pkg bpk dump elc deploy cur
 application/oda					oda
 application/oebps-package+xml			opf
 application/ogg					ogx
