@@ -33,8 +33,7 @@ Get the mime type associated with a file. This is method is case-insensitive. Ev
 
 ## API - Customizing
 
-The following APIs allow you to add your own type mappings within your project.  If you feel a type should be included as part of node-mime, see [[requesting new types]].
-
+The following APIs allow you to add your own type mappings within your project.  If you feel a type should be included as part of node-mime, see [requesting new types](https://github.com/bentomas/node-mime/wiki/Requesting-New-Types).
 ### mime.define() - Add custom mime/extension mappings
 
     mime.define({
