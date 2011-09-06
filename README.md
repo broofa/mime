@@ -8,7 +8,7 @@ Install with [npm](http://github.com/isaacs/npm):
 
     npm install mime
 
-## API
+## API - Queries
 
 ### mime.lookup(path)
 Get the mime type associated with a file. This is method is case-insensitive. Everything in path up to and including the last '/' or '.' is ignored, so you can pass it paths, filenames, or extensions, like so:
@@ -31,13 +31,9 @@ Get the mime type associated with a file. This is method is case-insensitive. Ev
 
 (The logic for charset lookups is pretty rudimentary.  Feel free to suggest improvements.)
 
-## "Can you add support for [some type/extension]?"
+## API - Customizing
 
-Start by adding support for the type in your project using the mime.define() or mime.load() methods (documented below).
-
-If there's a type that is shared across node.js modules, by different people, create an issue here and we'll add it if it makes sense.
-
-If the type in question applies to projects outside the node.js community (e.g. if [IANA](http://www.iana.org/assignments/media-types/) approves a new type) file a [bug with Apache](http://httpd.apache.org/bug_report.html) and create an issue here that links to it.
+The following APIs allow you to add your own type mappings within your project.  If you feel a type should be included as part of node-mime, see [[requesting new types]].
 
 ### mime.define() - Add custom mime/extension mappings
 
