@@ -15,18 +15,12 @@ application/octet-stream  buffer
 application/mp4  m4p
 audio/mp4  m4a
 
-# What: ???
-# Why: ???
-# Added by: louisremi
-#
-# (Flagging for removal.  Asking louisremi for more information. --broofa)
-application/x-web-app-manifest+json  webapp
-
 # What: Music playlist format (http://en.wikipedia.org/wiki/M3U)
-# Why: See discussion here: https://github.com/bentomas/node-mime/pull/6
+# Why: See https://github.com/bentomas/node-mime/pull/6
 # Added by: mjrusso
 application/x-mpegURL  m3u8
 
-# What: Video format
-# Why: Part of RFC1890
+# What: Video format, Part of RFC1890
+# Why: See https://github.com/bentomas/node-mime/pull/6
+# Added by: mjrusso
 video/MP2T  ts
