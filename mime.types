@@ -977,7 +977,6 @@ application/x-bzip2				bz2 boz
 application/x-cdlink				vcd
 application/x-chat				chat
 application/x-chess-pgn				pgn
-application/x-chrome-extension			crx
 # application/x-compress
 application/x-cpio				cpio
 application/x-csh				csh
@@ -1220,7 +1219,6 @@ chemical/x-cml					cml
 chemical/x-csml					csml
 # chemical/x-pdb
 chemical/x-xyz					xyz
-font/opentype					otf
 image/bmp					bmp
 image/cgm					cgm
 # image/example
@@ -1331,7 +1329,6 @@ model/vrml					wrl vrml
 # multipart/signed
 # multipart/voice-message
 # text/1d-interleaved-parityfec
-text/cache-manifest				appcache manifest
 text/calendar					ics ifb
 text/css					css
 text/csv					csv
@@ -1388,7 +1385,6 @@ text/vnd.wap.wml				wml
 text/vnd.wap.wmlscript				wmls
 text/x-asm					s asm
 text/x-c					c cc cxx cpp h hh dic
-text/x-component				text/x-component
 text/x-fortran					f for f77 f90
 text/x-pascal					p pas
 text/x-java-source				java
