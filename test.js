@@ -1,3 +1,9 @@
+/**
+ * Requires the async_testing module, which we're not bothering to ship as part
+ * of this module.
+ *
+ * "npm install async_testing"
+ */
 var mime = require('./mime');
 exports["test mime lookup"] = function(test) {
   // easy

@@ -25,7 +25,10 @@ var mime = module.exports = {
         mime.types[exts[i]] = type;
       }
 
-      mime.extensions[type] = exts[0];
+      // Default extension is the first one we encounter
+      if (!mime.extensions[type]) {
+        mime.extensions[type] = exts[0];
+      }
     }
   },
 
@@ -73,7 +76,7 @@ var mime = module.exports = {
   charsets: {
     lookup: function (mimeType, fallback) {
       // Assume text types are utf8.  Modify mime logic as needed.
-      return /^text\//.test(mimeType) ? 'UTF-8' : fallback;
+      return (/^text\//).test(mimeType) ? 'UTF-8' : fallback;
     }
   }
 };
