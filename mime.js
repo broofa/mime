@@ -83,10 +83,10 @@ var mime = module.exports = {
 
 // Load our local copy of
 // http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
-mime.load(path.join(__dirname, 'mime.types'));
+mime.load(path.join(__dirname, 'types/mime.types'));
 
-// Overlay enhancements we've had requests for (and that seem to make sense)
-mime.load(path.join(__dirname, 'node.types'));
+// Overlay enhancements submitted by the node.js community
+mime.load(path.join(__dirname, 'types/node.types'));
 
 // Set the default type
 mime.default_type = mime.types.bin;
