@@ -18,5 +18,5 @@
   "main": "mime.js",
   "name": "mime",
   "repository": {"url": "http://github.com/bentomas/node-mime", "type": "git"},
-  "version": "1.2.3"
+  "version": "1.2.4"
 }
