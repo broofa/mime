@@ -75,5 +75,5 @@ exports["test charset lookup"] = function(test) {
 };
 
 if (module == require.main) {
-  require('async_testing').run(__filename, process.ARGV);
+  require('async_testing').run(__filename, process.argv);
 }
