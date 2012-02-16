@@ -2,11 +2,11 @@ var path = require('path'),
     fs = require('fs');
 
 var mime = module.exports = {
-  /** Map of extension to mime type */
-  types: {},
+  // Map of extension to mime type
+  types: Object.create(null),
 
-  /** Map of mime type to extension */
-  extensions :{},
+  // Map of mime type to extension
+  extensions :Object.create(null),
 
   /**
    * Define mimetype -> extension mappings.  Each key is a mime-type that maps
@@ -61,8 +61,7 @@ var mime = module.exports = {
   lookup: function(path, fallback) {
     var ext = path.replace(/.*[\.\/]/, '').toLowerCase();
 
-    return (mime.types.hasOwnProperty(ext) && mime.types[ext]) ||
-      fallback || mime.default_type
+    return mime.types[ext] || fallback || mime.default_type
   },
 
   /**

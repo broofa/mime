@@ -13,7 +13,7 @@
   ],
   "dependencies": {},
   "description": "A comprehensive library for mime-type mapping",
-  "devDependencies": {"async_testing": ""},
+  "devDependencies": {},
   "keywords": ["util", "mime"],
   "main": "mime.js",
   "name": "mime",
