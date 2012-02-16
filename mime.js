@@ -1,6 +1,10 @@
 var path = require('path'),
     fs = require('fs');
 
+function has (obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
 var mime = module.exports = {
   /** Map of extension to mime type */
   types: {},
@@ -60,7 +64,13 @@ var mime = module.exports = {
    */
   lookup: function(path, fallback) {
     var ext = path.replace(/.*[\.\/]/, '').toLowerCase();
-    return mime.types[ext] || fallback || mime.default_type;
+
+    if (has(mime.types, ext)) {
+      return mime.types[ext];
+    }
+    else {
+      return fallback || mime.default_type;
+    }
   },
 
   /**

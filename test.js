@@ -23,6 +23,10 @@ exports["test mime lookup"] = function(test) {
   // fallback
   test.equal('fallback', mime.lookup('text.fallback', 'fallback'));
 
+  // an object is not a hash
+  // http://www.devthought.com/2012/01/18/an-object-is-not-a-hash/
+  test.equal('application/octet-stream', mime.lookup('text.constructor'));
+
   test.finish();
 };
 
@@ -75,5 +79,5 @@ exports["test charset lookup"] = function(test) {
 };
 
 if (module == require.main) {
-  require('async_testing').run(__filename, process.ARGV);
+  require('async_testing').run(__filename, process.argv);
 }
