@@ -46,3 +46,9 @@ video/MP2T  ts
 # Why: Streaming and serving FLAC audio
 # Added by: jacobrask
 audio/flac  flac
+
+# What: EventSource mime type
+# Why: mime type of Server-Sent Events stream
+# http://www.w3.org/TR/eventsource/#text-event-stream
+# Added by: francois2metz
+text/event-stream  event-stream
