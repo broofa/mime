@@ -25,6 +25,7 @@ eq('application/octet-stream', mime.lookup('text.nope'));
 eq('fallback', mime.lookup('text.fallback', 'fallback'));
 eq('application/octet-stream', mime.lookup('constructor'));
 eq('text/plain', mime.lookup('TEXT.TXT'));
+eq('text/event-stream', mime.lookup('text/event-stream'));
 
 //
 // Test extensions
