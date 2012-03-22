@@ -16,8 +16,8 @@ var mime = module.exports = {
   extensions: Object.create( null ),
   
   /**
-   * Define mimetype -> extension mappings.  Each key is a mime-type that maps
-   * to an array of extensions associated with the type.  The first extension is
+   * Define mimetype -> extension mappings. Each key is a mime-type that maps
+   * to an array of extensions associated with the type. The first extension is
    * used as the default extension for the type.
    * 
    * e.g. mime.define({'audio/ogg', ['oga', 'ogg', 'spx']});
@@ -26,20 +26,26 @@ var mime = module.exports = {
    * @return {Null}   
    */
   define: function( map ) {
-    for ( var type in map ) {
+    
+    var i, type, length, exts;
+    
+    for ( type in map ) {
       
-      var exts = map[ type ];
+      exts = map[ type ];
+      length = exts.length
+      i = 0;
       
-      for ( var i = 0; i < exts.length; i++ ) {
-        mime.types[ exts[i] ] = type;
+      for ( ; i < length; i++ ) {
+        this.types[ exts[i] ] = type;
       }
       
       // Default extension is the first one we encounter
-      if ( !mime.extensions[ type ] ) {
-        mime.extensions[ type ] = exts[ 0 ];
+      if ( !this.extensions[ type ] ) {
+        this.extensions[ type ] = exts[ 0 ];
       }
       
     }
+    
   },
   
   /**
