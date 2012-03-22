@@ -52,18 +52,21 @@ var mime = module.exports = {
    * @return {Null}   
    */
   load: function( file ) {
+    
+    var i, length, fields, map = {};
+    
     // Read file and split into lines
-    var map = {},
-        content = fs.readFileSync(file, 'ascii'),
-        lines = content.split(/[\r\n]+/);
+    var content = fs.readFileSync( file, 'ascii' );
+    var lines   = content.split( /(\r?\n)+/ );
     
-    lines.forEach( function( line, lineno ) {
-      // Clean up whitespace/comments, and split into fields
-      var fields = line.replace( /\s*#.*|^\s*|\s*$/g, '' ).split( /\s+/ );
+    for( i = 0, length = lines.length; i < length; i++ ) {
+      // Clean up whitespace/comments and split into fields
+      fields = lines[i].replace( /\s*#.*|^\s*|\s*$/g, '' );
+      fields = fields.split( /\s+/ );
       map[ fields.shift() ] = fields;
-    });
+    }
     
-    mime.define( map );
+    this.define( map );
     
   },
   
