@@ -31,9 +31,9 @@ eq('text/event-stream', mime.lookup('text/event-stream'));
 // Test extensions
 //
 
-eq('txt', mime.extension(mime.types.text));
-eq('html', mime.extension(mime.types.htm));
-eq('bin', mime.extension('application/octet-stream'));
+eq('.txt', mime.extension(mime.types['.txt']));
+eq('.html', mime.extension(mime.types['.htm']));
+eq('.bin', mime.extension('application/octet-stream'));
 eq(undefined, mime.extension('constructor'));
 
 //

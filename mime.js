@@ -1,6 +1,17 @@
 var path = require('path'),
     fs = require('fs');
 
+// leaves only extension from the given string
+//   normalize('foo/bar.js')  // -> '.js'
+//   normalize('bar.js')      // -> '.js'
+//   normalize('.js')         // -> '.js'
+//   normalize('js')          // -> '.js'
+function normalize(extension) {
+  extension = 'prefix.' + path.basename(extension);
+  return path.extname(extension).toLowerCase();
+}
+
+
 var mime = module.exports = {
   // Map of extension to mime type
   types: Object.create(null),
@@ -18,18 +29,23 @@ var mime = module.exports = {
    * @param map (Object) type definitions
    */
   define: function(map) {
-    for (var type in map) {
+    Object.getOwnPropertyNames(map).forEach(function (type) {
       var exts = map[type];
 
-      for (var i = 0; i < exts.length; i++) {
-        mime.types[exts[i]] = type;
+      // skip empty types, and types without extensions
+      if (!type || !exts || 0 === exts.length) {
+        return;
       }
+
+      exts.forEach(function (ext) {
+        mime.types[normalize(ext)] = type;
+      });
 
       // Default extension is the first one we encounter
       if (!mime.extensions[type]) {
-        mime.extensions[type] = exts[0];
+        mime.extensions[type] = normalize(exts[0]);
       }
-    }
+    });
   },
 
   /**
@@ -59,9 +75,7 @@ var mime = module.exports = {
    * Lookup a mime type based on extension
    */
   lookup: function(path, fallback) {
-    var ext = path.replace(/.*[\.\/]/, '').toLowerCase();
-
-    return mime.types[ext] || fallback || mime.default_type
+    return mime.types[normalize(path)] || fallback || mime.default_type;
   },
 
   /**
@@ -90,4 +104,4 @@ mime.load(path.join(__dirname, 'types/mime.types'));
 mime.load(path.join(__dirname, 'types/node.types'));
 
 // Set the default type
-mime.default_type = mime.types.bin;
+mime.default_type = mime.lookup('.bin');
