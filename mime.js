@@ -12,96 +12,108 @@ function normalize(extension) {
 }
 
 
-var mime = module.exports = {
+function Mime(defaultType) {
   // Map of extension to mime type
-  types: Object.create(null),
+  this.types = Object.create(null);
 
   // Map of mime type to extension
-  extensions :Object.create(null),
+  this.extensions = Object.create(null);
 
-  /**
-   * Define mimetype -> extension mappings.  Each key is a mime-type that maps
-   * to an array of extensions associated with the type.  The first extension is
-   * used as the default extension for the type.
-   *
-   * e.g. mime.define({'audio/ogg', ['oga', 'ogg', 'spx']});
-   *
-   * @param map (Object) type definitions
-   */
-  define: function(map) {
-    Object.getOwnPropertyNames(map).forEach(function (type) {
-      var exts = map[type];
+  // Default mime type used as last-resort upon lookup
+  Object.defineProperty(this, 'defaultType', {value: defaultType});
+}
 
-      // skip empty types, and types without extensions
-      if (!type || !exts || 0 === exts.length) {
-        return;
-      }
 
-      exts.forEach(function (ext) {
-        mime.types[normalize(ext)] = type;
-      });
+/**
+ * Define mimetype -> extension mappings.  Each key is a mime-type that maps
+ * to an array of extensions associated with the type.  The first extension is
+ * used as the default extension for the type.
+ *
+ * e.g. mime.define({'audio/ogg', ['oga', 'ogg', 'spx']});
+ *
+ * @param map (Object) type definitions
+ */
+Mime.prototype.define = function (map) {
+  var self = this;
 
-      // Default extension is the first one we encounter
-      if (!mime.extensions[type]) {
-        mime.extensions[type] = normalize(exts[0]);
-      }
-    });
-  },
+  Object.getOwnPropertyNames(map).forEach(function (type) {
+    var exts = map[type];
 
-  /**
-   * Load an Apache2-style ".types" file
-   *
-   * This may be called multiple times (it's expected).  Where files declare
-   * overlapping types/extensions, the last file wins.
-   *
-   * @param file (String) path of file to load.
-   */
-  load: function(file) {
-    // Read file and split into lines
-    var map = {},
-        content = fs.readFileSync(file, 'ascii'),
-        lines = content.split(/[\r\n]+/);
-
-    lines.forEach(function(line, lineno) {
-      // Clean up whitespace/comments, and split into fields
-      var fields = line.replace(/\s*#.*|^\s*|\s*$/g, '').split(/\s+/);
-      map[fields.shift()] = fields;
-    });
-
-    mime.define(map);
-  },
-
-  /**
-   * Lookup a mime type based on extension
-   */
-  lookup: function(path, fallback) {
-    return mime.types[normalize(path)] || fallback || mime.default_type;
-  },
-
-  /**
-   * Return file extension associated with a mime type
-   */
-  extension: function(mimeType) {
-    return mime.extensions[mimeType];
-  },
-
-  /**
-   * Lookup a charset based on mime type.
-   */
-  charsets: {
-    lookup: function (mimeType, fallback) {
-      // Assume text types are utf8.  Modify mime logic as needed.
-      return (/^text\//).test(mimeType) ? 'UTF-8' : fallback;
+    // skip empty types, and types without extensions
+    if (!type || !exts || 0 === exts.length) {
+      return;
     }
+
+    exts.forEach(function (ext) {
+      self.types[normalize(ext)] = type;
+    });
+
+    // Default extension is the first one we encounter
+    if (!self.extensions[type]) {
+      self.extensions[type] = normalize(exts[0]);
+    }
+  });
+};
+
+
+/**
+ * Load an Apache2-style ".types" file
+ *
+ * This may be called multiple times (it's expected).  Where files declare
+ * overlapping types/extensions, the last file wins.
+ *
+ * @param file (String) path of file to load.
+ */
+Mime.prototype.load = function(file) {
+  // Read file and split into lines
+  var map = {},
+      content = fs.readFileSync(file, 'ascii'),
+      lines = content.split(/[\r\n]+/);
+
+  lines.forEach(function(line, lineno) {
+    // Clean up whitespace/comments, and split into fields
+    var fields = line.replace(/\s*#.*|^\s*|\s*$/g, '').split(/\s+/);
+    map[fields.shift()] = fields;
+  });
+
+  this.define(map);
+};
+
+
+/**
+ * Lookup a mime type based on extension
+ */
+Mime.prototype.lookup = function(path, fallback) {
+  return this.types[normalize(path)] || fallback || this.defaultType;
+};
+
+
+/**
+ * Return file extension associated with a mime type
+ */
+Mime.prototype.extension = function(mimeType) {
+  return this.extensions[mimeType];
+};
+
+
+/**
+ * Lookup a charset based on mime type.
+ */
+Mime.prototype.charsets = {
+  lookup: function (mimeType, fallback) {
+    // Assume text types are utf8.  Modify mime logic as needed.
+    return (/^text\//).test(mimeType) ? 'UTF-8' : fallback;
   }
 };
 
+
+module.exports = new Mime('application/octet-stream');
+module.exports.Mime = Mime;
+
+
 // Load our local copy of
 // http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
-mime.load(path.join(__dirname, 'types/mime.types'));
+module.exports.load(path.join(__dirname, 'types/mime.types'));
 
 // Overlay enhancements submitted by the node.js community
-mime.load(path.join(__dirname, 'types/node.types'));
-
-// Set the default type
-mime.default_type = mime.lookup('.bin');
+module.exports.load(path.join(__dirname, 'types/node.types'));
