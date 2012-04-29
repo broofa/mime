@@ -1,12 +1,32 @@
-var path = require('path');
-var fs = require('fs');
+var path  = require('path');
+var fs    = require('fs');
 
-function Mime() {
-  // Map of extension -> mime type
+
+// leaves only extension from the given string
+//   normalize('foo/bar.js')  // -> '.js'
+//   normalize('bar.js')      // -> '.js'
+//   normalize('.js')         // -> '.js'
+//   normalize('js')          // -> '.js'
+function normalize(extension) {
+  extension = 'prefix.' + path.basename(extension);
+  return path.extname(extension).toLowerCase();
+}
+
+
+function Mime(options) {
+  // Map of extension to mime type
   this.types = Object.create(null);
 
   // Map of mime type -> extension
   this.extensions = Object.create(null);
+
+  if ('string' === typeof options) {
+    this.normalize    = normalize;
+    this.default_type = options;
+  } else {
+    this.normalize    = options.normalize || normalize;
+    this.default_type = options.defaultType;
+  }
 }
 
 /**
@@ -19,18 +39,25 @@ function Mime() {
  * @param map (Object) type definitions
  */
 Mime.prototype.define = function (map) {
-  for (var type in map) {
+  var self = this;
+
+  Object.getOwnPropertyNames(map).forEach(function (type) {
     var exts = map[type];
 
-    for (var i = 0; i < exts.length; i++) {
-      this.types[exts[i]] = type;
+    // skip empty types, and types without extensions
+    if (!type || !exts || 0 === exts.length) {
+      return;
     }
 
+    exts.forEach(function (ext) {
+      self.types[self.normalize(ext)] = type;
+    });
+
     // Default extension is the first one we encounter
-    if (!this.extensions[type]) {
-      this.extensions[type] = exts[0];
+    if (!self.extensions[type]) {
+      self.extensions[type] = self.normalize(exts[0]);
     }
-  }
+  });
 };
 
 /**
@@ -60,9 +87,7 @@ Mime.prototype.load = function(file) {
  * Lookup a mime type based on extension
  */
 Mime.prototype.lookup = function(path, fallback) {
-  var ext = path.replace(/.*[\.\/]/, '').toLowerCase();
-
-  return this.types[ext] || fallback || this.default_type;
+  return this.types[this.normalize(path)] || fallback || this.default_type;
 };
 
 /**
@@ -72,8 +97,16 @@ Mime.prototype.extension = function(mimeType) {
   return this.extensions[mimeType];
 };
 
+
 // Default instance
-var mime = new Mime();
+var mime = new Mime({
+  defaultType: 'application/octet-stream',
+  normalize:   function (ext) {
+    // backward-compatible normalizer
+    return ext.replace(/.*[\.\/]/, '').toLowerCase();
+  }
+});
+
 
 // Load local copy of
 // http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
@@ -82,14 +115,13 @@ mime.load(path.join(__dirname, 'types/mime.types'));
 // Load additional types from node.js community
 mime.load(path.join(__dirname, 'types/node.types'));
 
-// Default type
-mime.default_type = mime.lookup('bin');
 
 //
 // Additional API specific to the default instance
 //
 
 mime.Mime = Mime;
+
 
 /**
  * Lookup a charset based on mime type.
@@ -99,6 +131,6 @@ mime.charsets = {
     // Assume text types are utf8
     return (/^text\//).test(mimeType) ? 'UTF-8' : fallback;
   }
-}
+};
 
 module.exports = mime;
