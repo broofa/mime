@@ -51,4 +51,19 @@ eq('UTF-8', mime.charsets.lookup('text/plain'));
 eq(undefined, mime.charsets.lookup(mime.types.js));
 eq('fallback', mime.charsets.lookup('application/octet-stream', 'fallback'));
 
+
+//
+// Test custom mime types
+//
+
+var myMime = new (mime.Mime)('foobar');
+
+myMime.load(__dirname + '/types/mime.types');
+myMime.load(__dirname + '/types/node.types');
+
+eq('.txt', myMime.extension(myMime.types['.text']));
+eq('.bin', myMime.extension('application/octet-stream'));
+eq('text/plain', myMime.lookup('.txt'));
+eq('text/plain', myMime.lookup('txt'));
+
 console.log('\nOK');
