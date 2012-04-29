@@ -1,15 +1,13 @@
-var path = require('path'),
-    fs = require('fs');
-
+var path = require('path');
+var fs = require('fs');
 
 function Mime() {
-  // Map of extension to mime type
+  // Map of extension -> mime type
   this.types = Object.create(null);
 
-  // Map of mime type to extension
+  // Map of mime type -> extension
   this.extensions = Object.create(null);
 }
-
 
 /**
  * Define mimetype -> extension mappings.  Each key is a mime-type that maps
@@ -35,7 +33,6 @@ Mime.prototype.define = function (map) {
   }
 };
 
-
 /**
  * Load an Apache2-style ".types" file
  *
@@ -50,7 +47,7 @@ Mime.prototype.load = function(file) {
       content = fs.readFileSync(file, 'ascii'),
       lines = content.split(/[\r\n]+/);
 
-  lines.forEach(function(line, lineno) {
+  lines.forEach(function(line) {
     // Clean up whitespace/comments, and split into fields
     var fields = line.replace(/\s*#.*|^\s*|\s*$/g, '').split(/\s+/);
     map[fields.shift()] = fields;
@@ -58,7 +55,6 @@ Mime.prototype.load = function(file) {
 
   this.define(map);
 };
-
 
 /**
  * Lookup a mime type based on extension
@@ -69,7 +65,6 @@ Mime.prototype.lookup = function(path, fallback) {
   return this.types[ext] || fallback || this.default_type;
 };
 
-
 /**
  * Return file extension associated with a mime type
  */
@@ -77,28 +72,33 @@ Mime.prototype.extension = function(mimeType) {
   return this.extensions[mimeType];
 };
 
+// Default instance
+var mime = new Mime();
+
+// Load local copy of
+// http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
+mime.load(path.join(__dirname, 'types/mime.types'));
+
+// Load additional types from node.js community
+mime.load(path.join(__dirname, 'types/node.types'));
+
+// Default type
+mime.default_type = mime.lookup('bin');
+
+//
+// Additional API specific to the default instance
+//
+
+mime.Mime = Mime;
 
 /**
  * Lookup a charset based on mime type.
  */
-Mime.prototype.charsets = {
-  lookup: function (mimeType, fallback) {
-    // Assume text types are utf8.  Modify mime logic as needed.
+mime.charsets = {
+  lookup: function(mimeType, fallback) {
+    // Assume text types are utf8
     return (/^text\//).test(mimeType) ? 'UTF-8' : fallback;
   }
-};
+}
 
-
-module.exports = new Mime();
-module.exports.Mime = Mime;
-
-
-// Load our local copy of
-// http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
-module.exports.load(path.join(__dirname, 'types/mime.types'));
-
-// Overlay enhancements submitted by the node.js community
-module.exports.load(path.join(__dirname, 'types/node.types'));
-
-// Set the default type
-module.exports.default_type = module.exports.types.bin;
+module.exports = mime;
