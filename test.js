@@ -26,6 +26,7 @@ eq('fallback', mime.lookup('text.fallback', 'fallback'));
 eq('application/octet-stream', mime.lookup('constructor'));
 eq('text/plain', mime.lookup('TEXT.TXT'));
 eq('text/event-stream', mime.lookup('text/event-stream'));
+eq('application/x-web-app-manifest+json', mime.lookup('text.webapp'));
 
 //
 // Test extensions
