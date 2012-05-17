@@ -95,6 +95,7 @@ application/java-serialized-object		ser
 application/java-vm				class
 application/javascript				js
 application/json				json
+application/x-web-app-manifest+json   webapp
 # application/kpml-request+xml
 # application/kpml-response+xml
 application/lost+xml				lostxml
