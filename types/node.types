@@ -52,3 +52,8 @@ audio/flac  flac
 # http://www.w3.org/TR/eventsource/#text-event-stream
 # Added by: francois2metz
 text/event-stream  event-stream
+
+# What: Mozilla App manifest mime type
+# Why: https://developer.mozilla.org/en/Apps/Manifest#Serving_manifests
+# Added by: ednapiranha
+application/x-web-app-manifest+json   webapp
