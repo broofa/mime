@@ -57,3 +57,8 @@ text/event-stream  event-stream
 # Why: https://developer.mozilla.org/en/Apps/Manifest#Serving_manifests
 # Added by: ednapiranha
 application/x-web-app-manifest+json   webapp
+
+# What: CoffeeScript mime type
+# Why: De-facto standard mime type for CoffeeScript source code files
+# Added by: jodal
+text/x-coffeescript  coffee
