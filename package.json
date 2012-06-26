@@ -17,6 +17,6 @@
   "keywords": ["util", "mime"],
   "main": "mime.js",
   "name": "mime",
-  "repository": {"url": "http://github.com/bentomas/node-mime", "type": "git"},
+  "repository": {"url": "https://github.com/broofa/node-mime", "type": "git"},
   "version": "1.2.5"
 }
