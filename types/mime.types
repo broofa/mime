@@ -1279,7 +1279,7 @@ image/vnd.fst					fst
 image/vnd.fujixerox.edmics-mmr			mmr
 image/vnd.fujixerox.edmics-rlc			rlc
 # image/vnd.globalgraphics.pgb
-# image/vnd.microsoft.icon
+image/vnd.microsoft.icon            cur
 # image/vnd.mix
 image/vnd.ms-modi				mdi
 image/vnd.net-fpx				npx
