@@ -57,9 +57,3 @@ text/event-stream  event-stream
 # Why: https://developer.mozilla.org/en/Apps/Manifest#Serving_manifests
 # Added by: ednapiranha
 application/x-web-app-manifest+json   webapp
-
-# What: Matroska Mime Types
-# Why: http://en.wikipedia.org/wiki/Matroska
-# Added by: aduncan88
-video/x-matroska    mkv
-audio/x-matroska    mka
