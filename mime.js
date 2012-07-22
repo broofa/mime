@@ -96,8 +96,12 @@ mime.Mime = Mime;
  */
 mime.charsets = {
   lookup: function(mimeType, fallback) {
-    // Assume text types are utf8
-    return (/^text\//).test(mimeType) ? 'UTF-8' : fallback;
+    // Returns fallback if this is not a text
+    if (mimeType.indexOf("text/") !== 0) return fallback
+
+    // Handle mimes like: "text/html;charset=windows-1251"
+    var charset = /charset=([\w\d-]+)/.exec(mimeType)
+    return (charset instanceof Array) ? charset[1] : 'UTF-8'
   }
 }
 
