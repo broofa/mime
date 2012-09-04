@@ -57,3 +57,11 @@ text/event-stream  event-stream
 # Why: https://developer.mozilla.org/en/Apps/Manifest#Serving_manifests
 # Added by: ednapiranha
 application/x-web-app-manifest+json   webapp
+
+# What: Javascript mime type
+# Why: RFC 4329 (https://www.rfc-editor.org/rfc/rfc4329.txt) states that the correct mime type
+# for JavaScript files is 'application/javascript'. However, this is incompatible with certain
+# versions of IE. While 'text/javascript' is not official, it more often results in expected
+# behavior.
+# Added by: pifantastic
+text/javascript  js
