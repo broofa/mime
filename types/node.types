@@ -1,3 +1,9 @@
+# What: WebVTT
+# Why: To allow formats intended for marking up external text track resources.
+# http://dev.w3.org/html5/webvtt/
+# Added by: niftylettuce
+text/vtt  vtt
+
 # What: Google Chrome Extension
 # Why: To allow apps to (work) be served with the right content type header.
 # http://codereview.chromium.org/2830017
