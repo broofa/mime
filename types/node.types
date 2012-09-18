@@ -1,3 +1,8 @@
+# What: rtf
+# Why: To be consistent with mime-magic and MacOS & RHEL file(1) reported mime-types
+# Added by: mab-netdev
+text/rtf  rtf
+
 # What: bmp
 # Why: To be consistent with mime-magic and MacOS & RHEL file(1) reported mime-types
 # Added by: mab-netdev
