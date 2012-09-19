@@ -1,3 +1,13 @@
+# What: rtf
+# Why: To be consistent with mime-magic and MacOS & RHEL file(1) reported mime-types
+# Added by: mab-netdev
+text/rtf  rtf
+
+# What: bmp
+# Why: To be consistent with mime-magic and MacOS & RHEL file(1) reported mime-types
+# Added by: mab-netdev
+image/x-ms-bmp  bmp
+
 # What: WebVTT
 # Why: To allow formats intended for marking up external text track resources.
 # http://dev.w3.org/html5/webvtt/
