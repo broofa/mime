@@ -57,3 +57,9 @@ text/event-stream  event-stream
 # Why: https://developer.mozilla.org/en/Apps/Manifest#Serving_manifests
 # Added by: ednapiranha
 application/x-web-app-manifest+json   webapp
+
+# What: Lua file types
+# Why: Googling around shows de-facto consensus on these
+# Added by: creationix (Issue #45)
+text/x-lua  lua
+application/x-lua-bytecode  luac
