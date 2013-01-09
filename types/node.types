@@ -84,3 +84,8 @@ application/x-lua-bytecode  luac
 # Why: http://stackoverflow.com/questions/10701983/what-is-the-mime-type-for-markdown
 # Added by: avoidwork
 text/x-markdown  markdown md mkd
+
+# What: JavaScript files types
+# Why: returned from the File API for file.type in Chrome, instead of application/javascript
+# Added by: skeggse
+application/x-javascript  js
