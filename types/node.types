@@ -1,13 +1,3 @@
-# What: rtf
-# Why: To be consistent with mime-magic and MacOS & RHEL file(1) reported mime-types
-# Added by: mab-netdev
-text/rtf  rtf
-
-# What: bmp
-# Why: To be consistent with mime-magic and MacOS & RHEL file(1) reported mime-types
-# Added by: mab-netdev
-image/x-ms-bmp  bmp
-
 # What: WebVTT
 # Why: To allow formats intended for marking up external text track resources.
 # http://dev.w3.org/html5/webvtt/
@@ -19,12 +9,6 @@ text/vtt  vtt
 # http://codereview.chromium.org/2830017
 # Added by: niftylettuce
 application/x-chrome-extension  crx
-
-# What: OTF Message Silencer
-# Why: To silence the "Resource interpreted as font but transferred with MIME
-# type font/otf" message that occurs in Google Chrome
-# Added by: niftylettuce
-font/opentype  otf
 
 # What: HTC support
 # Why: To properly render .htc files such as CSS3PIE
@@ -48,20 +32,10 @@ application/octet-stream  buffer
 application/mp4  m4p
 audio/mp4  m4a
 
-# What: Music playlist format (http://en.wikipedia.org/wiki/M3U)
-# Why: See https://github.com/bentomas/node-mime/pull/6
-# Added by: mjrusso
-application/x-mpegURL  m3u8
-
 # What: Video format, Part of RFC1890
 # Why: See https://github.com/bentomas/node-mime/pull/6
 # Added by: mjrusso
 video/MP2T  ts
-
-# What: The FLAC lossless codec format
-# Why: Streaming and serving FLAC audio
-# Added by: jacobrask
-audio/flac  flac
 
 # What: EventSource mime type
 # Why: mime type of Server-Sent Events stream
