@@ -23,7 +23,7 @@ Mime.prototype.define = function (map) {
     var exts = map[type];
 
     for (var i = 0; i < exts.length; i++) {
-      if (process.env.DEBUG && this.types[exts]) {
+      if (process.env.DEBUG_MIME && this.types[exts]) {
         console.warn(this._loading.replace(/.*\//, ''), 'changes "' + exts[i] + '" extension type from ' +
           this.types[exts] + ' to ' + type);
       }
