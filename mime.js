@@ -78,7 +78,11 @@ Mime.prototype.lookup = function(path, fallback) {
  * Return file extension associated with a mime type
  */
 Mime.prototype.extension = function(mimeType) {
-  return this.extensions[mimeType];
+  // Handling "text/html; charset=UTF-8" case
+  var position = mimeType.indexOf(";"),
+      length = position > 0 ? position : mimeType.length,
+      type = mimeType.substr(0, length).trim();
+  return this.extensions[type];
 };
 
 // Default instance
