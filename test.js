@@ -35,6 +35,13 @@ eq('application/x-web-app-manifest+json', mime.lookup('text.webapp'));
 eq('txt', mime.extension(mime.types.text));
 eq('html', mime.extension(mime.types.htm));
 eq('bin', mime.extension('application/octet-stream'));
+eq('bin', mime.extension('application/octet-stream '));
+eq('html', mime.extension(' text/html; charset=UTF-8'));
+eq('html', mime.extension('text/html; charset=UTF-8 '));
+eq('html', mime.extension('text/html; charset=UTF-8'));
+eq('html', mime.extension('text/html ; charset=UTF-8'));
+eq('html', mime.extension('text/html;charset=UTF-8'));
+eq('html', mime.extension('text/Html;charset=UTF-8'));
 eq(undefined, mime.extension('constructor'));
 
 //
