@@ -59,7 +59,6 @@ application/x-lua-bytecode  luac
 # Added by: avoidwork
 text/x-markdown  markdown md mkd
 
-
 # What: ini files
 # Why: because they're just text files
 # Added by: Matthew Kastor
@@ -69,3 +68,9 @@ text/plain  ini
 # Why: https://developer.mozilla.org/en-US/docs/DASH_Adaptive_Streaming_for_HTML_5_Video
 # Added by: eelcocramer
 application/dash+xml mdp
+
+# What: Web Open Font Format (WOFF) font files - http://www.w3.org/TR/WOFF/
+# Why:  The WOFF MIME Type was formally registered as `application/font-woff`
+#       http://www.iana.org/assignments/media-types/application/font-woff
+# Added by: alrra
+application/font-woff  woff
