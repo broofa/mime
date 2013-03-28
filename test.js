@@ -48,8 +48,10 @@ eq(undefined, mime.extension('constructor'));
 // Test node types
 //
 
+eq('application/font-woff', mime.lookup('file.woff'));
 eq('application/octet-stream', mime.lookup('file.buffer'));
 eq('audio/mp4', mime.lookup('file.m4a'));
+eq('font/opentype', mime.lookup('file.otf'));
 
 //
 // Test charsets
