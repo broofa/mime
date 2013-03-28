@@ -74,3 +74,10 @@ application/dash+xml mdp
 #       http://www.iana.org/assignments/media-types/application/font-woff
 # Added by: alrra
 application/font-woff  woff
+
+# What: OpenType font files - http://www.microsoft.com/typography/otspec/
+# Why:  Browsers usually ignore the font MIME types and sniff the content,
+#       but Chrome, shows a warning if OpenType fonts aren't served with
+#       the `font/opentype` MIME type: http://i.imgur.com/8c5RN8M.png.
+# Added by: alrra
+font/opentype  otf
