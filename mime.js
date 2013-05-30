@@ -1,5 +1,4 @@
 var path = require('path');
-var fs = require('fs');
 
 function Mime() {
   // Map of extension -> mime type
@@ -85,12 +84,8 @@ Mime.prototype.extension = function(mimeType) {
 // Default instance
 var mime = new Mime();
 
-// Load local copy of
-// http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
-mime.load(path.join(__dirname, 'types/mime.types'));
-
-// Load additional types from node.js community
-mime.load(path.join(__dirname, 'types/node.types'));
+// Load types
+mime.define(require('./types.json'));
 
 // Default type
 mime.default_type = mime.lookup('bin');
