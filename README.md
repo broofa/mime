@@ -21,7 +21,7 @@ Get the mime type associated with a file, if no mime type is found `application/
     mime.lookup('htm');                       // => 'text/html'
 
 ### mime.default_type
-Sets the default mime type returned when `mime.lookup` fails to find the extension searched for.
+Sets the mime type returned when `mime.lookup` fails to find the extension searched for. (Default is `application/octet-stream`.)
 
 ### mime.extension(type)
 Get the default extension for `type`

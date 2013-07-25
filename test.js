@@ -4,6 +4,7 @@
 
 var mime = require('./mime');
 var assert = require('assert');
+var path = require('path');
 
 function eq(a, b) {
   console.log('Test: ' + a + ' === ' + b);
@@ -60,5 +61,24 @@ eq('font/opentype', mime.lookup('file.otf'));
 eq('UTF-8', mime.charsets.lookup('text/plain'));
 eq(undefined, mime.charsets.lookup(mime.types.js));
 eq('fallback', mime.charsets.lookup('application/octet-stream', 'fallback'));
+
+//
+// Test for overlaps between mime.types and node.types
+//
+
+var apacheTypes = new mime.Mime(), nodeTypes = new mime.Mime();
+apacheTypes.load(path.join(__dirname, 'types/mime.types'));
+nodeTypes.load(path.join(__dirname, 'types/node.types'));
+
+var keys = [].concat(Object.keys(apacheTypes.types))
+             .concat(Object.keys(nodeTypes.types));
+keys.sort();
+for (var i = 1; i < keys.length; i++) {
+  if (keys[i] == keys[i-1]) {
+    console.warn('Warning: ' +
+      'node.types defines ' + keys[i] + '->' + nodeTypes.types[keys[i]] +
+      ', mime.types defines ' + keys[i] + '->' + apacheTypes.types[keys[i]]);
+  }
+}
 
 console.log('\nOK');

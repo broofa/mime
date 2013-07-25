@@ -15,11 +15,11 @@ application/x-chrome-extension  crx
 # Added by: niftylettuce
 text/x-component  htc
 
-# What: HTML5 application cache manifest
+# What: HTML5 application cache manifes ('.manifest' extension)
 # Why: De-facto standard. Required by Mozilla browser when serving HTML5 apps
 # per https://developer.mozilla.org/en/offline_resources_in_firefox
 # Added by: louisremi
-text/cache-manifest  appcache manifest
+text/cache-manifest  manifest
 
 # What: node binary buffer format
 # Why: semi-standard extension w/in the node community
@@ -68,12 +68,6 @@ text/plain  ini
 # Why: https://developer.mozilla.org/en-US/docs/DASH_Adaptive_Streaming_for_HTML_5_Video
 # Added by: eelcocramer
 application/dash+xml mdp
-
-# What: Web Open Font Format (WOFF) font files - http://www.w3.org/TR/WOFF/
-# Why:  The WOFF MIME Type was formally registered as `application/font-woff`
-#       http://www.iana.org/assignments/media-types/application/font-woff
-# Added by: alrra
-application/font-woff  woff
 
 # What: OpenType font files - http://www.microsoft.com/typography/otspec/
 # Why:  Browsers usually ignore the font MIME types and sniff the content,
