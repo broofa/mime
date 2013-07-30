@@ -75,3 +75,8 @@ application/dash+xml mdp
 #       the `font/opentype` MIME type: http://i.imgur.com/8c5RN8M.png.
 # Added by: alrra
 font/opentype  otf
+
+# What: CoffeeScript files
+# Why: to recognize them as text files
+# Added by: leptonix
+text/coffeescript  coffee
