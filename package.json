@@ -13,6 +13,12 @@
   ],
   "dependencies": {},
   "description": "A comprehensive library for mime-type mapping",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/broofa/node-mime/master/LICENSE"
+    }
+  ],
   "devDependencies": {},
   "keywords": ["util", "mime"],
   "main": "mime.js",
