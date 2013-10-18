@@ -1321,7 +1321,7 @@ image/jpeg					jpeg jpg jpe
 # image/jpx
 image/ktx					ktx
 # image/naplps
-image/png					png
+image/png					png png-large
 image/prs.btif					btif
 # image/prs.pti
 image/sgi					sgi
