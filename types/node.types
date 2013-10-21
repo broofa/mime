@@ -75,3 +75,11 @@ application/dash+xml mdp
 #       the `font/opentype` MIME type: http://i.imgur.com/8c5RN8M.png.
 # Added by: alrra
 font/opentype  otf
+
+# What: Apple iWork files - http://www.apple.com/uk/iwork/
+# Why: Because Apple iWork is being used by quite a lot of people.
+#      See http://stackoverflow.com/questions/1454777/apple-iwork-mime-types for the types.
+# Added by: simong
+application/x-iwork-keynote-sffkey  key
+application/x-iwork-pages-sffpages  pages
+application/x-iwork-numbers-sffnumbers  numbers
