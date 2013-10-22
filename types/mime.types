@@ -1436,6 +1436,7 @@ text/csv					csv
 # text/enriched
 # text/example
 # text/fwdred
+text/x-handlebars-templat          hbs
 text/html					html htm
 # text/javascript
 text/n3						n3
