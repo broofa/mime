@@ -75,3 +75,9 @@ application/dash+xml mdp
 #       the `font/opentype` MIME type: http://i.imgur.com/8c5RN8M.png.
 # Added by: alrra
 font/opentype  otf
+
+# What: handlebars JS template file
+# Why: handlebars is maybe the most popular template engine for JS
+# Added by: vanthome
+text/x-handlebars-templatel hbs
+
