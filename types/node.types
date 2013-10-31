@@ -75,3 +75,13 @@ application/dash+xml mdp
 #       the `font/opentype` MIME type: http://i.imgur.com/8c5RN8M.png.
 # Added by: alrra
 font/opentype  otf
+
+# What: Jade template files - http://www.jade-lang.com/
+# Why: Its the standard templating engine of expressjs.
+# Added by: jaeh
+text/jade jade
+
+# What: Stylus css preprocessor - http://learnboost.github.io/stylus/
+# Why: Its the standard css preprocessor of expressjs.
+# Added by: jaeh
+text/stylus styl
