@@ -75,3 +75,8 @@ application/dash+xml mdp
 #       the `font/opentype` MIME type: http://i.imgur.com/8c5RN8M.png.
 # Added by: alrra
 font/opentype  otf
+
+# What: Source Map files - https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit?pli=1
+# Why: The entire file is a single JSON object, and the Google CDN already serves this MIME type: http://stackoverflow.com/questions/19911929/what-mime-type-should-i-use-for-source-map-files
+# Added by: zertosh
+application/json  map
