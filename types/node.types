@@ -80,3 +80,8 @@ font/opentype  otf
 # Why: The entire file is a single JSON object, and the Google CDN already serves this MIME type: http://stackoverflow.com/questions/19911929/what-mime-type-should-i-use-for-source-map-files
 # Added by: zertosh
 application/json  map
+
+# What: JSON-LD JSON for Linking Data - http://json-ld.org
+# Why:  JSON-LD is in the final stages of standardization at W3C (http://json-ld.org/spec/latest/json-ld/). It was adopted by Google, Yahoo, Yandex, and Microsoft for use in schema.org
+# Added by: sballesteros
+application/ld+json  jsonld
