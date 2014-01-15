@@ -8,7 +8,23 @@ var path = require('path');
 
 function eq(a, b) {
   console.log('Test: ' + a + ' === ' + b);
-  assert.strictEqual.apply(null, arguments);
+  if (typeof(a) === "object" && typeof(a) === typeof(b)) {
+    assert(eqArray(a, b));
+  } 
+  else assert.strictEqual.apply(null, arguments);
+}
+
+function eqArray(a, b) {
+  if (!a && !b) return true;
+  if (!a || !b) return false;
+  if (a.length != b.length) return false;
+
+  for (var i = 0; i < a.length; i++) {
+    // a[i] and b[i] are obviously not expected to be objects
+    if (a[i] !== b[i]) return false;
+  }
+
+  return true;
 }
 
 console.log(Object.keys(mime.extensions).length + ' types');
@@ -44,6 +60,14 @@ eq('html', mime.extension('text/html ; charset=UTF-8'));
 eq('html', mime.extension('text/html;charset=UTF-8'));
 eq('html', mime.extension('text/Html;charset=UTF-8'));
 eq(undefined, mime.extension('unrecognized'));
+
+//
+// Test extensions including wildcard subtypes
+//
+
+eq('json', mime.extensionWild('application/json'));
+eq(['appcache','ics','css','csv','html','n3','txt','dsc','rtx','sgml','tsv','t','ttl','uri','vcard','curl','dcurl','scurl','mcurl','sub','fly','flx','gv','3dml','spot','jad','wml','wmls','s','c','f','java','opml','p','nfo','etx','sfv','uu','vcs','vcf','vtt','htc','event-stream','lua','markdown']
+  , mime.extensionWild('text/*'));
 
 //
 // Test node.types lookups

@@ -82,6 +82,63 @@ Mime.prototype.extension = function(mimeType) {
   return this.extensions[type];
 };
 
+// The five discrete and two composite standard top-level media types , as per RFC2046
+var TOPLEVEL_TYPES = [
+  'text', 
+  'image', 
+  'audio', 
+  'video', 
+  'application', 
+  'multipart', 
+  'message'
+];
+
+/**
+ * Returns file extension associated with a mime type.
+ * Also supports wildcard '*' toplevel types and subtypes.
+ *
+ * @param mimeType (String) To be validated and looked up
+ * @return (Array) extensions associated with input mimeType
+ * @return (Object) all type-extension maps, if input is '*'
+ */
+Mime.prototype.extensionWild = function(mimeType) {
+  if (!mimeType) return undefined;
+  
+  var type = mimeType.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
+  var self = this;
+
+  // Looking for any and all mime types
+  if (type === "*" || type === "*/*") return self.extensions;
+
+  // Check if the mime type is valid according to RFC2046
+  if (type.match(/\/{1}/) !== null) {
+    var tokens = type.split("/"),
+        toplevel = tokens[0], 
+        sublevel = tokens[1]; 
+
+    // Check for a standard discrete toplevel type
+    for (var i = 0; i < TOPLEVEL_TYPES.length; i++) {
+      var discrete = TOPLEVEL_TYPES[i];
+      if (toplevel === discrete) {        
+        // Accommodate for wildcard subtypes        
+        if (sublevel === "*") {          
+          var extensions = undefined;
+          for (var key in self.extensions) {            
+            if (toplevel === key.split("/")[0]) {
+              extensions = extensions || [];
+              extensions.push(self.extensions[key]);
+            }
+          }
+          return extensions;
+        }
+        else return self.extensions[type];
+      }
+    };
+  }
+
+  return undefined; // Input mime was invalid or no matches were found
+}
+
 // Default instance
 var mime = new Mime();
 
