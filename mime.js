@@ -149,10 +149,7 @@ Mime.prototype.extension = function(mimeType) {
  */
 Mime.prototype.compare = function(a, b) {
   if (!a || !b) return false;
-  // if (!this.extension(a) || !this.extension(b)) return false;
-
-  a = a.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
-  b = b.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
+  if (!this.extension(a) || !this.extension(b)) return false;
   
   var tokens_a = a.split("/"),
       toplevel_a = tokens_a[0],
