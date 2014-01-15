@@ -74,15 +74,8 @@ Mime.prototype.lookup = function(path, fallback) {
   return this.types[ext] || fallback || this.default_type;
 };
 
-/**
- * Return file extension associated with a mime type
- */
-Mime.prototype.extension = function(mimeType) {
-  var type = mimeType.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
-  return this.extensions[type];
-};
 
-// The five discrete and two composite standard top-level media types , as per RFC2046
+// The five discrete and two composite standard top-level media types, as per RFC2046
 var TOPLEVEL_TYPES = [
   'text', 
   'image', 
@@ -95,15 +88,17 @@ var TOPLEVEL_TYPES = [
 
 /**
  * Returns file extension associated with a mime type.
- * Also supports wildcard '*' toplevel types and subtypes.
+ * Also: - validates mime type according to RFC2046.
+ *       - supports wildcard '*' toplevel and sublevel types.
+ *         for ex, 'text/*' should return all text content extensions.
  *
  * @param mimeType (String) To be validated and looked up
  * @return (Array) extensions associated with input mimeType
  * @return (Object) all type-extension maps, if input is '*'
  */
-Mime.prototype.extensionWild = function(mimeType) {
+Mime.prototype.extension = function(mimeType) {
   if (!mimeType) return undefined;
-  
+
   var type = mimeType.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
   var self = this;
 
@@ -136,8 +131,8 @@ Mime.prototype.extensionWild = function(mimeType) {
     };
   }
 
-  return undefined; // Input mime was invalid or no matches were found
-}
+  return undefined; // Input mime was invalid or no matches were found  
+};
 
 // Default instance
 var mime = new Mime();

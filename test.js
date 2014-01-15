@@ -62,12 +62,11 @@ eq('html', mime.extension('text/Html;charset=UTF-8'));
 eq(undefined, mime.extension('unrecognized'));
 
 //
-// Test extensions including wildcard subtypes
+// Test extensions with wildcards
 //
 
-eq('json', mime.extensionWild('application/json'));
 eq(['appcache','ics','css','csv','html','n3','txt','dsc','rtx','sgml','tsv','t','ttl','uri','vcard','curl','dcurl','scurl','mcurl','sub','fly','flx','gv','3dml','spot','jad','wml','wmls','s','c','f','java','opml','p','nfo','etx','sfv','uu','vcs','vcf','vtt','htc','event-stream','lua','markdown']
-  , mime.extensionWild('text/*'));
+  , mime.extension('text/*'));
 
 //
 // Test node.types lookups
