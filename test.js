@@ -86,6 +86,18 @@ eq(undefined, mime.charsets.lookup(mime.types.js));
 eq('fallback', mime.charsets.lookup('application/octet-stream', 'fallback'));
 
 //
+// Test comparison of mime types
+//
+
+eq(true, mime.compare('image/*', 'image/png'));
+eq(true, mime.compare('image/png', 'image/png'));
+eq(false, mime.compare('text/plain', 'text/html'));
+eq(true, mime.compare('*', 'application/json'));
+eq(true, mime.compare('*', 'application/*'));
+eq(true, mime.compare('*', '*/*'));
+eq(true, mime.compare('*', '*'));
+
+//
 // Test for overlaps between mime.types and node.types
 //
 

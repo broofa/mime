@@ -134,6 +134,42 @@ Mime.prototype.extension = function(mimeType) {
   return undefined; // Input mime was invalid or no matches were found  
 };
 
+/**
+ * Compare two mime types and see if they match exactly or overlap.
+ *
+ * Examples:
+ * 'image/*' overlaps with 'image/png'
+ * 'image/png' matches exactly with 'image/png'
+ * 'text/plain' does not match at all with 'text/html'
+ * '*' overlaps with 'application/json'
+ *
+ * @param a (String) a valid mime type
+ * @param b (String) another valid mime type
+ * @return (Boolean) true if they match or overlap, otherwise false
+ */
+Mime.prototype.compare = function(a, b) {
+  if (!a || !b) return false;
+  // if (!this.extension(a) || !this.extension(b)) return false;
+
+  a = a.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
+  b = b.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
+  
+  var tokens_a = a.split("/"),
+      toplevel_a = tokens_a[0],
+      sublevel_a = tokens_a[1];  
+  var tokens_b = b.split("/"),
+      toplevel_b = tokens_b[0],
+      sublevel_b = tokens_b[1];  
+  
+  if (toplevel_a === "*" || toplevel_b === "*") return true;
+  if (toplevel_a === toplevel_b) {
+    if (sublevel_a === "*" || sublevel_b === "*"
+      || sublevel_a === sublevel_b) return true;    
+  }
+
+  return false;
+}
+
 // Default instance
 var mime = new Mime();
 
