@@ -100,10 +100,10 @@ Mime.prototype.extension = function(mimeType) {
   if (!mimeType) return undefined;
 
   var type = mimeType.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
-  var self = this;
+  
 
   // Looking for any and all mime types
-  if (type === "*" || type === "*/*") return self.extensions;
+  if (type === "*" || type === "*/*") return this.extensions;
 
   // Check if the mime type is valid according to RFC2046
   if (type.match(/\/{1}/) !== null) {
@@ -118,15 +118,15 @@ Mime.prototype.extension = function(mimeType) {
         // Accommodate for wildcard subtypes        
         if (sublevel === "*") {          
           var extensions = undefined;
-          for (var key in self.extensions) {            
+          for (var key in this.extensions) {            
             if (toplevel === key.split("/")[0]) {
               extensions = extensions || [];
-              extensions.push(self.extensions[key]);
+              extensions.push(this.extensions[key]);
             }
           }
           return extensions;
         }
-        else return self.extensions[type];
+        else return this.extensions[type];
       }
     };
   }
