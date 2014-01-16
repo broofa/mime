@@ -74,13 +74,98 @@ Mime.prototype.lookup = function(path, fallback) {
   return this.types[ext] || fallback || this.default_type;
 };
 
+
+// The five discrete and two composite standard top-level media types, as per RFC2046
+var TOPLEVEL_TYPES = [
+  'text', 
+  'image', 
+  'audio', 
+  'video', 
+  'application', 
+  'multipart', 
+  'message'
+];
+
 /**
- * Return file extension associated with a mime type
+ * Returns file extension associated with a mime type.
+ * Also: - validates mime type according to RFC2046.
+ *       - supports wildcard '*' toplevel and sublevel types.
+ *         for ex, 'text/*' should return all text content extensions.
+ *
+ * @param mimeType (String) To be validated and looked up
+ * @return (Array) extensions associated with input mimeType
+ * @return (Object) all type-extension maps, if input is '*'
  */
 Mime.prototype.extension = function(mimeType) {
+  if (!mimeType) return undefined;
+
   var type = mimeType.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
-  return this.extensions[type];
+  
+
+  // Looking for any and all mime types
+  if (type === "*" || type === "*/*") return this.extensions;
+
+  // Check if the mime type is valid according to RFC2046
+  if (type.match(/\/{1}/) !== null) {
+    var tokens = type.split("/"),
+        toplevel = tokens[0], 
+        sublevel = tokens[1]; 
+
+    // Check for a standard discrete toplevel type
+    for (var i = 0; i < TOPLEVEL_TYPES.length; i++) {
+      var discrete = TOPLEVEL_TYPES[i];
+      if (toplevel === discrete) {        
+        // Accommodate for wildcard subtypes        
+        if (sublevel === "*") {          
+          var extensions = undefined;
+          for (var key in this.extensions) {            
+            if (toplevel === key.split("/")[0]) {
+              extensions = extensions || [];
+              extensions.push(this.extensions[key]);
+            }
+          }
+          return extensions;
+        }
+        else return this.extensions[type];
+      }
+    };
+  }
+
+  return undefined; // Input mime was invalid or no matches were found  
 };
+
+/**
+ * Compare two mime types and see if they match exactly or overlap.
+ *
+ * Examples:
+ * 'image/*' overlaps with 'image/png'
+ * 'image/png' matches exactly with 'image/png'
+ * 'text/plain' does not match at all with 'text/html'
+ * '*' overlaps with 'application/json'
+ *
+ * @param a (String) a valid mime type
+ * @param b (String) another valid mime type
+ * @return (Boolean) true if they match or overlap, otherwise false
+ */
+Mime.prototype.compare = function(a, b) {
+  if (!a || !b) return false;
+  if (!this.extension(a) || !this.extension(b)) return false;
+  
+  var tokens_a = a.split("/"),
+      toplevel_a = tokens_a[0],
+      sublevel_a = tokens_a[1];  
+  var tokens_b = b.split("/"),
+      toplevel_b = tokens_b[0],
+      sublevel_b = tokens_b[1];  
+  
+  if (toplevel_a === "*" || toplevel_b === "*") return true;
+  if (toplevel_a === toplevel_b) {
+    if (sublevel_a === "*" || sublevel_b === "*"
+      || sublevel_a === sublevel_b) return true;    
+  }
+
+  return false;
+}
 
 // Default instance
 var mime = new Mime();
