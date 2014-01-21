@@ -80,3 +80,9 @@ font/opentype  otf
 # Why: The entire file is a single JSON object, and the Google CDN already serves this MIME type: http://stackoverflow.com/questions/19911929/what-mime-type-should-i-use-for-source-map-files
 # Added by: zertosh
 application/json  map
+
+# What: JAR Pack200 files - http://docs.oracle.com/javase/tutorial/deployment/deploymentInDepth/reducingDownloadTime.html
+# Why:	Java browser plugin throws ClassNotFoundException on files loaded
+#		with incorrect headers
+# Added by: Andras Stracz
+application/octet-stream gz
