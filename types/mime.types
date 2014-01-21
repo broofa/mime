@@ -151,7 +151,7 @@ application/mxf					mxf
 # application/nss
 # application/ocsp-request
 # application/ocsp-response
-application/octet-stream	bin dms lrf mar so dist distz pkg bpk dump elc deploy
+application/octet-stream	bin dms lrf mar so dist distz pkg bpk dump elc deploy gz
 application/oda					oda
 application/oebps-package+xml			opf
 application/ogg					ogx
