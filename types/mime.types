@@ -1530,7 +1530,7 @@ video/mpeg					mpeg mpg mpe m1v m2v
 video/ogg					ogv
 # video/parityfec
 # video/pointer
-video/quicktime					qt mov
+video/quicktime					mov qt
 # video/raw
 # video/rtp-enc-aescm128
 # video/rtx
