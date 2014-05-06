@@ -80,3 +80,8 @@ font/opentype  otf
 # Why: The entire file is a single JSON object, and the Google CDN already serves this MIME type: http://stackoverflow.com/questions/19911929/what-mime-type-should-i-use-for-source-map-files
 # Added by: zertosh
 application/json  map
+
+# What: XML Schema - http://www.w3.org/standards/xml/schema
+# Why: XSD files are just XML and should use its mime-type
+# Added by: just-boris
+application/xml xsd
