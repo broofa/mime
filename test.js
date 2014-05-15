@@ -81,4 +81,13 @@ for (var i = 1; i < keys.length; i++) {
   }
 }
 
+//
+// Test method binding
+//
+
+var lookup = mime.lookup;
+var extension = mime.extension;
+eq('text/plain', lookup('text.txt'));
+eq('txt', extension(mime.types.text));
+
 console.log('\nOK');
