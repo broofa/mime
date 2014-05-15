@@ -4,6 +4,9 @@
     "url": "http://github.com/broofa",
     "email": "robert@broofa.com"
   },
+  "scripts": {
+    "test": "node test.js"
+  },
   "contributors": [
     {
       "name": "Benjamin Thomas",
