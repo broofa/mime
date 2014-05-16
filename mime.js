@@ -85,6 +85,18 @@ Mime.prototype.extension = function(mimeType) {
 // Default instance
 var mime = new Mime();
 
+// Bind the exported instance variables so they may be invoked without the
+// module as an explicit context, i.e.
+//
+//     var extensionFromMime = require('mime').extension;
+//     extensionFromMime('text/plain');
+Object.keys(Mime.prototype).forEach(function(key) {
+  var method = Mime.prototype[key];
+  if (typeof method === 'function') {
+    mime[key] = method.bind(mime);
+  }
+});
+
 // Load local copy of
 // http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
 mime.load(path.join(__dirname, 'types/mime.types'));
