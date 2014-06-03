@@ -7,6 +7,9 @@
   "scripts": {
     "test": "node test.js"
   },
+  "bin": {
+    "mime": "cli.js"
+  },
   "contributors": [
     {
       "name": "Benjamin Thomas",
