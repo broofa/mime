@@ -85,3 +85,8 @@ application/json  map
 # Why: XSD files are just XML and should use its mime-type
 # Added by: just-boris
 application/xml xsd
+
+# What: Embedded OpenType (EOT) font files - http://en.wikipedia.org/wiki/Embedded_OpenType
+# Why:  Required for properly serving WebFonts
+# Added by: johnnyhalife
+application/vnd.ms-fontobject  eof
