@@ -58,7 +58,7 @@ eq('font/opentype', mime.lookup('file.otf'));
 // Test charsets
 //
 
-eq('UTF-8', mime.charsets.lookup('text/plain'));
+eq('', mime.charsets.lookup('text/plain'));
 eq(undefined, mime.charsets.lookup(mime.types.js));
 eq('fallback', mime.charsets.lookup('application/octet-stream', 'fallback'));
 

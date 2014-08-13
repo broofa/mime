@@ -35,16 +35,6 @@ mime.extension('text/html');                 // => 'html'
 mime.extension('application/octet-stream');  // => 'bin'
 ```
 
-### mime.charsets.lookup()
-
-Map mime-type to charset
-
-```js
-mime.charsets.lookup('text/plain');        // => 'UTF-8'
-```
-
-(The logic for charset lookups is pretty rudimentary.  Feel free to suggest improvements.)
-
 ## API - Defining Custom Types
 
 The following APIs allow you to add your own type mappings within your project.  If you feel a type should be included as part of node-mime, see [requesting new types](https://github.com/broofa/node-mime/wiki/Requesting-New-Types).

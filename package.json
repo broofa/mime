@@ -27,5 +27,5 @@
   "main": "mime.js",
   "name": "mime",
   "repository": {"url": "https://github.com/broofa/node-mime", "type": "git"},
-  "version": "1.2.11"
+  "version": "1.2.12"
 }
