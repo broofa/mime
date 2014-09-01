@@ -100,7 +100,6 @@ application/java-vm				class
 application/javascript				js
 application/json				json
 application/jsonml+json				jsonml
-application/vnd.geo+json			geojson
 # application/kpml-request+xml
 # application/kpml-response+xml
 application/lost+xml				lostxml
