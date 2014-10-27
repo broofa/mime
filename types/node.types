@@ -85,3 +85,8 @@ application/json  map
 # Why: XSD files are just XML and should use its mime-type
 # Added by: just-boris
 application/xml xsd
+
+# What: GeoJSON - http://geojson.org/
+# Why: An open standard format for encoding collections of simple geographical features along with their non-spatial attributes in JSON.
+# Added by: maxkueng
+application/vnd.geo+json  geojson
