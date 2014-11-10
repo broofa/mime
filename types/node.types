@@ -85,3 +85,9 @@ application/json  map
 # Why: XSD files are just XML and should use its mime-type
 # Added by: just-boris
 application/xml xsd
+
+# What: WOFF2 font files - http://www.w3.org/TR/WOFF2/
+# Why:  Google fonts widely use this font type now, so it is quite well spread.
+#       Chrome browser throws an error if the woff2 file MIME type is not specified.
+# Added by: shkuznetsov
+application/font-woff2  woff2
