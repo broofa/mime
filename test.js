@@ -5,6 +5,7 @@
 var mime = require('./mime');
 var assert = require('assert');
 var path = require('path');
+var fs = require('fs');
 
 function eq(a, b) {
   console.log('Test: ' + a + ' === ' + b);
@@ -66,18 +67,20 @@ eq('fallback', mime.charsets.lookup('application/octet-stream', 'fallback'));
 // Test for overlaps between mime.types and node.types
 //
 
-var apacheTypes = new mime.Mime(), nodeTypes = new mime.Mime();
-apacheTypes.load(path.join(__dirname, 'types/mime.types'));
-nodeTypes.load(path.join(__dirname, 'types/node.types'));
+if(fs.hasOwnProperty('readFileSync')) {
+  var apacheTypes = new mime.Mime(), nodeTypes = new mime.Mime();
+  apacheTypes.load(path.join(__dirname, 'types/mime.types'));
+  nodeTypes.load(path.join(__dirname, 'types/node.types'));
 
-var keys = [].concat(Object.keys(apacheTypes.types))
-             .concat(Object.keys(nodeTypes.types));
-keys.sort();
-for (var i = 1; i < keys.length; i++) {
-  if (keys[i] == keys[i-1]) {
-    console.warn('Warning: ' +
-      'node.types defines ' + keys[i] + '->' + nodeTypes.types[keys[i]] +
-      ', mime.types defines ' + keys[i] + '->' + apacheTypes.types[keys[i]]);
+  var keys = [].concat(Object.keys(apacheTypes.types))
+               .concat(Object.keys(nodeTypes.types));
+  keys.sort();
+  for (var i = 1; i < keys.length; i++) {
+    if (keys[i] == keys[i-1]) {
+      console.warn('Warning: ' +
+        'node.types defines ' + keys[i] + '->' + nodeTypes.types[keys[i]] +
+        ', mime.types defines ' + keys[i] + '->' + apacheTypes.types[keys[i]]);
+    }
   }
 }
 

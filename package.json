@@ -5,6 +5,7 @@
     "email": "robert@broofa.com"
   },
   "scripts": {
+    "build": "node build.js types/*.types > ./types.json",
     "test": "node test.js"
   },
   "contributors": [
