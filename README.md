@@ -1,12 +1,16 @@
 # mime
 
-Comprehensive MIME type mapping API. Includes all 600+ types and 800+ extensions defined by the Apache project, plus additional types submitted by the node.js community.
+Comprehensive MIME type mapping API based on mime-db module.
 
 ## Install
 
 Install with [npm](http://github.com/isaacs/npm):
 
     npm install mime
+
+## Contributing / Testing
+
+    Use `npm run test` to verify changes prior to submitting PR's
 
 ## API - Queries
 
@@ -39,7 +43,7 @@ Map mime-type to charset
 
 ## API - Defining Custom Types
 
-The following APIs allow you to add your own type mappings within your project.  If you feel a type should be included as part of node-mime, see [requesting new types](https://github.com/broofa/node-mime/wiki/Requesting-New-Types).
+Custom type mappings can be added on a per-project basis via the following APIs.
 
 ### mime.define()
 
