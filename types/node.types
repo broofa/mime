@@ -96,3 +96,8 @@ application/font-woff2  woff2
 # Why: Easier on the eye than XML or even JSON - https://en.wikipedia.org/wiki/YAML
 # Added by: chrisveness
 text/yaml yaml yml
+
+# What: HJSON - http://laktak.github.io/hjson/
+# Why: This is a direct superset of JSON. Sure to catch on.
+# Added by: howardroark
+text/hjson hjson
