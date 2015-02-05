@@ -4,6 +4,9 @@
     "url": "http://github.com/broofa",
     "email": "robert@broofa.com"
   },
+  "scripts": {
+    "test": "node test.js"
+  },
   "contributors": [
     {
       "name": "Benjamin Thomas",
@@ -11,7 +14,9 @@
       "email": "benjamin@benjaminthomas.org"
     }
   ],
-  "dependencies": {},
+  "dependencies": {
+    "mime-db": "^1.2.0"
+  },
   "description": "A comprehensive library for mime-type mapping",
   "licenses": [
     {
@@ -23,9 +28,7 @@
     "install": "node build/build.js > types.json",
     "test": "node build/test.js"
   },
-  "devDependencies": {
-    "mime-db": "^1.2.0"
-  },
+  "devDependencies": {},
   "keywords": [
     "util",
     "mime"
