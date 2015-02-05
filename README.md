@@ -6,13 +6,20 @@ Comprehensive MIME type mapping API based on mime-db module.
 
 Install with [npm](http://github.com/isaacs/npm):
 
-```sh
-npm install mime
-```
+    npm install mime
 
 ## Contributing / Testing
 
-    Use `npm run test` to verify changes prior to submitting PR's
+    npm run test
+
+## Command Line
+
+    mime [path_string]
+
+E.g.
+
+    > mime scripts/jquery.js
+    application/javascript
 
 ## API - Queries
 
