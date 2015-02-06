@@ -17,9 +17,6 @@
       "email": "benjamin@benjaminthomas.org"
     }
   ],
-  "dependencies": {
-    "mime-db": "^1.2.0"
-  },
   "description": "A comprehensive library for mime-type mapping",
   "licenses": [
     {
@@ -27,11 +24,14 @@
       "url": "https://raw.github.com/broofa/node-mime/master/LICENSE"
     }
   ],
+  "dependencies": {},
+  "devDependencies": {
+    "mime-db": "^1.2.0"
+  },
   "scripts": {
-    "install": "node build/build.js > types.json",
+    "prepublish": "node build/build.js > types.json",
     "test": "node build/test.js"
   },
-  "devDependencies": {},
   "keywords": [
     "util",
     "mime"
