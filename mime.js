@@ -21,6 +21,7 @@ function Mime() {
 Mime.prototype.define = function (map) {
   for (var type in map) {
     var exts = map[type];
+
     for (var i = 0; i < exts.length; i++) {
       if (process.env.DEBUG_MIME && this.types[exts]) {
         console.warn(this._loading.replace(/.*\//, ''), 'changes "' + exts[i] + '" extension type from ' +
@@ -46,6 +47,7 @@ Mime.prototype.define = function (map) {
  * @param file (String) path of file to load.
  */
 Mime.prototype.load = function(file) {
+
   this._loading = file;
   // Read file and split into lines
   var map = {},
@@ -83,8 +85,12 @@ Mime.prototype.extension = function(mimeType) {
 // Default instance
 var mime = new Mime();
 
-// Define built-in types
-mime.define(require('./types.json'));
+// Load local copy of
+// http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
+mime.load(path.join(__dirname, 'types/mime.types'));
+
+// Load additional types from node.js community
+mime.load(path.join(__dirname, 'types/node.types'));
 
 // Default type
 mime.default_type = mime.lookup('bin');
