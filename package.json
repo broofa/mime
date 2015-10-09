@@ -18,12 +18,7 @@
     }
   ],
   "description": "A comprehensive library for mime-type mapping",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.github.com/broofa/node-mime/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "mime-db": "^1.2.0"
