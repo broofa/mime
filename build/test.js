@@ -51,7 +51,9 @@ assert.equal('font/opentype', mime.lookup('file.otf'));
 //
 
 assert.equal('UTF-8', mime.charsets.lookup('text/plain'));
-assert.equal(undefined, mime.charsets.lookup(mime.types.js));
+assert.equal('UTF-8', mime.charsets.lookup(mime.types.js));
+assert.equal('UTF-8', mime.charsets.lookup(mime.types.json));
+assert.equal(undefined, mime.charsets.lookup(mime.types.xml));
 assert.equal('fallback', mime.charsets.lookup('application/octet-stream', 'fallback'));
 
 console.log('\nAll tests passed');
