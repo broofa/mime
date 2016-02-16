@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "mime-db": "^1.2.0"
+    "mime-db": "^1.22.0"
   },
   "scripts": {
     "prepublish": "node build/build.js > types.json",
