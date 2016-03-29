@@ -20,6 +20,7 @@ assert.equal('text/plain', mime.lookup('/txt'));         // extension-less ()
 assert.equal('text/plain', mime.lookup('\\txt'));        // Windows, extension-less
 assert.equal('application/octet-stream', mime.lookup('text.nope')); // unrecognized
 assert.equal('fallback', mime.lookup('text.fallback', 'fallback')); // alternate default
+assert.equal('text/plain', mime.lookup('text.txt.gz'));  // gzipped file
 
 //
 // Test extensions
