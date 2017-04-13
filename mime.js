@@ -99,9 +99,25 @@ mime.Mime = Mime;
  * Lookup a charset based on mime type.
  */
 mime.charsets = {
+  charsets: {
+    "text/plain": "UTF-8",
+    "text/html": "UTF-8"
+  },
   lookup: function(mimeType, fallback) {
-    // Assume text types are utf8
-    return (/^text\//).test(mimeType) ? 'UTF-8' : fallback;
+    return this.charsets[mimeType] || fallback;
+  },
+  define: function(map) {
+    for (var mime in map) {
+      this.add(mime, map[mime]);
+    }
+  },
+  add: function(mimeType, charset) {
+    if (process.env.DEBUG_MIME && this.charsets[mimeType]) {
+      console.warn('This will change mimetype "' + mimeType + '" charset from ' + this.charsets[mimeType] + ' to ' +
+          mimeType);
+    }
+
+    this.charsets[mimeType] = charset;
   }
 };
 
