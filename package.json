@@ -4,9 +4,6 @@
     "url": "http://github.com/broofa",
     "email": "robert@broofa.com"
   },
-  "scripts": {
-    "test": "node test.js"
-  },
   "bin": {
     "mime": "cli.js"
   },
@@ -21,7 +18,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "mime-db": "^1.2.0"
+    "mime-db": "^1.22.0"
   },
   "scripts": {
     "prepublish": "node build/build.js > types.json",
