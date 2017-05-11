@@ -4,7 +4,6 @@
 
 var mime = require('../mime');
 var assert = require('assert');
-var path = require('path');
 
 //
 // Test mime lookups
@@ -20,6 +19,24 @@ assert.equal('text/plain', mime.lookup('/txt'));         // extension-less ()
 assert.equal('text/plain', mime.lookup('\\txt'));        // Windows, extension-less
 assert.equal('application/octet-stream', mime.lookup('text.nope')); // unrecognized
 assert.equal('fallback', mime.lookup('text.fallback', 'fallback')); // alternate default
+
+//
+// Test types that are known to have conflicting definitions but different facet priorities
+//
+
+assert.equal('application/octet-stream', mime.lookup('dmg'));
+assert.equal('application/bdoc', mime.lookup('bdoc'));
+assert.equal('application/octet-stream', mime.lookup('deb'));
+assert.equal('application/octet-stream', mime.lookup('iso'));
+assert.equal('application/octet-stream', mime.lookup('exe'));
+assert.equal('application/octet-stream', mime.lookup('exe'));
+assert.equal('application/octet-stream', mime.lookup('dll'));
+assert.equal('application/octet-stream', mime.lookup('msi'));
+assert.equal('application/vnd.palm', mime.lookup('pdb'));
+assert.equal('audio/mp3', mime.lookup('mp3'));
+assert.equal('audio/mp4', mime.lookup('m4a'));
+assert.equal('font/opentype', mime.lookup('otf'));
+assert.equal('image/bmp', mime.lookup('bmp'));
 
 //
 // Test extensions

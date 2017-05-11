@@ -1,5 +1,10 @@
-var path = require('path');
 var fs = require('fs');
+
+// If two types claim the same extension, we resolve the conflict by checking
+// facet precedence. https://tools.ietf.org/html/rfc6838#section-3
+// Facets listed here are in order of decreasing precedence
+var FACETS = ['vnd.', 'x-', 'prs.'];
+var FACET_RE = new RegExp('/(' + FACETS.join('|') + ')');
 
 function Mime() {
   // Map of extension -> mime type
@@ -18,16 +23,27 @@ function Mime() {
  *
  * @param map (Object) type definitions
  */
-Mime.prototype.define = function (map) {
+Mime.prototype.define = function(map) {
   for (var type in map) {
     var exts = map[type];
+
     for (var i = 0; i < exts.length; i++) {
-      if (process.env.DEBUG_MIME && this.types[exts[i]]) {
-        console.warn((this._loading || "define()").replace(/.*\//, ''), 'changes "' + exts[i] + '" extension type from ' +
-          this.types[exts[i]] + ' to ' + type);
+      var ext = exts[i];
+      var found = this.types[ext];
+
+      // If there's already a type for this extension ...
+      if (found) {
+        var pri0 = FACETS.indexOf(FACET_RE.test(found) && RegExp.$1);
+        var pri1 = FACETS.indexOf(FACET_RE.test(type) && RegExp.$1);
+
+        if (process.env.DEBUG_MIME) console.warn('Type conflict for .' + ext +
+          ' (' + found + ' pri=' + pri0 + ', ' + type + ' pri=' + pri1 + ')');
+
+        // Prioritize based on facet precedence
+        if (pri0 <= pri1) continue;
       }
 
-      this.types[exts[i]] = type;
+      this.types[ext] = type;
     }
 
     // Default extension is the first one we encounter
@@ -48,9 +64,9 @@ Mime.prototype.define = function (map) {
 Mime.prototype.load = function(file) {
   this._loading = file;
   // Read file and split into lines
-  var map = {},
-      content = fs.readFileSync(file, 'ascii'),
-      lines = content.split(/[\r\n]+/);
+  var map = {};
+  var content = fs.readFileSync(file, 'ascii');
+  var lines = content.split(/[\r\n]+/);
 
   lines.forEach(function(line) {
     // Clean up whitespace/comments, and split into fields
@@ -69,7 +85,7 @@ Mime.prototype.load = function(file) {
 Mime.prototype.lookup = function(path, fallback) {
   var ext = path.replace(/.*[\.\/\\]/, '').toLowerCase();
 
-  return this.types[ext] || fallback || this.default_type;
+  return this.types[ext] || fallback || this.default_type; // eslint-disable-line camelcase
 };
 
 /**
@@ -87,7 +103,7 @@ var mime = new Mime();
 mime.define(require('./types.json'));
 
 // Default type
-mime.default_type = mime.lookup('bin');
+mime.default_type = mime.lookup('bin'); // eslint-disable-line camelcase
 
 //
 // Additional API specific to the default instance
