@@ -43,7 +43,7 @@ assert.equal(undefined, mime.extension('unrecognized'));
 
 assert.equal('application/font-woff', mime.lookup('file.woff'));
 assert.equal('application/octet-stream', mime.lookup('file.buffer'));
-assert.equal('audio/mp4', mime.lookup('file.m4a'));
+assert.equal('audio/x-m4a', mime.lookup('file.m4a'));
 assert.equal('font/opentype', mime.lookup('file.otf'));
 
 //
