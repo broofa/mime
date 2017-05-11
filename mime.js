@@ -96,6 +96,27 @@ Mime.prototype.extension = function(mimeType) {
   return this.extensions[type];
 };
 
+/**
+ * Return all MIME types which matching a pattern
+ */
+Mime.prototype.glob = function (pattern) {
+  if (pattern == '*/*')
+    return ['application/octet-stream'];
+
+  var slashIdx = pattern.indexOf('/');
+  if (slashIdx == -1 || pattern.slice(slashIdx + 1) !== "*")
+    return [pattern];
+
+  var prefix = pattern.slice(0,slashIdx+1);
+  var result = [];
+  var keys = Object.keys(this.extensions);
+  keys.forEach(function (name) {
+    if (name.slice(0, slashIdx+1) === prefix)
+      result.push(name);
+  })
+  return result;
+}
+
 // Default instance
 var mime = new Mime();
 

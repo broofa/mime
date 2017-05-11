@@ -55,6 +55,15 @@ assert.equal('html', mime.extension('text/Html;charset=UTF-8'));
 assert.equal(undefined, mime.extension('unrecognized'));
 
 //
+// Test glob
+//
+
+assert.deepEqual(['application/octet-stream'], mime.glob('*/*'));
+assert.notEqual(mime.glob('application/*').indexOf('application/json'), -1);
+assert.deepEqual([], mime.glob('qwerty/*'));
+assert.deepEqual(['qwerty/qwerty'], mime.glob('qwerty/qwerty'));
+
+//
 // Test node.types lookups
 //
 
