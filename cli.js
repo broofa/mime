@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 
 var mime = require('./mime.js');
 var file = process.argv[2];
