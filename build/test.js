@@ -22,7 +22,7 @@ assert.equal('application/octet-stream', mime.lookup('text.nope')); // unrecogni
 assert.equal('fallback', mime.lookup('text.fallback', 'fallback')); // alternate default
 
 //
-// Test extensions
+// Test extension
 //
 
 assert.equal('txt', mime.extension(mime.types.text));
@@ -36,6 +36,17 @@ assert.equal('html', mime.extension('text/html ; charset=UTF-8'));
 assert.equal('html', mime.extension('text/html;charset=UTF-8'));
 assert.equal('html', mime.extension('text/Html;charset=UTF-8'));
 assert.equal(undefined, mime.extension('unrecognized'));
+assert.equal('jpeg', mime.extension('image/jpeg'))
+
+//
+// Test extensions
+//
+
+assert.deepEqual(['html', 'htm'], mime.extensions('text/html'));
+assert.deepEqual(['bin','dms','lrf','mar','so','dist','distz','pkg','bpk','dump','elc','deploy','buffer'], mime.extensions('application/octet-stream'))
+assert.deepEqual(['jpeg','jpg','jpe'], mime.extensions('image/jpeg'))
+assert.deepEqual(['latex'], mime.extensions('application/x-latex'));
+assert.equal(undefined, mime.extensions('fake/mimetype'));
 
 //
 // Test node.types lookups

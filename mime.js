@@ -6,7 +6,7 @@ function Mime() {
   this.types = Object.create(null);
 
   // Map of mime type -> extension
-  this.extensions = Object.create(null);
+  this.exts = Object.create(null);
 }
 
 /**
@@ -31,8 +31,8 @@ Mime.prototype.define = function (map) {
     }
 
     // Default extension is the first one we encounter
-    if (!this.extensions[type]) {
-      this.extensions[type] = exts[0];
+    if (!this.exts[type]) {
+      this.exts[type] = exts;
     }
   }
 };
@@ -72,12 +72,21 @@ Mime.prototype.lookup = function(path, fallback) {
   return this.types[ext] || fallback || this.default_type;
 };
 
+
 /**
- * Return file extension associated with a mime type
+ * Return file extensions associated with a mime type
+ */
+Mime.prototype.extensions = function(mimeType) {
+  var type = mimeType.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
+  return this.exts[type];
+};
+
+/**
+ * Return default file extension associated with a mime type
  */
 Mime.prototype.extension = function(mimeType) {
-  var type = mimeType.match(/^\s*([^;\s]*)(?:;|\s|$)/)[1].toLowerCase();
-  return this.extensions[type];
+  var extensions = this.extensions(mimeType);
+  return extensions && extensions[0];
 };
 
 // Default instance

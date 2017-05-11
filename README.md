@@ -46,6 +46,15 @@ mime.extension('text/html');                 // => 'html'
 mime.extension('application/octet-stream');  // => 'bin'
 ```
 
+### mime.extensions(type)
+Get all extensions for `type`
+
+```js
+mime.extensions('text/html');                 // => ['html', 'htm' ]
+mime.extensions('application/x-latex');       // => ['latex']
+mime.extensions('image/jpeg');                // => ["jpeg","jpg","jpe"]
+```
+
 ### mime.charsets.lookup()
 
 Map mime-type to charset
@@ -78,6 +87,12 @@ The first entry in the extensions array is returned by `mime.extension()`. E.g.
 
 ```js
 mime.extension('text/x-some-format'); // => 'x-sf'
+```
+
+The full extensions array is returned by `mime.extensions()`. E.g.
+
+```js
+mime.extensions('text/x-some-format'); // => ['x-sf', 'x-sft', 'x-sfml']
 ```
 
 ### mime.load(filepath)
