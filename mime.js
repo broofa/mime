@@ -83,6 +83,9 @@ Mime.prototype.load = function(file) {
  * Lookup a mime type based on extension
  */
 Mime.prototype.lookup = function(path, fallback) {
+  if (path.substring(path.length-3) == ".gz") {
+    path = path.substring(0, path.length-3);
+  }
   var ext = path.replace(/.*[\.\/\\]/, '').toLowerCase();
 
   return this.types[ext] || fallback || this.default_type; // eslint-disable-line camelcase
