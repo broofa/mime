@@ -21,7 +21,7 @@
     "mime-db": "^1.22.0"
   },
   "scripts": {
-    "prepublish": "node build/build.js > types.json",
+    "prepare": "node build/build.js > types.json",
     "test": "node build/test.js"
   },
   "keywords": [
@@ -34,5 +34,5 @@
     "url": "https://github.com/broofa/node-mime",
     "type": "git"
   },
-  "version": "1.3.4"
+  "version": "1.3.5"
 }

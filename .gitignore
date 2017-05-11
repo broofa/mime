@@ -1,2 +1,4 @@
 node_modules
 npm-debug.log
+*.sw*           # VIM temp files
+.DS_Store       # Mac desktop services store
