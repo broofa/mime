@@ -9,14 +9,16 @@ let chalk = require('chalk');
 const STANDARD_FACET_SCORE = 900;
 
 // Get a mimetype "score" that can be used to resolve conflicts over extensions
-// in a deterministic way
+// in a deterministic way.
+//
+// In case of conflict over an extension, the highest score wins
 function getScore(entry) {
   let pri = 0;
   const [type, subtype] = entry.type.split('/');
   const facet = /^([a-z]+\.|x-)/.test(subtype) && RegExp.$1 || undefined;
 
   // https://tools.ietf.org/html/rfc6838#section-3 defines "facets" that can be
-  // used to distinguish standard .vs. vendore .vs. experimental .vs. personal
+  // used to distinguish standard .vs. vendor .vs. experimental .vs. personal
   // mime types.
   switch (facet) {
     case 'vnd.': pri += 400; break;
@@ -35,7 +37,9 @@ function getScore(entry) {
     default:  pri += 30; break;
   }
 
-  // Prefer text over other types (mainly to resolve text/xml v application/xml)
+  // Prefer application over other types (e.g. text/xml and application/xml, and
+  // text/rtf and application/rtf all appear to be respectable mime thingz.  Lovely,
+  // right?)
   switch(type) {
       case 'application': pri += 1; break;
       default: break;
