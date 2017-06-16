@@ -1,25 +1,90 @@
 # mime
+An opinionated and compact mime API
 
-Comprehensive MIME type mapping API based on mime-db module.
+## Requirements
+CommonJS & ES6
+
+Using something else?  Install the old version via `npm install mime@1.3.6`
 
 ## Install
+```
+npm install mime
+```
 
-Install with [npm](http://github.com/isaacs/npm):
+## Usage
+```
+// Get a Mime object pre-loaded with all 900+ types in mime-db
+const mime = require('mime');
 
-    npm install mime
+// ... or, for a more compact set of mappings
+const mime = require('mime/lite') ; // Omits vendor and experimental types
 
-## Contributing / Testing
+// ... or roll your own
+const Mime = require('mime/Mime');
+const mime = new Mime({
+  'text/plain': ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini'],
+  'text/html': ['html', 'htm', 'shtml'],
+  // etc...
+});
+```
 
-    npm run test
+## Mime API
 
-## Command Line
+### new Mime(extensions_by_type)
 
-    mime [path_string]
+### mime.types[*extension*]
+Note: On ES6 systems this object will be Read-only
+
+### mime.extensions[*type*]
+Note: On ES6 systems this object will be Read-only
+
+### mime.typeForPath(*path*)
+Shortcut for `mime.types[mime.extname(extension_or_path)]`
+NOTE: If
+
+### mime.extname(path)
+Get extension of a file name or path. Similar to NodeJS' `path.extname`, but slightly different. E.g.
+```
+mime.extname(''); // => null
+mime.extname('abc'); // => null
+mime.extname('.abc'); // => 'abc'
+mime.extname('hello.abc'); // => 'abc'
+mime.extname('hello/world.abc'); // => 'abc'
+mime.extname('hello\\world.abc'); // => 'abc'
+mime.extname('coder/says.what/hello\\world.abc'); // => 'abc'
+```
+
+
+/\.([^\/\\]+$)/.test('a.b\/gef.abc') && RegExp.$1
 
 E.g.
+```
+```
 
-    > mime scripts/jquery.js
-    application/javascript
+Note: This behavior is different from legacy `mime.lookup()` behavior. Passing
+a bare extension will result in `null`.
+
+
+### mime.charset(type)
+
+## Command Line
+```
+mime [path_string]
+
+> mime scripts/jquery.js
+application/javascript
+```
+
+
+============================ ============================ ============================
+============================ ============================ ============================
+============================ ============================ ============================
+============================ ============================ ============================
+============================ ============================ ============================
+============================ ============================ ============================
+============================ ============================ ============================
+============================ ============================ ============================
+
 
 ## API - Queries
 
@@ -47,6 +112,7 @@ mime.extension('application/octet-stream');  // => 'bin'
 ```
 
 ### mime.charsets.lookup()
+de
 
 Map mime-type to charset
 
