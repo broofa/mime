@@ -174,9 +174,9 @@ describe('DB', function() {
     for (let ext in MDN) {
       const expected = MDN[ext];
       const actual = mime.getType(ext);
-      if (actual != expected) diffs.push(`MDN[${ext}] = ${expected}, got ${actual}`);
+      if (actual != expected) diffs.push(`MDN[${ext}] = ${expected}, node-uuid[${ext}] = ${actual}`);
     }
-    assert(diffs.length <= 0, `MDN type inconsistencies: ${JSON.stringify(diffs, null, 2)}`);
+    assert(diffs.length <= 0, `Type inconsistencies: ${JSON.stringify(diffs, null, 2)}`);
   });
 
   it('mime-types types', function () {
@@ -186,9 +186,9 @@ describe('DB', function() {
     for (let ext in mimeTypes.types) {
       const expected = mimeTypes.types[ext];
       const actual = mime.getType(ext);
-      if (actual != expected) diffs.push(`mime-db[${ext}] = ${expected}, got ${actual}`);
+      if (actual != expected) diffs.push(`mime-types[${ext}] = ${expected}, node-uuid[${ext}] = ${actual}`);
     }
-    assert(diffs.length <= 0, `mime-db type inconsistencies: ${JSON.stringify(diffs, null, 2)}`);
+    assert(diffs.length <= 0, `Type inconsistencies: ${JSON.stringify(diffs, null, 2)}`);
   });
 
   it('types', function () {
