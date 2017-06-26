@@ -24,7 +24,7 @@
     "runmd": "0.1.8"
   },
   "scripts": {
-    "prepublish": "node src/build.js",
+    "prepare": "node src/build.js && runmd --output README.md src/README_js.md",
     "md": "runmd --watch --output README.md src/README_js.md",
     "test": "mocha src/test.js"
   },

@@ -1,6 +1,6 @@
 # Mime
 
-Comprehensive, compact MIME types.
+A comprehensive, compact MIME type module.
 
 ## Install - NPM
 ```
@@ -9,32 +9,30 @@ npm install mime
 
 ## Quick Start
 
-For the full set of MIME type mappings:
+For the full version (800+ MIME types, 1,000+ extensions) ...
+
 ```javascript
 const mime = require('mime');
 
 mime.getType('txt');                    // ⇨ 'text/plain'
-mime.getType('json');                   // ⇨ 'application/json'
-
 mime.getExtension('text/plain');        // ⇨ 'txt'
-mime.getExtension('application/json');  // ⇨ 'json'
 
 ```
 
-There is also a "lite" version that omits vendor-specific types (types matching
-`*/vnd.*`) and experimental types (types matching `*/x-*`).  This is
-significantly smaller than the full version, above (2KB .vs. 8.5 KB).
+## Lite and Browser-Ready Versions
+
+There is also a "lite" version of this module that omits the ~600
+vendor-specific (`*/vnd.*`) and experimental (`*/x-*`) types, available as
+follows:
 
 ```javascript
 const mime = require('mime/lite');
 ```
 
-## Quick Start - Browser-Ready Versions
-
-Generally you'll want to use `webpack` or browserify to package this module for
-use in the browser.  However, browser-ready versions are available via wzrd.in.
-
-The full version:
+To use this module in the browser, you would typlically use
+[webpack](https://webpack.github.io/) or [browserify](http://browserify.org/) to
+package your code.  However, browser-ready versions are available via wzrd.in.
+E.g. For the full version:
 
     <script src="http://wzrd.in/standalone/mime@latest"></script>
 
@@ -44,11 +42,13 @@ Or, for the "lite" version:
 
 Then:
 
-    <script>
-    mime.getType(...); // etc.
-    </script>
+```html
+<script>
+mime.getType(...); // etc.
+</script>
+```
 
-## Mime .vs. mime-types .vs. mime-db
+## Mime .vs. mime-types .vs. mime-db modules
 
 For those of you wondering about the difference between these NPM modules,
 here's a brief rundown ...
@@ -61,23 +61,29 @@ submitted by the community.
 The [`mime-types`](https://github.com/jshttp/mime-types) module is a thin
 wrapper around mime-db that provides an API similar to the version 1 `mime` API.
 
-This module, `mime`, as of version 2, is probably best described as
-a self-contained version `mime-db` and `mime-types`, with the following
+This module, `mime`, as of version 2, is a self-contained module that provides
+an optimized version of `mime-db` and a simplified API, with the following
 characteristics:
 
 * Internally consistent type &hArr; extension mapping. I.e.
 `mime.getType(mime.getExtension(type)) == type` will always be true
-* Compact footprint.  `require('mime')` is ~8.5 KB, `require('mime/lite')` is 2
-KB.  Compare to `require('mime-types')` at ~18KB (w/ `mime-db` dependency)
 * API method naming consistent with industry best-practices
-* Requires ES6 support
+* Compact footprint.  Minified + gzip sizes of the various modules are as
+follows:
+
+Module | Size
+--- | ---
+`mime-db`  | 18 KB
+`mime-types` | same as mime-db
+`mime` | 8 KB
+`mime/lite` | 2 KB
 
 ## Mime API
 
 Both `require('mime')` and `require('mime/lite')` return instances of the MIME
 class, documented below.
 
-### new Mime(typeMap, ...)
+### new Mime(typeMap, ... more maps)
 
 Most users of this module will not need to create Mime instances directly.
 However if you would like to create custom mappings, you may do so as follows
@@ -99,6 +105,8 @@ myMime.getType('abc');            // ⇨ 'text/abc'
 myMime.getExtension('text/def');  // ⇨ 'leppard'
 
 ```
+
+If more than one map argument is provided, each map is `define()`ed (see below), in order.
 
 ### mime.getType(pathOrExtension)
 
@@ -149,7 +157,7 @@ extension that is already assigned to another type.  Passing `true` for the
 mime.define({'text/x-abc': ['abc', 'abcd']});
 
 mime.getType('abcd');            // ⇨ 'text/x-abc'
-mime.getExtension('text/x-abc') // ⇨ 'abc'
+mime.getExtension('text/x-abc')  // ⇨ 'abc'
 
 ```
 

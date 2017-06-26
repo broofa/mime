@@ -12,14 +12,14 @@ describe('class Mime', function () {
       {'text/b': ['b', 'b1']}
     );
 
-    assert.deepEqual(mime.types, {
+    assert.deepEqual(mime._types, {
       a: 'text/a',
       a1: 'text/a',
       b: 'text/b',
       b1: 'text/b',
     });
 
-    assert.deepEqual(mime.extensions, {
+    assert.deepEqual(mime._extensions, {
       'text/a': 'a',
       'text/b': 'b',
     });
@@ -38,12 +38,12 @@ describe('class Mime', function () {
       mime.define({'text/c': ['b']}, true);
     });
 
-    assert.deepEqual(mime.types, {
+    assert.deepEqual(mime._types, {
       a: 'text/a',
       b: 'text/c',
     });
 
-    assert.deepEqual(mime.extensions, {
+    assert.deepEqual(mime._extensions, {
       'text/a': 'a',
       'text/b': 'b',
       'text/c': 'b',
@@ -207,8 +207,8 @@ describe('DB', function() {
     assert.equal(mime.getExtension('text/html; charset=UTF-8'), 'html');
     assert.equal(mime.getExtension('text/html; charset=UTF-8 '), 'html');
     assert.equal(mime.getExtension('text/html ; charset=UTF-8'), 'html');
-    assert.equal( mime.getExtension(mime.types.text), 'txt');
-    assert.equal( mime.getExtension(mime.types.htm), 'html');
+    assert.equal( mime.getExtension(mime._types.text), 'txt');
+    assert.equal( mime.getExtension(mime._types.htm), 'html');
     assert.equal( mime.getExtension('application/octet-stream'), 'bin');
     assert.equal( mime.getExtension('application/octet-stream '), 'bin');
     assert.equal( mime.getExtension(' text/html; charset=UTF-8'), 'html');
