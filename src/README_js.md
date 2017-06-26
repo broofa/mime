@@ -1,3 +1,6 @@
+```javascript --hide
+runmd.onRequire = path => path.replace(/^mime/, '..');
+```
 # Mime
 
 Comprehensive, compact MIME types.
@@ -10,15 +13,14 @@ npm install mime
 ## Quick Start
 
 For the full set of MIME type mappings:
-```javascript
+```javascript --context
 const mime = require('mime');
 
-mime.getType('txt');                    // ⇨ 'text/plain'
-mime.getType('json');                   // ⇨ 'application/json'
+mime.getType('txt');                    // RESULT
+mime.getType('json');                   // RESULT
 
-mime.getExtension('text/plain');        // ⇨ 'txt'
-mime.getExtension('application/json');  // ⇨ 'json'
-
+mime.getExtension('text/plain');        // RESULT
+mime.getExtension('application/json');  // RESULT
 ```
 
 There is also a "lite" version that omits vendor-specific types (types matching
@@ -83,7 +85,7 @@ Most users of this module will not need to create Mime instances directly.
 However if you would like to create custom mappings, you may do so as follows
 ...
 
-```javascript
+```javascript --context
 // Require Mime class
 const Mime = require('mime/Mime');
 
@@ -95,44 +97,40 @@ const typeMap = {
 
 // Create and use Mime instance
 const myMime = new Mime(typeMap);
-myMime.getType('abc');            // ⇨ 'text/abc'
-myMime.getExtension('text/def');  // ⇨ 'leppard'
-
+myMime.getType('abc');            // RESULT
+myMime.getExtension('text/def');  // RESULT
 ```
 
 ### mime.getType(pathOrExtension)
 
 Get mime type for the given path or extension.  E.g.
 
-```javascript
-mime.getType('js');             // ⇨ 'application/javascript'
-mime.getType('json');           // ⇨ 'application/json'
+```javascript --context
+mime.getType('js');             // RESULT
+mime.getType('json');           // RESULT
 
-mime.getType('txt');            // ⇨ 'text/plain'
-mime.getType('dir/text.txt');   // ⇨ 'text/plain'
-mime.getType('dir\\text.txt');  // ⇨ 'text/plain'
-mime.getType('.text.txt');      // ⇨ 'text/plain'
-mime.getType('.txt');           // ⇨ 'text/plain'
-
+mime.getType('txt');            // RESULT
+mime.getType('dir/text.txt');   // RESULT
+mime.getType('dir\\text.txt');  // RESULT
+mime.getType('.text.txt');      // RESULT
+mime.getType('.txt');           // RESULT
 ```
 
 `null` is returned in cases where an extension is not detected or recognized
 
-```javascript
-mime.getType('foo/txt');        // ⇨ null
-mime.getType('bogus_type');     // ⇨ null
-
+```javascript --context
+mime.getType('foo/txt');        // RESULT
+mime.getType('bogus_type');     // RESULT
 ```
 
 ### mime.getExtension(type)
 Get extension for the given mime type.  Charset options (often included in
 Content-Type headers) are ignored.
 
-```javascript
-mime.getExtension('text/plain');               // ⇨ 'txt'
-mime.getExtension('application/json');         // ⇨ 'json'
-mime.getExtension('text/html; charset=utf8');  // ⇨ 'html'
-
+```javascript --context
+mime.getExtension('text/plain');               // RESULT
+mime.getExtension('application/json');         // RESULT
+mime.getExtension('text/html; charset=utf8');  // RESULT
 ```
 
 ### mime.define(typeMap[, force = false])
@@ -145,12 +143,11 @@ By default this method will throw an error if you try to map a type to an
 extension that is already assigned to another type.  Passing `true` for the
 `force` argument will suppress this behavior and apply the new mapping.
 
-```javascript
+```javascript --context
 mime.define({'text/x-abc': ['abc', 'abcd']});
 
-mime.getType('abcd');            // ⇨ 'text/x-abc'
-mime.getExtension('text/x-abc') // ⇨ 'abc'
-
+mime.getType('abcd');            // RESULT
+mime.getExtension('text/x-abc') // RESULT
 ```
 
 ## Command Line
@@ -161,6 +158,3 @@ E.g.
 
     > mime scripts/jquery.js
     application/javascript
-
-----
-Markdown generated from [src/README_js.md](src/README_js.md) by [![RunMD Logo](http://i.imgur.com/h0FVyzU.png)](https://github.com/broofa/runmd)
