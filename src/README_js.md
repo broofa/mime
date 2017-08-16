@@ -21,15 +21,19 @@ mime.getType('txt');                    // RESULT
 mime.getExtension('text/plain');        // RESULT
 ```
 
-## Lite and Browser-Ready Versions
+See [Mime API](#mime-api) below for API details.
 
-There is also a "lite" version of this module that omits the ~600
-vendor-specific (`*/vnd.*`) and experimental (`*/x-*`) types, available as
-follows:
+## Lite Version
+
+There is also a "lite" version of this module that omits vendor-specific
+(`*/vnd.*`) and experimental (`*/x-*`) types.  It weighs in at ~2.5KB, compared
+to 8KB for the full version.  To load the lite version:
 
 ```javascript
 const mime = require('mime/lite');
 ```
+
+## Browser-ready Versions
 
 To use this module in the browser, you would typlically use
 [webpack](https://webpack.github.io/) or [browserify](http://browserify.org/) to
@@ -52,26 +56,24 @@ mime.getType(...); // etc.
 
 ## Mime .vs. mime-types .vs. mime-db modules
 
-For those of you wondering about the difference between these NPM modules,
+For those of you wondering about the difference between these [popular] NPM modules,
 here's a brief rundown ...
 
-The [`mime-db`](https://github.com/jshttp/mime-db) module is "the source of
-truth" for MIME type information.  It is not an API, just a dataset that
-incorporates MIME type definitions from IANA, Apache, NGINX, and custom mappings
-submitted by the community.
+[`mime-db`](https://github.com/jshttp/mime-db) is "the source of
+truth" for MIME type information.  It is not an API.  Rather, it is a canonical
+dataset of mime type definitions pulled from IANA, Apache, NGINX, and custom mappings
+submitted by the Node.js community.
 
-The [`mime-types`](https://github.com/jshttp/mime-types) module is a thin
-wrapper around mime-db that provides an API similar to the version 1 `mime` API.
+[`mime-types`](https://github.com/jshttp/mime-types) is a thin
+wrapper around mime-db that provides an API drop-in compatible(ish) with `mime @ < v1.3.6` API.
 
-This module, `mime`, as of version 2, is a self-contained module that provides
-an optimized version of `mime-db` and a simplified API, with the following
-characteristics:
+`mime` is, as of v2, a self-contained module bundled with a pre-optimized version
+of the `mime-db` dataset.  It provides a simplified API with the following characteristics:
 
 * Internally consistent type &hArr; extension mapping. I.e.
 `mime.getType(mime.getExtension(type)) == type` will always be true
-* API method naming consistent with industry best-practices
-* Compact footprint.  Minified + gzip sizes of the various modules are as
-follows:
+* Method naming consistent with industry best-practices
+* Compact footprint.  E.g. The minified+compressed sizes of the various modules:
 
 Module | Size
 --- | ---
@@ -143,13 +145,13 @@ mime.getExtension('text/html; charset=utf8');  // RESULT
 
 ### mime.define(typeMap[, force = false])
 
-Apply type mappings.
+Define [more] type mappings.
 
 `typeMap` is a map of type -> extensions, as documented in `new Mime`, above.
 
 By default this method will throw an error if you try to map a type to an
 extension that is already assigned to another type.  Passing `true` for the
-`force` argument will suppress this behavior and apply the new mapping.
+`force` argument will suppress this behavior (overriding any previous mapping).
 
 ```javascript --context
 mime.define({'text/x-abc': ['abc', 'abcd']});
