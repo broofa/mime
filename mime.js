@@ -87,7 +87,7 @@ var mime = new Mime();
 mime.define(require('./types.json'));
 
 // Default type
-mime.default_type = mime.lookup('bin');
+mime.default_type = null;
 
 //
 // Additional API specific to the default instance
