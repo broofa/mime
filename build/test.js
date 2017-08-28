@@ -45,7 +45,7 @@ assert.equal('application/font-woff', mime.lookup('file.woff'));
 assert.equal('application/octet-stream', mime.lookup('file.buffer'));
 // TODO: Uncomment once #157 is resolved
 // assert.equal('audio/mp4', mime.lookup('file.m4a'));
-assert.equal('font/opentype', mime.lookup('file.otf'));
+assert.equal('font/otf', mime.lookup('file.otf'));
 
 //
 // Test charsets
