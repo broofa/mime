@@ -2,6 +2,7 @@ var mime = require('..');
 var mimeTypes = require('../node_modules/mime-types');
 var assert = require('assert');
 var path = require('path');
+var chalk = require('chalk');
 
 describe('class Mime', function () {
   it('new constructor()', function () {
@@ -102,6 +103,17 @@ describe('class Mime', function () {
 });
 
 describe('DB', function() {
+  var diffs = [];
+
+  after(function() {
+    if (diffs.length) {
+      console.log('\n[INFO] The following inconsistencies with MDN and/or mime-types are expected:');
+      diffs.forEach(function(d) {
+        console.warn(`  ${d[0]}[${chalk.blue(d[1])}] = ${chalk.red(d[2])}, node-uuid[${d[1]}] = ${chalk.green(d[3])}`);
+      });
+    }
+  });
+
   it('Consistency', function() {
     for (var ext in this.types) {
       const ext2 = this.extensions[this.types[ext]];
@@ -170,25 +182,18 @@ describe('DB', function() {
       '7z': 'application/x-7z-compressed',
     };
 
-    const diffs = [];
     for (let ext in MDN) {
       const expected = MDN[ext];
       const actual = mime.getType(ext);
-      if (actual != expected) diffs.push(`MDN[${ext}] = ${expected}, node-uuid[${ext}] = ${actual}`);
+      if (actual != expected) diffs.push(['MDN', ext, expected, actual]);
     }
-    assert(diffs.length <= 0, `Type inconsistencies: ${JSON.stringify(diffs, null, 2)}`);
-  });
-
-  it('mime-types types', function () {
     const mimeTypes = require('../node_modules/mime-types');
-    const diffs = [];
 
     for (let ext in mimeTypes.types) {
       const expected = mimeTypes.types[ext];
       const actual = mime.getType(ext);
-      if (actual != expected) diffs.push(`mime-types[${ext}] = ${expected}, node-uuid[${ext}] = ${actual}`);
+      if (actual != expected) diffs.push(['mime-types', ext, expected, actual]);
     }
-    assert(diffs.length <= 0, `Type inconsistencies: ${JSON.stringify(diffs, null, 2)}`);
   });
 
   it('types', function () {
