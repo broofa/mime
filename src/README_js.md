@@ -5,6 +5,9 @@ runmd.onRequire = path => path.replace(/^mime/, '..');
 
 A comprehensive, compact MIME type module.
 
+This is version `2.x`.  Docs for the previous version, `1.4.0`, may be found
+[here](https://github.com/broofa/node-mime/tree/v1.4.0).
+
 ## Install - NPM
 ```
 npm install mime
@@ -12,7 +15,7 @@ npm install mime
 
 ## Quick Start
 
-For the full version (800+ MIME types, 1,000+ extensions) ...
+For the full version (800+ MIME types, 1,000+ extensions):
 
 ```javascript --context
 const mime = require('mime');
