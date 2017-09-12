@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.0.0 (12/09/2017)
+- [**closed**] woff and woff2 [#168](https://github.com/broofa/node-mime/issues/168)
+
+---
+
 ## v1.4.0 (12/09/2017)
 - [**closed**] support for ac3 voc files [#159](https://github.com/broofa/node-mime/issues/159)
 - [**closed**] Help understanding change from application/xml to text/xml [#158](https://github.com/broofa/node-mime/issues/158)
