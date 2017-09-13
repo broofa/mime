@@ -1,3 +1,5 @@
+'use strict';
+
 var mime = require('..');
 var mimeTypes = require('../node_modules/mime-types');
 var assert = require('assert');

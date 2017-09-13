@@ -45,6 +45,7 @@
     "semi": ["warn", "always"],
     "space-before-blocks": ["warn", "always"],
     "space-before-function-paren": ["warn", "never"],
-    "space-in-parens": ["warn", "never"]
+    "space-in-parens": ["warn", "never"],
+    "strict": ["warn", "global"]
   }
 }
