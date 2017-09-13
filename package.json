@@ -4,6 +4,9 @@
     "url": "http://github.com/broofa",
     "email": "robert@broofa.com"
   },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "bin": {
     "mime": "cli.js"
   },
