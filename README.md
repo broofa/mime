@@ -6,12 +6,12 @@ A comprehensive, compact MIME type module.
 
 Version 2 is a breaking change from 1.x, as the semver implies.  Specifically:
 
-* ES6 support required (requires Node 6+)
+* **ES6 support required (node@>=6)**
 * `lookup()` renamed to `getType()`
 * `extension()` renamed to `getExtension()`
 * `charset()` and `load()` methods have been removed
 
-If you need the legacy version of this module for any reason, please `npm install mime@^1`.  Version 1 docs may be found [here](https://github.com/broofa/node-mime/tree/v1.4.0).
+If you prefer the legacy version of this module please `npm install mime@^1`.  Version 1 docs may be found [here](https://github.com/broofa/node-mime/tree/v1.4.0).
 
 ## Install - NPM
 ```

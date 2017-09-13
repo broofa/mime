@@ -29,20 +29,20 @@ function getScore(entry) {
   }
 
   // Use mime-db's logic for ranking by source
-  switch(entry.source) {
+  switch (entry.source) {
     // Prioritize by source (same as mime-types module)
-    case 'iana':    pri += 40; break;
-    case 'apache':  pri += 20; break;
-    case 'nginx':   pri += 10; break;
-    default:  pri += 30; break;
+    case 'iana': pri += 40; break;
+    case 'apache': pri += 20; break;
+    case 'nginx': pri += 10; break;
+    default: pri += 30; break;
   }
 
   // Prefer application over other types (e.g. text/xml and application/xml, and
   // text/rtf and application/rtf all appear to be respectable mime thingz.  Lovely,
   // right?)
-  switch(type) {
-      case 'application': pri += 1; break;
-      default: break;
+  switch (type) {
+    case 'application': pri += 1; break;
+    default: break;
   }
 
   // All other things being equal, use length
@@ -55,7 +55,7 @@ const byExtension = {};
 
 // Clear out any conflict extensions in mime-db
 
-for (let type  in db) {
+for (let type in db) {
   let entry = db[type];
   entry.type = type;
 
@@ -63,12 +63,14 @@ for (let type  in db) {
 
   entry.extensions.forEach(ext => {
     if (ext in byExtension) {
-      const e0 = entry, e1 = byExtension[ext];
+      const e0 = entry;
+      const e1 = byExtension[ext];
       e0.pri = getScore(e0);
       e1.pri = getScore(e1);
 
-      let drop = e0.pri < e1.pri ? e0 : e1, keep = e0.pri >= e1.pri ? e0 : e1;
-      drop.extensions = drop.extensions.filter(e => e != ext);
+      let drop = e0.pri < e1.pri ? e0 : e1;
+      let keep = e0.pri >= e1.pri ? e0 : e1;
+      drop.extensions = drop.extensions.filter(e => e !== ext);
 
       console.log(`${ext}: Keeping ${chalk.green(keep.type)} (${keep.pri}), dropping ${chalk.red(drop.type)} (${drop.pri})`);
     }

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @param typeMap [Object] Map of MIME type -> Array[extensions]
  * @param ...
@@ -45,7 +47,7 @@ class Mime {
    */
   getType(path) {
     path = String(path);
-    var last = path.replace(/.*[\/\\]/, '').toLowerCase();
+    var last = path.replace(/.*[/\\]/, '').toLowerCase();
     var ext = last.replace(/.*\./, '').toLowerCase();
 
     var hasPath = last.length < path.length;
