@@ -30,7 +30,8 @@
     "runmd": "0.1.8"
   },
   "scripts": {
-    "prepare": "node src/build.js && gren --action=changelog && runmd --output README.md src/README_js.md",
+    "prepare": "node src/build.js && runmd --output README.md src/README_js.md",
+    "changelog": "gren --action=changelog --tags=all --generate",
     "md": "runmd --watch --output README.md src/README_js.md",
     "test": "mocha src/test.js"
   },
