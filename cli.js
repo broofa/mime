@@ -2,7 +2,7 @@
 
 'use strict';
 
-var mime = require('./index');
+var mime = require('.');
 var file = process.argv[2];
 var type = mime.getType(file);
 
