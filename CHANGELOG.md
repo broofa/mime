@@ -1,6 +1,21 @@
 # Changelog
 
+## v2.0.2 (15/09/2017)
+- [**V2**] fs.readFileSync is not a function [#165](https://github.com/broofa/node-mime/issues/165)
+- [**closed**] The extension for video/quicktime should map to .mov, not .qt [#164](https://github.com/broofa/node-mime/issues/164)
+- [**V2**] [v2 Feedback request] Mime class API [#163](https://github.com/broofa/node-mime/issues/163)
+- [**V2**] [v2 Feedback request] Resolving conflicts over extensions [#162](https://github.com/broofa/node-mime/issues/162)
+- [**V2**] Allow callers to load module with official, full, or no defined types.  [#161](https://github.com/broofa/node-mime/issues/161)
+- [**V2**] Use "facets" to resolve extension conflicts [#160](https://github.com/broofa/node-mime/issues/160)
+- [**V2**] Remove fs and path dependencies [#152](https://github.com/broofa/node-mime/issues/152)
+- [**V2**] Default content-type should not be application/octet-stream [#139](https://github.com/broofa/node-mime/issues/139)
+- [**V2**] reset mime-types [#124](https://github.com/broofa/node-mime/issues/124)
+- [**V2**] Extensionless paths should return null or false [#113](https://github.com/broofa/node-mime/issues/113)
+
+---
+
 ## v2.0.1 (14/09/2017)
+- [**closed**] Changelog for v2.0 does not mention breaking changes [#171](https://github.com/broofa/node-mime/issues/171)
 - [**closed**] MIME breaking with 'class' declaration as it is without 'use strict mode' [#170](https://github.com/broofa/node-mime/issues/170)
 
 ---
