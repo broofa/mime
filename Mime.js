@@ -47,8 +47,8 @@ class Mime {
    */
   getType(path) {
     path = String(path);
-    var last = path.replace(/.*[/\\]/, '').toLowerCase();
-    var ext = last.replace(/.*\./, '').toLowerCase();
+    var last = path.replace(/^.*[/\\]/, '').toLowerCase();
+    var ext = last.replace(/^.*\./, '').toLowerCase();
 
     var hasPath = last.length < path.length;
     var hasDot = ext.length < last.length - 1;
