@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.0.3 (25/09/2017)
+*No changelog for this release.*
+
+---
+
+## v1.4.1 (25/09/2017)
+- [**closed**] Issue when bundling with webpack [#172](https://github.com/broofa/node-mime/issues/172)
+
+---
+
 ## v2.0.2 (15/09/2017)
 - [**V2**] fs.readFileSync is not a function [#165](https://github.com/broofa/node-mime/issues/165)
 - [**closed**] The extension for video/quicktime should map to .mov, not .qt [#164](https://github.com/broofa/node-mime/issues/164)
