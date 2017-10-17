@@ -49,18 +49,17 @@ To use this module in the browser, you would typlically use
 package your code.  However, browser-ready versions are available via wzrd.in.
 E.g. For the full version:
 
-    <script src="http://wzrd.in/standalone/mime@latest"></script>
+    <script src="https://wzrd.in/standalone/mime@latest"></script>
+    <script>
+    mime.getType(...); // etc.
+    <script>
 
-Or, for the "lite" version:
+Or, for the `mime/lite` version:
 
-    <script src="http://wzrd.in/standalone/mime%2flite@latest"></script>
-
-Then:
-
-```html
-<script>
-mime.getType(...); // etc.
-</script>
+    <script src="https://wzrd.in/standalone/mime%2flite@latest"></script>
+    <script>
+    mimelite.getType(...); // (Note `mimelite` here)
+    <script>
 ```
 
 ## Mime .vs. mime-types .vs. mime-db modules
