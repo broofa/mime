@@ -60,7 +60,6 @@ Or, for the `mime/lite` version:
     <script>
     mimelite.getType(...); // (Note `mimelite` here)
     <script>
-```
 
 ## Mime .vs. mime-types .vs. mime-db modules
 
