@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.0.4 (24/11/2017)
+- [**closed**] Switch to mime-score module for resolving extension contention issues. [#182](https://github.com/broofa/node-mime/issues/182)
+- [**closed**] Update mime-db to 1.31.0 in v1.x branch [#181](https://github.com/broofa/node-mime/issues/181)
+
+---
+
+## v1.5.0 (22/11/2017)
+- [**closed**] need ES5 version ready in npm package [#179](https://github.com/broofa/node-mime/issues/179)
+- [**closed**] mime-db no trace of iWork - pages / numbers / etc. [#178](https://github.com/broofa/node-mime/issues/178)
+- [**closed**] How it works in brownser ? [#176](https://github.com/broofa/node-mime/issues/176)
+- [**closed**] Missing `./Mime` [#175](https://github.com/broofa/node-mime/issues/175)
+- [**closed**] Vulnerable Regular Expression [#167](https://github.com/broofa/node-mime/issues/167)
+
+---
+
 ## v2.0.3 (25/09/2017)
 *No changelog for this release.*
 
