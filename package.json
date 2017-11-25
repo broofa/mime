@@ -23,7 +23,7 @@
   "devDependencies": {
     "github-release-notes": "0.13.1",
     "mime-db": "1.31.0",
-    "mime-score": "1.1.0"
+    "mime-score": "^1.1.1"
   },
   "scripts": {
     "prepare": "node src/build.js",
