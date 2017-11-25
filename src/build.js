@@ -4,6 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const mimeScore = require('mime-score');
 
 let db = require('mime-db');
 let chalk = require('chalk');
@@ -67,8 +68,8 @@ for (let type in db) {
     if (ext in byExtension) {
       const e0 = entry;
       const e1 = byExtension[ext];
-      e0.pri = getScore(e0);
-      e1.pri = getScore(e1);
+      e0.pri = mimeScore(e0.type, e0.source);
+      e1.pri = mimeScore(e1.type, e1.source);
 
       let drop = e0.pri < e1.pri ? e0 : e1;
       let keep = e0.pri >= e1.pri ? e0 : e1;
@@ -95,7 +96,7 @@ Object.keys(db).sort().forEach(k => {
   const entry = db[k];
 
   if (entry.extensions) {
-    if (getScore(entry) >= STANDARD_FACET_SCORE) {
+    if (mimeScore(entry.type, entry.source) >= STANDARD_FACET_SCORE) {
       standard[entry.type] = entry.extensions;
     } else {
       other[entry.type] = entry.extensions;
