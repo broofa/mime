@@ -11,7 +11,7 @@ Version 2 is a breaking change from 1.x, as the semver implies.  Specifically:
 * `extension()` renamed to `getExtension()`
 * `charset()` and `load()` methods have been removed
 
-If you prefer the legacy version of this module please `npm install mime@^1`.  Version 1 docs may be found [here](https://github.com/broofa/node-mime/tree/v1.4.0).
+If you prefer the legacy version of this module please `npm install mime@^1`.  Version 1 docs may be found [here](https://github.com/broofa/node-mime/tree/v1.x).
 
 ## Install - NPM
 ```
@@ -49,19 +49,17 @@ To use this module in the browser, you would typlically use
 package your code.  However, browser-ready versions are available via wzrd.in.
 E.g. For the full version:
 
-    <script src="http://wzrd.in/standalone/mime@latest"></script>
+    <script src="https://wzrd.in/standalone/mime@latest"></script>
+    <script>
+    mime.getType(...); // etc.
+    <script>
 
-Or, for the "lite" version:
+Or, for the `mime/lite` version:
 
-    <script src="http://wzrd.in/standalone/mime%2flite@latest"></script>
-
-Then:
-
-```html
-<script>
-mime.getType(...); // etc.
-</script>
-```
+    <script src="https://wzrd.in/standalone/mime%2flite@latest"></script>
+    <script>
+    mimelite.getType(...); // (Note `mimelite` here)
+    <script>
 
 ## Mime .vs. mime-types .vs. mime-db modules
 
