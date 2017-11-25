@@ -7,6 +7,9 @@
   "bin": {
     "mime": "cli.js"
   },
+  "engines": {
+    "node": ">=4"
+  },
   "contributors": [
     {
       "name": "Benjamin Thomas",
@@ -16,16 +19,16 @@
   ],
   "description": "A comprehensive library for mime-type mapping",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "github-release-notes": "0.13.1",
-    "mime-db": "1.31.0"
+    "mime-db": "1.31.0",
+    "mime-score": "1.1.0"
   },
   "scripts": {
-    "prepublish": "node build/build.js > types.json",
+    "prepare": "node src/build.js",
     "changelog": "gren changelog --tags=all --generate --override",
-    "test": "node build/test.js"
+    "test": "node src/test.js"
   },
   "keywords": [
     "util",
