@@ -7,9 +7,9 @@ var chalk = require('chalk');
 
 describe('class Mime', function() {
   it('new constructor()', function() {
-    const Mime = require('../Mime');
+    var Mime = require('../Mime');
 
-    const mime = new Mime(
+    var mime = new Mime(
       {'text/a': ['a', 'a1']},
       {'text/b': ['b', 'b1']}
     );
@@ -28,9 +28,9 @@ describe('class Mime', function() {
   });
 
   it('define()', function() {
-    const Mime = require('../Mime');
+    var Mime = require('../Mime');
 
-    const mime = new Mime({'text/a': ['a']}, {'text/b': ['b']});
+    var mime = new Mime({'text/a': ['a']}, {'text/b': ['b']});
 
     assert.throws(function() {
       mime.define({'text/c': ['b']});
@@ -110,7 +110,10 @@ describe('DB', function() {
     if (diffs.length) {
       console.log('\n[INFO] The following inconsistencies with MDN (https://goo.gl/lHrFU6) and/or mime-types (https://github.com/jshttp/mime-types) are expected:');
       diffs.forEach(function(d) {
-        console.warn(`  ${d[0]}[${chalk.blue(d[1])}] = ${chalk.red(d[2])}, mime[${d[1]}] = ${chalk.green(d[3])}`);
+        console.warn(
+          '  ' + d[0]+ '[' + chalk.blue(d[1]) + '] = ' + chalk.red(d[2]) +
+          ', mime[' + d[1] + '] = ' + chalk.green(d[3])
+        );
       });
     }
   });
@@ -123,7 +126,7 @@ describe('DB', function() {
 
   it('MDN types', function() {
     // MDN types listed at https://goo.gl/lHrFU6
-    const MDN = {
+    var MDN = {
       'aac': 'audio/aac',
       'abw': 'application/x-abiword',
       'arc': 'application/octet-stream',
@@ -182,15 +185,15 @@ describe('DB', function() {
       '7z': 'application/x-7z-compressed',
     };
 
-    for (let ext in MDN) {
-      const expected = MDN[ext];
-      const actual = mime.getType(ext);
+    for (var ext in MDN) {
+      var expected = MDN[ext];
+      var actual = mime.getType(ext);
       if (actual !== expected) diffs.push(['MDN', ext, expected, actual]);
     }
 
-    for (let ext in mimeTypes.types) {
-      const expected = mimeTypes.types[ext];
-      const actual = mime.getType(ext);
+    for (var ext in mimeTypes.types) {
+      var expected = mimeTypes.types[ext];
+      var actual = mime.getType(ext);
       if (actual !== expected) diffs.push(['mime-types', ext, expected, actual]);
     }
   });

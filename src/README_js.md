@@ -7,25 +7,45 @@ A comprehensive, compact MIME type module.
 
 ## Version 2 Notes
 
-Version 2 is a breaking change from 1.x, as the semver implies.  Specifically:
+Version 2 is a breaking change from 1.x as the semver implies.  Specifically:
 
-* **ES6 support required (node@>=6)**
 * `lookup()` renamed to `getType()`
 * `extension()` renamed to `getExtension()`
 * `charset()` and `load()` methods have been removed
 
 If you prefer the legacy version of this module please `npm install mime@^1`.  Version 1 docs may be found [here](https://github.com/broofa/node-mime/tree/v1.4.0).
 
-## Install - NPM
+## Install
+
+### NPM
 ```
 npm install mime
 ```
+
+### Browser
+
+It is recommended that you use a bundler such as
+[webpack](https://webpack.github.io/) or [browserify](http://browserify.org/) to
+package your code.  However, browser-ready versions are available via wzrd.in.
+E.g. For the full version:
+
+    <script src="https://wzrd.in/standalone/mime@latest"></script>
+    <script>
+    mime.getType(...); // etc.
+    <script>
+
+Or, for the `mime/lite` version:
+
+    <script src="https://wzrd.in/standalone/mime%2flite@latest"></script>
+    <script>
+    mimelite.getType(...); // (Note `mimelite` here)
+    <script>
 
 ## Quick Start
 
 For the full version (800+ MIME types, 1,000+ extensions):
 
-```javascript --context
+```javascript --run default
 const mime = require('mime');
 
 mime.getType('txt');                    // RESULT
@@ -43,25 +63,6 @@ to 8KB for the full version.  To load the lite version:
 ```javascript
 const mime = require('mime/lite');
 ```
-
-## Browser-ready Versions
-
-To use this module in the browser, you would typlically use
-[webpack](https://webpack.github.io/) or [browserify](http://browserify.org/) to
-package your code.  However, browser-ready versions are available via wzrd.in.
-E.g. For the full version:
-
-    <script src="https://wzrd.in/standalone/mime@latest"></script>
-    <script>
-    mime.getType(...); // etc.
-    <script>
-
-Or, for the `mime/lite` version:
-
-    <script src="https://wzrd.in/standalone/mime%2flite@latest"></script>
-    <script>
-    mimelite.getType(...); // (Note `mimelite` here)
-    <script>
 
 ## Mime .vs. mime-types .vs. mime-db modules
 
@@ -102,7 +103,7 @@ Most users of this module will not need to create Mime instances directly.
 However if you would like to create custom mappings, you may do so as follows
 ...
 
-```javascript --context
+```javascript --run default
 // Require Mime class
 const Mime = require('mime/Mime');
 
@@ -124,7 +125,7 @@ If more than one map argument is provided, each map is `define()`ed (see below),
 
 Get mime type for the given path or extension.  E.g.
 
-```javascript --context
+```javascript --run default
 mime.getType('js');             // RESULT
 mime.getType('json');           // RESULT
 
@@ -137,7 +138,7 @@ mime.getType('.txt');           // RESULT
 
 `null` is returned in cases where an extension is not detected or recognized
 
-```javascript --context
+```javascript --run default
 mime.getType('foo/txt');        // RESULT
 mime.getType('bogus_type');     // RESULT
 ```
@@ -146,7 +147,7 @@ mime.getType('bogus_type');     // RESULT
 Get extension for the given mime type.  Charset options (often included in
 Content-Type headers) are ignored.
 
-```javascript --context
+```javascript --run default
 mime.getExtension('text/plain');               // RESULT
 mime.getExtension('application/json');         // RESULT
 mime.getExtension('text/html; charset=utf8');  // RESULT
@@ -162,7 +163,7 @@ By default this method will throw an error if you try to map a type to an
 extension that is already assigned to another type.  Passing `true` for the
 `force` argument will suppress this behavior (overriding any previous mapping).
 
-```javascript --context
+```javascript --run default
 mime.define({'text/x-abc': ['abc', 'abcd']});
 
 mime.getType('abcd');            // RESULT
