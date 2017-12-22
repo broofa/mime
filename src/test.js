@@ -198,17 +198,19 @@ describe('DB', function() {
     }
   });
 
-  it('types', function() {
-    // Assortment of common types
+  it('Specific types', function() {
+    // Assortment of types we sanity check for good measure
     assert.equal(mime.getType('html'), 'text/html');
     assert.equal(mime.getType('js'), 'application/javascript');
     assert.equal(mime.getType('json'), 'application/json');
     assert.equal(mime.getType('rtf'), 'application/rtf');
     assert.equal(mime.getType('txt'), 'text/plain');
     assert.equal(mime.getType('xml'), 'application/xml');
+
+    assert.equal(mime.getType('wasm'), 'application/wasm');
   });
 
-  it('extensions', function() {
+  it('Specific extensions', function() {
     assert.equal(mime.getExtension('text/html;charset=UTF-8'), 'html');
     assert.equal(mime.getExtension('text/HTML; charset=UTF-8'), 'html');
     assert.equal(mime.getExtension('text/html; charset=UTF-8'), 'html');
