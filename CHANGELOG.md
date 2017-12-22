@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/broofa/node-mime/compare/v2.0.5...v2.1.0) (2017-12-22)
+
+
+### Features
+
+* Upgrade to mime-db@1.32.0.  Fixes [#185](https://github.com/broofa/node-mime/issues/185) ([3f775ba](https://github.com/broofa/node-mime/commit/3f775ba))
+
+
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/broofa/node-mime/compare/v2.0.1...v2.0.5) (2017-12-22)
 
