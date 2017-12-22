@@ -22,7 +22,7 @@
     "mime-score": "1.0.1",
     "mime-types": "2.1.15",
     "mocha": "3.5.3",
-    "runmd": "0.1.8"
+    "runmd": "1.0.1"
   },
   "scripts": {
     "prepare": "node src/build.js && runmd --output README.md src/README_js.md",
