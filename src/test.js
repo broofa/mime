@@ -52,6 +52,24 @@ describe('class Mime', function() {
     });
   });
 
+  it('define() *\'ed types', function() {
+    var Mime = require('../Mime');
+
+    var mime = new Mime(
+      {'text/a': ['*b']},
+      {'text/b': ['b']}
+    );
+
+    assert.deepEqual(mime._types, {
+      b: 'text/b',
+    });
+
+    assert.deepEqual(mime._extensions, {
+      'text/a': 'b',
+      'text/b': 'b',
+    });
+  });
+
   it('getType()', function() {
     // Upper/lower case
     assert.equal(mime.getType('text.txt'), 'text/plain');
@@ -227,5 +245,7 @@ describe('DB', function() {
     assert.equal(mime.getExtension('text/html;charset=UTF-8'), 'html');
     assert.equal(mime.getExtension('text/Html;charset=UTF-8'), 'html');
     assert.equal(mime.getExtension('unrecognized'), null);
+
+    assert.equal(mime.getExtension('text/xml'), 'xml'); // See #180
   });
 });

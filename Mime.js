@@ -20,13 +20,31 @@ function Mime() {
  *
  * e.g. mime.define({'audio/ogg', ['oga', 'ogg', 'spx']});
  *
+ * If a type declares an extension that has already been defined, an error will
+ * be thrown.  To suppress this error and force the extension to be associated
+ * with the new type, pass `force`=true.  Alternatively, you may prefix the
+ * extension with "*" to map the type to extension, without mapping the
+ * extension to the type.
+ *
+ * e.g. mime.define({'audio/wav', ['wav']}, {'audio/x-wav', ['*wav']});
+ *
+ *
  * @param map (Object) type definitions
+ * @param force (Boolean) if true, force overriding of existing definitions
  */
 Mime.prototype.define = function(typeMap, force) {
   for (var type in typeMap) {
     var extensions = typeMap[type];
     for (var i = 0; i < extensions.length; i++) {
       var ext = extensions[i];
+
+      // '*' prefix = not the preferred type for this extension.  So fixup the
+      // extension, and skip it.
+      if (ext[0] == '*') {
+        extensions[i] = ext.substr(1);
+        continue;
+      }
+
       if (!force && (ext in this._types)) {
         throw new Error(
           'Attempt to change mapping for "' + ext +

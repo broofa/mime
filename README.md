@@ -81,8 +81,7 @@ wrapper around mime-db that provides an API drop-in compatible(ish) with `mime @
 `mime` is, as of v2, a self-contained module bundled with a pre-optimized version
 of the `mime-db` dataset.  It provides a simplified API with the following characteristics:
 
-* Internally consistent type &hArr; extension mapping. I.e.
-`mime.getType(mime.getExtension(type)) == type` will always be true
+* Intelligently resolved type conflicts (See [mime-score](https://github.com/broofa/mime-score) for details)
 * Method naming consistent with industry best-practices
 * Compact footprint.  E.g. The minified+compressed sizes of the various modules:
 
