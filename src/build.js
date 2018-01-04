@@ -17,26 +17,32 @@ var byExtension = {};
 for (var type in db) {
   var entry = db[type];
   entry.type = type;
-
   if (!entry.extensions) continue;
 
   entry.extensions.forEach(function(ext) {
+    var drop;
+    var keep = entry;
     if (ext in byExtension) {
       var e0 = entry;
       var e1 = byExtension[ext];
+
       e0.pri = mimeScore(e0.type, e0.source);
       e1.pri = mimeScore(e1.type, e1.source);
 
-      var drop = e0.pri < e1.pri ? e0 : e1;
-      var keep = e0.pri >= e1.pri ? e0 : e1;
-      drop.extensions = drop.extensions.filter(function(e) {return e !== ext;});
+      drop = e0.pri < e1.pri ? e0 : e1;
+      keep = e0.pri >= e1.pri ? e0 : e1;
+
+      // Prefix lower-priority extensions with '*'
+      drop.extensions = drop.extensions.map(function(e) {return e == ext ? '*' + e : e});
 
       console.log(
-        ext + ': Keeping ' + chalk.green(keep.type) + ' (' + keep.pri +
-        '), dropping ' + chalk.red(drop.type) + ' (' + drop.pri + ')'
+        ext + ': Preferring ' + chalk.green(keep.type) + ' (' + keep.pri +
+        ') over ' + chalk.red(drop.type) + ' (' + drop.pri + ')' + ' for ' + ext
       );
     }
-    byExtension[ext] = entry;
+
+    // Cache the hightest ranking type for this extension
+    if (keep == entry) byExtension[ext] = entry;
   });
 }
 
