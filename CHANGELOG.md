@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/broofa/node-mime/compare/v2.2.0...v2.2.1) (2018-03-30)
+
+
+### Bug Fixes
+
+* Retain type->extension mappings for non-default types.  Fixes [#180](https://github.com/broofa/node-mime/issues/180) ([b5c83fb](https://github.com/broofa/node-mime/commit/b5c83fb))
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/broofa/node-mime/compare/v2.1.0...v2.2.0) (2018-01-04)
 
