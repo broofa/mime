@@ -1,5 +1,5 @@
 language: node_js
-node_js:
-    - "4"
-    - "6"
-    - "8"
+node_js: 
+  - lts/argon
+  - lts/boron
+  - lts/carbon
