@@ -5,8 +5,8 @@
  * @param ...
  */
 function Mime() {
-  this._types = Object.create(null);
-  this._extensions = Object.create(null);
+  this._types = new Map();
+  this._extensions = new Map();
 
   for (var i = 0; i < arguments.length; i++) {
     this.define(arguments[i]);
@@ -40,26 +40,26 @@ Mime.prototype.define = function(typeMap, force) {
 
       // '*' prefix = not the preferred type for this extension.  So fixup the
       // extension, and skip it.
-      if (ext[0] == '*') {
+      if (ext[0] === '*') {
         extensions[i] = ext.substr(1);
         continue;
       }
 
-      if (!force && (ext in this._types)) {
+      if (!force && this._types.has(ext)) {
         throw new Error(
           'Attempt to change mapping for "' + ext +
-          '" extension from "' + this._types[ext] + '" to "' + type +
+          '" extension from "' + this._types.get(ext) + '" to "' + type +
           '". Pass `force=true` to allow this, otherwise remove "' + ext +
           '" from the list of extensions for "' + type + '".'
         );
       }
 
-      this._types[ext] = type;
+      this._types.set(ext, type);
     }
 
     // Use first extension as default
-    if (force || !this._extensions[type]) {
-      this._extensions[type] = extensions[0];
+    if (force || !this._extensions.has(type)) {
+      this._extensions.set(type, extensions[0]);
     }
   }
 };
@@ -75,7 +75,7 @@ Mime.prototype.getType = function(path) {
   var hasPath = last.length < path.length;
   var hasDot = ext.length < last.length - 1;
 
-  return (hasDot || !hasPath) && this._types[ext] || null;
+  return (hasDot || !hasPath) && this._types.get(ext) || null;
 };
 
 /**
@@ -83,7 +83,7 @@ Mime.prototype.getType = function(path) {
  */
 Mime.prototype.getExtension = function(type) {
   type = /^\s*([^;\s]*)/.test(type) && RegExp.$1;
-  return type && this._extensions[type.toLowerCase()] || null;
+  return type && this._extensions.get(type.toLowerCase()) || null;
 };
 
 module.exports = Mime;
