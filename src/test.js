@@ -6,6 +6,12 @@ var assert = require('assert');
 var chalk = require('chalk');
 
 describe('class Mime', function() {
+  it('mime and mime/lite coexist', function() {
+    assert.doesNotThrow(function() {
+      require('../lite');
+    });
+  });
+
   it('new constructor()', function() {
     var Mime = require('../Mime');
 
