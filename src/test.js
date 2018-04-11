@@ -5,6 +5,8 @@ var mimeTypes = require('../node_modules/mime-types');
 var assert = require('assert');
 var chalk = require('chalk');
 
+const typeMapEqual = (typeMap, obj) => assert.deepEqual([...typeMap], Object.entries(obj));
+
 describe('class Mime', function() {
   it('new constructor()', function() {
     var Mime = require('../Mime');
@@ -14,14 +16,14 @@ describe('class Mime', function() {
       {'text/b': ['b', 'b1']}
     );
 
-    assert.deepEqual(mime._types, {
+    typeMapEqual(mime._types, {
       a: 'text/a',
       a1: 'text/a',
       b: 'text/b',
       b1: 'text/b',
     });
 
-    assert.deepEqual(mime._extensions, {
+    typeMapEqual(mime._extensions, {
       'text/a': 'a',
       'text/b': 'b',
     });
@@ -40,12 +42,12 @@ describe('class Mime', function() {
       mime.define({'text/c': ['b']}, true);
     });
 
-    assert.deepEqual(mime._types, {
+    typeMapEqual(mime._types, {
       a: 'text/a',
       b: 'text/c',
     });
 
-    assert.deepEqual(mime._extensions, {
+    typeMapEqual(mime._extensions, {
       'text/a': 'a',
       'text/b': 'b',
       'text/c': 'b',
@@ -60,11 +62,11 @@ describe('class Mime', function() {
       {'text/b': ['b']}
     );
 
-    assert.deepEqual(mime._types, {
+    typeMapEqual(mime._types, {
       b: 'text/b',
     });
 
-    assert.deepEqual(mime._extensions, {
+    typeMapEqual(mime._extensions, {
       'text/a': 'b',
       'text/b': 'b',
     });
@@ -234,8 +236,8 @@ describe('DB', function() {
     assert.equal(mime.getExtension('text/html; charset=UTF-8'), 'html');
     assert.equal(mime.getExtension('text/html; charset=UTF-8 '), 'html');
     assert.equal(mime.getExtension('text/html ; charset=UTF-8'), 'html');
-    assert.equal(mime.getExtension(mime._types.text), 'txt');
-    assert.equal(mime.getExtension(mime._types.htm), 'html');
+    assert.equal(mime.getExtension(mime._types.get('text')), 'txt');
+    assert.equal(mime.getExtension(mime._types.get('htm')), 'html');
     assert.equal(mime.getExtension('application/octet-stream'), 'bin');
     assert.equal(mime.getExtension('application/octet-stream '), 'bin');
     assert.equal(mime.getExtension(' text/html; charset=UTF-8'), 'html');
