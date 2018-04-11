@@ -41,7 +41,6 @@ Mime.prototype.define = function(typeMap, force) {
       // '*' prefix = not the preferred type for this extension.  So fixup the
       // extension, and skip it.
       if (ext[0] == '*') {
-        extensions[i] = ext.substr(1);
         continue;
       }
 
@@ -59,7 +58,8 @@ Mime.prototype.define = function(typeMap, force) {
 
     // Use first extension as default
     if (force || !this._extensions[type]) {
-      this._extensions[type] = extensions[0];
+      var ext = extensions[0];
+      this._extensions[type] = (ext[0] != '*') ? ext : ext.substr(1)
     }
   }
 };
