@@ -5,7 +5,7 @@
     "email": "robert@broofa.com"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=4.0.0"
   },
   "bin": {
     "mime": "cli.js"
@@ -39,5 +39,5 @@
     "url": "https://github.com/broofa/node-mime",
     "type": "git"
   },
-  "version": "2.2.2"
+  "version": "2.3.0"
 }
