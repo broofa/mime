@@ -5,6 +5,8 @@ runmd.onRequire = path => path.replace(/^mime/, '..');
 
 A comprehensive, compact MIME type module.
 
+[![Build Status](https://travis-ci.org/broofa/node-mime.svg?branch=master)](https://travis-ci.org/broofa/node-mime)
+
 ## Version 2 Notes
 
 Version 2 is a breaking change from 1.x as the semver implies.  Specifically:
