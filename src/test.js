@@ -255,3 +255,8 @@ describe('DB', function() {
     assert.equal(mime.getExtension('text/xml'), 'xml'); // See #180
   });
 });
+
+describe('Bound functions', function() {
+  const {getType} = require('..');
+  assert.equal(getType('hello.txt'), 'text/plain');
+});

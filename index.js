@@ -1,4 +1,7 @@
 'use strict';
 
 var Mime = require('./Mime');
-module.exports = new Mime(require('./types/standard'), require('./types/other'));
+var standardTypes = require('./types/standard');
+var otherTypes = require('./types/other');
+
+module.exports = Mime(standardTypes, otherTypes);
