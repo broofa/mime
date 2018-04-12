@@ -11,6 +11,10 @@ function Mime() {
   for (var i = 0; i < arguments.length; i++) {
     this.define(arguments[i]);
   }
+
+  this.define = this.define.bind(this);
+  this.getType = this.getType.bind(this);
+  this.getExtension = this.getExtension.bind(this);
 }
 
 /**
