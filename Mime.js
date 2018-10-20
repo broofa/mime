@@ -72,6 +72,7 @@ Mime.prototype.define = function(typeMap, force) {
  * Lookup a mime type based on extension
  */
 Mime.prototype.getType = function(path) {
+  var error="Null DT";
   path = String(path);
   var last = path.replace(/^.*[/\\]/, '').toLowerCase();
   var ext = last.replace(/^.*\./, '').toLowerCase();
@@ -79,8 +80,10 @@ Mime.prototype.getType = function(path) {
   var hasPath = last.length < path.length;
   var hasDot = ext.length < last.length - 1;
 
-  return (hasDot || !hasPath) && this._types[ext] || null;
+  return (hasDot || !hasPath) && this._types[ext]||error;
 };
+
+
 
 /**
  * Return file extension associated with a mime type
