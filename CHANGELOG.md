@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/broofa/node-mime/compare/v2.3.1...v2.4.0) (2018-11-26)
+
+
+### Features
+
+* Bind exported methods ([9d2a7b8](https://github.com/broofa/node-mime/commit/9d2a7b8))
+* update to mime-db@1.37.0 ([49e6e41](https://github.com/broofa/node-mime/commit/49e6e41))
+
+
+
 <a name="2.3.1"></a>
 ## [2.3.1](https://github.com/broofa/node-mime/compare/v2.3.0...v2.3.1) (2018-04-11)
 
