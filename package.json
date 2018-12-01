@@ -40,5 +40,6 @@
     "type": "git"
   },
   "version": "2.4.0",
+  "typings": "index.d.ts",
   "module": "index.es.js"
 }
