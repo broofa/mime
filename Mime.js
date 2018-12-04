@@ -86,8 +86,7 @@ Mime.prototype.getType = function(path) {
  * Return file extension associated with a mime type
  */
 Mime.prototype.getExtension = function(type) {
-  type = /^\s*([^;\s]*)/.test(type) && RegExp.$1;
-  return type && this._extensions[type.toLowerCase()] || null;
+  return type && this._extensions[type.trim().toLowerCase()] || null;
 };
 
 module.exports = Mime;
