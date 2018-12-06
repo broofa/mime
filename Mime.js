@@ -18,7 +18,7 @@ function Mime() {
 }
 
 /**
- * Define mimetype -> xtension mappings.  Each key is a mime-type that maps
+ * Define mimetype -> extension mappings.  Each key is a mime-type that maps
  * to an array of extensions associated with the type.  The first extension is
  * used as the default extension for the type.
  *
