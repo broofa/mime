@@ -20,7 +20,7 @@
     "eslint": "^5.9.0",
     "mime-db": "^1.37.0",
     "mime-score": "1.0.1",
-    "mime-types": "2.1.15",
+    "mime-types": "^2.1.21",
     "mocha": "5.2.0",
     "runmd": "1.0.1",
     "standard-version": "^4.4.0"
