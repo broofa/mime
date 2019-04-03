@@ -76,6 +76,24 @@ describe('class Mime', function() {
     });
   });
 
+  it ('case-insensitive', function() {
+    var Mime = require('../Mime');
+    const mime = new Mime({
+      'TEXT/UPPER': ['UP'],
+      'text/lower': ['low'],
+    });
+
+    assert.equal(mime.getType('test.up'), 'text/upper');
+    assert.equal(mime.getType('test.UP'), 'text/upper');
+    assert.equal(mime.getType('test.low'), 'text/lower');
+    assert.equal(mime.getType('test.LOW'), 'text/lower');
+
+    assert.equal(mime.getExtension('text/upper'), 'up');
+    assert.equal(mime.getExtension('text/lower'), 'low');
+    assert.equal(mime.getExtension('TEXT/UPPER'), 'up');
+    assert.equal(mime.getExtension('TEXT/LOWER'), 'low');
+  });
+
   it('getType()', function() {
     // Upper/lower case
     assert.equal(mime.getType('text.txt'), 'text/plain');

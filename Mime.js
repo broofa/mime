@@ -38,7 +38,9 @@ function Mime() {
  */
 Mime.prototype.define = function(typeMap, force) {
   for (var type in typeMap) {
-    var extensions = typeMap[type];
+    var extensions = typeMap[type].map(t => t.toLowerCase());
+    type = type.toLowerCase();
+
     for (var i = 0; i < extensions.length; i++) {
       var ext = extensions[i];
 

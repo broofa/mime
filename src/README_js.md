@@ -98,6 +98,9 @@ Module | Size
 Both `require('mime')` and `require('mime/lite')` return instances of the MIME
 class, documented below.
 
+Note: Inputs to this API are case-insensitive.  Outputs (returned values) will
+be lowercase.
+
 ### new Mime(typeMap, ... more maps)
 
 Most users of this module will not need to create Mime instances directly.
