@@ -15,15 +15,15 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "benchmark": "^2.1.4",
-    "chalk": "2.4.2",
-    "eslint": "5.16.0",
-    "mime-db": "1.38.0",
-    "mime-score": "1.1.2",
-    "mime-types": "2.1.22",
-    "mocha": "6.0.2",
-    "runmd": "1.2.1",
-    "standard-version": "5.0.2"
+    "benchmark": "*",
+    "chalk": "*",
+    "eslint": "*",
+    "mime-db": "1.40.0",
+    "mime-score": "*",
+    "mime-types": "2.1.24",
+    "mocha": "6.1.4",
+    "runmd": "*",
+    "standard-version": "6.0.1"
   },
   "scripts": {
     "prepare": "node src/build.js && runmd --output README.md src/README_js.md",
