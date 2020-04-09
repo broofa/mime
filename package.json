@@ -23,7 +23,9 @@
     "mime-types": "2.1.28",
     "mocha": "7.2.0",
     "runmd": "*",
-    "standard-version": "9.1.0"
+    "standard-version": "9.1.0",
+    "rollup": "*",
+    "@rollup/plugin-commonjs": "*"
   },
   "files": [
     "index.js",
@@ -34,6 +36,7 @@
   ],
   "scripts": {
     "prepare": "node src/build.js && runmd --output README.md src/README_js.md",
+    "build": "rollup -c",
     "release": "standard-version",
     "benchmark": "node src/benchmark.js",
     "md": "runmd --watch --output README.md src/README_js.md",
@@ -48,5 +51,8 @@
     "url": "https://github.com/broofa/mime",
     "type": "git"
   },
-  "version": "2.5.2"
+  "version": "2.5.2",
+  "type": "commonjs",
+  "main": "./index.js",
+  "module": "./dist/mime.mjs"
 }

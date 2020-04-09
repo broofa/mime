@@ -54,6 +54,16 @@ mime.getType('txt');                    // RESULT
 mime.getExtension('text/plain');        // RESULT
 ```
 
+### Alternative ESM style
+
+```javascript --run default_esm
+import mime from 'mime';
+
+mime.getType('txt');                    // RESULT
+mime.getExtension('text/plain');        // RESULT
+```
+
+
 See [Mime API](#mime-api) below for API details.
 
 ## Lite Version
