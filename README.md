@@ -52,7 +52,6 @@ const mime = require('mime');
 
 mime.getType('txt');                    // ⇨ 'text/plain'
 mime.getExtension('text/plain');        // ⇨ 'txt'
-
 ```
 
 See [Mime API](#mime-api) below for API details.
@@ -122,7 +121,6 @@ const typeMap = {
 const myMime = new Mime(typeMap);
 myMime.getType('abc');            // ⇨ 'text/abc'
 myMime.getExtension('text/def');  // ⇨ 'leppard'
-
 ```
 
 If more than one map argument is provided, each map is `define()`ed (see below), in order.
@@ -140,7 +138,6 @@ mime.getType('dir/text.txt');   // ⇨ 'text/plain'
 mime.getType('dir\\text.txt');  // ⇨ 'text/plain'
 mime.getType('.text.txt');      // ⇨ 'text/plain'
 mime.getType('.txt');           // ⇨ 'text/plain'
-
 ```
 
 `null` is returned in cases where an extension is not detected or recognized
@@ -148,7 +145,6 @@ mime.getType('.txt');           // ⇨ 'text/plain'
 ```javascript
 mime.getType('foo/txt');        // ⇨ null
 mime.getType('bogus_type');     // ⇨ null
-
 ```
 
 ### mime.getExtension(type)
@@ -159,7 +155,6 @@ Content-Type headers) are ignored.
 mime.getExtension('text/plain');               // ⇨ 'txt'
 mime.getExtension('application/json');         // ⇨ 'json'
 mime.getExtension('text/html; charset=utf8');  // ⇨ 'html'
-
 ```
 
 ### mime.define(typeMap[, force = false])
@@ -177,7 +172,6 @@ mime.define({'text/x-abc': ['abc', 'abcd']});
 
 mime.getType('abcd');            // ⇨ 'text/x-abc'
 mime.getExtension('text/x-abc')  // ⇨ 'abc'
-
 ```
 
 ## Command Line
