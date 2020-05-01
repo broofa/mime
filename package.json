@@ -25,6 +25,12 @@
     "runmd": "*",
     "standard-version": "7.1.0"
   },
+  "files": [
+    "index.js",
+    "lite.js",
+    "Mime.js",
+    "/types"
+  ],
   "scripts": {
     "prepare": "node src/build.js && runmd --output README.md src/README_js.md",
     "release": "standard-version",
