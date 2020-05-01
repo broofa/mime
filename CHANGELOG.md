@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.5](https://github.com/broofa/node-mime/compare/v2.4.4...v2.4.5) (2020-05-01)
+
+
+### Bug Fixes
+
+* fix [#236](https://github.com/broofa/node-mime/issues/236) ([7f4ecd0](https://github.com/broofa/node-mime/commit/7f4ecd0d850ed22c9e3bfda2c11fc74e4dde12a7))
+* update to latest mime-db ([c5cb3f2](https://github.com/broofa/node-mime/commit/c5cb3f2ab8b07642a066efbde1142af1b90c927b))
+
 ### [2.4.4](https://github.com/broofa/node-mime/compare/v2.4.3...v2.4.4) (2019-06-07)
 
 
