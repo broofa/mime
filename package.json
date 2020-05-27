@@ -29,6 +29,7 @@
     "index.js",
     "lite.js",
     "Mime.js",
+    "cli.js",
     "/types"
   ],
   "scripts": {
