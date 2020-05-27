@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* cli.js was missing ([#237](https://github.com/broofa/mime/issues/237)) ([6c070bc](https://github.com/broofa/mime/commit/6c070bc298fa12a48e2ed126fbb9de641a1e7ebc))
+* add cli.js to package.json files ([#237](https://github.com/broofa/mime/issues/237)) ([6c070bc](https://github.com/broofa/mime/commit/6c070bc298fa12a48e2ed126fbb9de641a1e7ebc))
 
 ### [2.4.5](https://github.com/broofa/mime/compare/v2.4.4...v2.4.5) (2020-05-01)
 
@@ -21,11 +21,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-## [2.4.3](https://github.com/broofa/mime/compare/v2.4.2...v2.4.3) (2019-05-15)
+### [2.4.3](https://github.com/broofa/mime/compare/v2.4.2...v2.4.3) (2019-05-15)
 
 
 
-## [2.4.2](https://github.com/broofa/mime/compare/v2.4.1...v2.4.2) (2019-04-07)
+### [2.4.2](https://github.com/broofa/mime/compare/v2.4.1...v2.4.2) (2019-04-07)
 
 
 ### Bug Fixes
@@ -34,7 +34,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-## [2.4.1](https://github.com/broofa/mime/compare/v2.4.0...v2.4.1) (2019-04-03)
+### [2.4.1](https://github.com/broofa/mime/compare/v2.4.0...v2.4.1) (2019-04-03)
 
 
 ### Bug Fixes
@@ -43,7 +43,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="2.4.0"></a>
 # [2.4.0](https://github.com/broofa/mime/compare/v2.3.1...v2.4.0) (2018-11-26)
 
 
@@ -54,8 +53,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="2.3.1"></a>
-## [2.3.1](https://github.com/broofa/mime/compare/v2.3.0...v2.3.1) (2018-04-11)
+### [2.3.1](https://github.com/broofa/mime/compare/v2.3.0...v2.3.1) (2018-04-11)
 
 
 ### Bug Fixes
@@ -64,7 +62,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="2.3.0"></a>
 # [2.3.0](https://github.com/broofa/mime/compare/v2.2.2...v2.3.0) (2018-04-11)
 
 
@@ -79,8 +76,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="2.2.2"></a>
-## [2.2.2](https://github.com/broofa/mime/compare/v2.2.1...v2.2.2) (2018-03-30)
+### [2.2.2](https://github.com/broofa/mime/compare/v2.2.1...v2.2.2) (2018-03-30)
 
 
 ### Bug Fixes
@@ -88,9 +84,7 @@ All notable changes to this project will be documented in this file. See [standa
 * update types files to mime-db@1.32.0 ([85aac16](https://github.com/broofa/mime/commit/85aac16))
 
 
-
-<a name="2.2.1"></a>
-## [2.2.1](https://github.com/broofa/mime/compare/v2.2.0...v2.2.1) (2018-03-30)
+### [2.2.1](https://github.com/broofa/mime/compare/v2.2.0...v2.2.1) (2018-03-30)
 
 
 ### Bug Fixes
@@ -99,7 +93,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="2.2.0"></a>
 # [2.2.0](https://github.com/broofa/mime/compare/v2.1.0...v2.2.0) (2018-01-04)
 
 
@@ -109,7 +102,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="2.1.0"></a>
 # [2.1.0](https://github.com/broofa/mime/compare/v2.0.5...v2.1.0) (2017-12-22)
 
 
@@ -119,8 +111,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="2.0.5"></a>
-## [2.0.5](https://github.com/broofa/mime/compare/v2.0.1...v2.0.5) (2017-12-22)
+### [2.0.5](https://github.com/broofa/mime/compare/v2.0.1...v2.0.5) (2017-12-22)
 
 
 ### Bug Fixes
@@ -131,7 +122,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 # Changelog
 
-## v2.0.4 (24/11/2017)
+### v2.0.4 (24/11/2017)
 - [**closed**] Switch to mime-score module for resolving extension contention issues. [#182](https://github.com/broofa/mime/issues/182)
 - [**closed**] Update mime-db to 1.31.0 in v1.x branch [#181](https://github.com/broofa/mime/issues/181)
 
@@ -146,17 +137,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ---
 
-## v2.0.3 (25/09/2017)
+### v2.0.3 (25/09/2017)
 *No changelog for this release.*
 
 ---
 
-## v1.4.1 (25/09/2017)
+### v1.4.1 (25/09/2017)
 - [**closed**] Issue when bundling with webpack [#172](https://github.com/broofa/mime/issues/172)
 
 ---
 
-## v2.0.2 (15/09/2017)
+### v2.0.2 (15/09/2017)
 - [**V2**] fs.readFileSync is not a function [#165](https://github.com/broofa/mime/issues/165)
 - [**closed**] The extension for video/quicktime should map to .mov, not .qt [#164](https://github.com/broofa/mime/issues/164)
 - [**V2**] [v2 Feedback request] Mime class API [#163](https://github.com/broofa/mime/issues/163)
@@ -170,7 +161,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ---
 
-## v2.0.1 (14/09/2017)
+### v2.0.1 (14/09/2017)
 - [**closed**] Changelog for v2.0 does not mention breaking changes [#171](https://github.com/broofa/mime/issues/171)
 - [**closed**] MIME breaking with 'class' declaration as it is without 'use strict mode' [#170](https://github.com/broofa/mime/issues/170)
 
@@ -197,7 +188,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ---
 
-## v1.3.6 (11/05/2017)
+### v1.3.6 (11/05/2017)
 - [**closed**] .md should be text/markdown as of March 2016 [#154](https://github.com/broofa/mime/issues/154)
 - [**closed**] Error while installing mime [#153](https://github.com/broofa/mime/issues/153)
 - [**closed**] application/manifest+json [#149](https://github.com/broofa/mime/issues/149)
@@ -211,17 +202,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ---
 
-## v1.3.4 (06/02/2015)
+### v1.3.4 (06/02/2015)
 *No changelog for this release.*
 
 ---
 
-## v1.3.3 (06/02/2015)
+### v1.3.3 (06/02/2015)
 *No changelog for this release.*
 
 ---
 
-## v1.3.1 (05/02/2015)
+### v1.3.1 (05/02/2015)
 - [**closed**] Consider adding support for Handlebars .hbs file ending [#111](https://github.com/broofa/mime/issues/111)
 - [**closed**] Consider adding support for hjson. [#110](https://github.com/broofa/mime/issues/110)
 - [**closed**] Add mime type for Opus audio files [#94](https://github.com/broofa/mime/issues/94)
@@ -243,7 +234,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ---
 
-## v1.2.11 (15/08/2013)
+### v1.2.11 (15/08/2013)
 - [**closed**] Update mime.types [#65](https://github.com/broofa/mime/issues/65)
 - [**closed**] Publish a new version [#63](https://github.com/broofa/mime/issues/63)
 - [**closed**] README should state upfront that "application/octet-stream" is default for unknown extension [#55](https://github.com/broofa/mime/issues/55)
@@ -251,26 +242,26 @@ All notable changes to this project will be documented in this file. See [standa
 
 ---
 
-## v1.2.10 (25/07/2013)
+### v1.2.10 (25/07/2013)
 - [**closed**] Mime type for woff files should be application/font-woff and not application/x-font-woff [#62](https://github.com/broofa/mime/issues/62)
 - [**closed**] node.types in conflict with mime.types [#51](https://github.com/broofa/mime/issues/51)
 
 ---
 
-## v1.2.9 (17/01/2013)
+### v1.2.9 (17/01/2013)
 - [**closed**] Please update "mime" NPM [#49](https://github.com/broofa/mime/issues/49)
 - [**closed**] Please add semicolon [#46](https://github.com/broofa/mime/issues/46)
 - [**closed**] parse full mime types [#43](https://github.com/broofa/mime/issues/43)
 
 ---
 
-## v1.2.8 (10/01/2013)
+### v1.2.8 (10/01/2013)
 - [**closed**] /js directory mime is application/javascript. Is it correct? [#47](https://github.com/broofa/mime/issues/47)
 - [**closed**] Add mime types for lua code. [#45](https://github.com/broofa/mime/issues/45)
 
 ---
 
-## v1.2.7 (19/10/2012)
+### v1.2.7 (19/10/2012)
 - [**closed**] cannot install 1.2.7 via npm [#41](https://github.com/broofa/mime/issues/41)
 - [**closed**] Transfer ownership to @broofa [#36](https://github.com/broofa/mime/issues/36)
 - [**closed**] it's wrong to set charset to UTF-8 for text [#30](https://github.com/broofa/mime/issues/30)
