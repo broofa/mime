@@ -23,7 +23,7 @@
     "mime-types": "2.1.27",
     "mocha": "7.1.2",
     "runmd": "*",
-    "standard-version": "7.1.0"
+    "standard-version": "8.0.1"
   },
   "files": [
     "index.js",
