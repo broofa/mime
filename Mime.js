@@ -38,6 +38,9 @@ function Mime() {
  */
 Mime.prototype.define = function(typeMap, force) {
   for (var type in typeMap) {
+    if (!typeMap.hasOwnProperty(type)) {
+      continue;
+    }
     var extensions = typeMap[type].map(function(t) {return t.toLowerCase()});
     type = type.toLowerCase();
 
