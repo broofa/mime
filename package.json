@@ -18,7 +18,7 @@
     "benchmark": "*",
     "chalk": "*",
     "eslint": "*",
-    "mime-db": "1.44.0",
+    "mime-db": "1.45.0",
     "mime-score": "1.2.0",
     "mime-types": "2.1.27",
     "mocha": "7.1.2",
