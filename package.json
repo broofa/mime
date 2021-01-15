@@ -16,14 +16,14 @@
   "dependencies": {},
   "devDependencies": {
     "benchmark": "*",
-    "chalk": "*",
-    "eslint": "*",
-    "mime-db": "1.44.0",
+    "chalk": "4.1.0",
+    "eslint": "7.15.0",
+    "mime-db": "1.45.0",
     "mime-score": "1.2.0",
     "mime-types": "2.1.27",
-    "mocha": "7.1.2",
+    "mocha": "8.2.1",
     "runmd": "*",
-    "standard-version": "7.1.0"
+    "standard-version": "9.0.0"
   },
   "files": [
     "index.js",
@@ -48,5 +48,5 @@
     "url": "https://github.com/broofa/mime",
     "type": "git"
   },
-  "version": "2.4.6"
+  "version": "2.4.7"
 }

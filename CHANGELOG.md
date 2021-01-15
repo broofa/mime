@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.7](https://github.com/broofa/mime/compare/v2.4.6...v2.4.7) (2020-12-16)
+
+
+### Bug Fixes
+
+* update to latest mime-db ([43b09ef](https://github.com/broofa/mime/commit/43b09eff0233eacc449af2b1f99a19ba9e104a44))
+
 ### [2.4.6](https://github.com/broofa/mime/compare/v2.4.5...v2.4.6) (2020-05-27)
 
 
