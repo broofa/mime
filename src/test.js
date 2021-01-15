@@ -1,9 +1,10 @@
 'use strict';
 
-var mime = require('..');
-var mimeTypes = require('../node_modules/mime-types');
-var assert = require('assert');
-var chalk = require('chalk');
+const mime = require('..');
+const mimeTypes = require('../node_modules/mime-types');
+const assert = require('assert');
+const chalk = require('chalk');
+const {exec} = require('child_process');
 
 describe('class Mime', function() {
   it('mime and mime/lite coexist', function() {
@@ -291,3 +292,14 @@ describe('DB', function() {
     assert.equal(mime.getExtension('text/xml'), 'xml'); // See #180
   });
 });
+
+describe('mime CLI', function() {
+  it('returns type', function(done) {
+    exec('./cli.js mpeg', (err, stdout, stderr) => {
+      if (err) done(err);
+      assert.equal(stdout, `video/mpeg\n`);
+      done();
+    });
+  });
+});
+
