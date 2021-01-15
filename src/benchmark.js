@@ -1,3 +1,5 @@
+'use strict';
+
 const Benchmark = require('benchmark');
 const mime = require('..');
 const mimeLite = require('../lite');

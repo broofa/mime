@@ -14,9 +14,9 @@ describe('class Mime', function() {
   });
 
   it('new constructor()', function() {
-    var Mime = require('../Mime');
+    let Mime = require('../Mime');
 
-    var mime = new Mime(
+    let mime = new Mime(
       {'text/a': ['a', 'a1']},
       {'text/b': ['b', 'b1']}
     );
@@ -35,9 +35,9 @@ describe('class Mime', function() {
   });
 
   it('define()', function() {
-    var Mime = require('../Mime');
+    let Mime = require('../Mime');
 
-    var mime = new Mime({'text/a': ['a']}, {'text/b': ['b']});
+    let mime = new Mime({'text/a': ['a']}, {'text/b': ['b']});
 
     assert.throws(function() {
       mime.define({'text/c': ['b']});
@@ -60,9 +60,9 @@ describe('class Mime', function() {
   });
 
   it('define() *\'ed types', function() {
-    var Mime = require('../Mime');
+    let Mime = require('../Mime');
 
-    var mime = new Mime(
+    let mime = new Mime(
       {'text/a': ['*b']},
       {'text/b': ['b']}
     );
@@ -78,7 +78,7 @@ describe('class Mime', function() {
   });
 
   it ('case-insensitive', function() {
-    var Mime = require('../Mime');
+    let Mime = require('../Mime');
     const mime = new Mime({
       'TEXT/UPPER': ['UP'],
       'text/lower': ['low'],
@@ -147,7 +147,7 @@ describe('class Mime', function() {
 });
 
 describe('DB', function() {
-  var diffs = [];
+  let diffs = [];
 
   after(function() {
     if (diffs.length) {
@@ -162,14 +162,14 @@ describe('DB', function() {
   });
 
   it('Consistency', function() {
-    for (var ext in this.types) {
+    for (let ext in this.types) {
       assert.equal(ext, this.extensions[this.types[ext]], '${ext} does not have consistent ext->type->ext mapping');
     }
   });
 
   it('MDN types', function() {
     // MDN types listed at https://goo.gl/lHrFU6
-    var MDN = {
+    let MDN = {
       aac: 'audio/aac',
       abw: 'application/x-abiword',
       arc: 'application/x-freearc',
@@ -246,15 +246,15 @@ describe('DB', function() {
       '7z': 'application/x-7z-compressed',
     };
 
-    for (var ext in MDN) {
-      var expected = MDN[ext];
-      var actual = mime.getType(ext);
+    for (let ext in MDN) {
+      let expected = MDN[ext];
+      let actual = mime.getType(ext);
       if (actual !== expected) diffs.push(['MDN', ext, expected, actual]);
     }
 
-    for (var ext in mimeTypes.types) {
-      var expected = mimeTypes.types[ext];
-      var actual = mime.getType(ext);
+    for (let ext in mimeTypes.types) {
+      let expected = mimeTypes.types[ext];
+      let actual = mime.getType(ext);
       if (actual !== expected) diffs.push(['mime-types', ext, expected, actual]);
     }
   });
@@ -297,7 +297,7 @@ describe('mime CLI', function() {
   it('returns type', function(done) {
     exec('./cli.js mpeg', (err, stdout, stderr) => {
       if (err) done(err);
-      assert.equal(stdout, `video/mpeg\n`);
+      assert.equal(stdout, 'video/mpeg\n');
       done();
     });
   });
