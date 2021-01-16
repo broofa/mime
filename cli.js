@@ -3,19 +3,17 @@
 'use strict';
 
 process.title = 'mime';
-var mime = require('.');
-var pkg = require('./package.json');
-var args = process.argv.splice(2);
+let mime = require('.');
+let pkg = require('./package.json');
+let args = process.argv.splice(2);
 
 if (args.includes('--version') || args.includes('-v') || args.includes('--v')) {
   console.log(pkg.version);
   process.exit(0);
-}
-else if (args.includes('--name') || args.includes('-n') || args.includes('--n')) {
+} else if (args.includes('--name') || args.includes('-n') || args.includes('--n')) {
   console.log(pkg.name);
   process.exit(0);
-}
-else if (args.includes('--help') || args.includes('-h') || args.includes('--h')) {
+} else if (args.includes('--help') || args.includes('-h') || args.includes('--h')) {
   console.log(pkg.name + ' - ' + pkg.description + '\n');
   console.log(`Usage:
 
@@ -41,8 +39,8 @@ else if (args.includes('--help') || args.includes('-h') || args.includes('--h'))
   process.exit(0);
 }
 
-var file = args[0];
-var type = mime.getType(file);
+let file = args[0];
+let type = mime.getType(file);
 
 process.stdout.write(type + '\n');
 

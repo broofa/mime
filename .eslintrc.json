@@ -9,6 +9,7 @@
     "node": true,
     "mocha": true
   },
+  "ignorePatterns": ["types/"],
   "extends": ["eslint:recommended"],
   "rules": {
     "array-bracket-spacing": ["warn", "never"],
@@ -37,6 +38,7 @@
     "no-undef": "error",
     "no-unused-vars": ["warn", {"args": "none"}],
     "one-var": ["warn", "never"],
+    "no-var": "warn",
     "padded-blocks": ["warn", "never"],
     "object-curly-spacing": ["warn", "never"],
     "quotes": ["warn", "single"],

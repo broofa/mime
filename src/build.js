@@ -2,29 +2,29 @@
 
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var mimeScore = require('mime-score');
+let fs = require('fs');
+let path = require('path');
+let mimeScore = require('mime-score');
 
-var db = require('mime-db');
-var chalk = require('chalk');
+let db = require('mime-db');
+let chalk = require('chalk');
 
-var STANDARD_FACET_SCORE = 900;
+let STANDARD_FACET_SCORE = 900;
 
-var byExtension = {};
+let byExtension = {};
 
 // Clear out any conflict extensions in mime-db
-for (var type in db) {
-  var entry = db[type];
+for (let type in db) {
+  const entry = db[type];
   entry.type = type;
   if (!entry.extensions) continue;
 
   entry.extensions.forEach(function(ext) {
-    var drop;
-    var keep = entry;
+    let drop;
+    let keep = entry;
     if (ext in byExtension) {
-      var e0 = entry;
-      var e1 = byExtension[ext];
+      let e0 = entry;
+      let e1 = byExtension[ext];
 
       e0.pri = mimeScore(e0.type, e0.source);
       e1.pri = mimeScore(e1.type, e1.source);
@@ -33,7 +33,9 @@ for (var type in db) {
       keep = e0.pri >= e1.pri ? e0 : e1;
 
       // Prefix lower-priority extensions with '*'
-      drop.extensions = drop.extensions.map(function(e) {return e == ext ? '*' + e : e});
+      drop.extensions = drop.extensions.map(function(e) {
+        return e === ext ? '*' + e : e;
+      });
 
       console.log(
         ext + ': Preferring ' + chalk.green(keep.type) + ' (' + keep.pri +
@@ -42,7 +44,7 @@ for (var type in db) {
     }
 
     // Cache the hightest ranking type for this extension
-    if (keep == entry) byExtension[ext] = entry;
+    if (keep === entry) byExtension[ext] = entry;
   });
 }
 
@@ -52,11 +54,11 @@ function writeTypesFile(types, path) {
 
 // Segregate into standard and non-standard types based on facet per
 // https://tools.ietf.org/html/rfc6838#section-3.1
-var standard = {};
-var other = {};
+let standard = {};
+let other = {};
 
 Object.keys(db).sort().forEach(function(k) {
-  var entry = db[k];
+  let entry = db[k];
 
   if (entry.extensions) {
     if (mimeScore(entry.type, entry.source) >= STANDARD_FACET_SCORE) {

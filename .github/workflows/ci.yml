@@ -1,10 +1,7 @@
-name: Node.js CI
+name: Mime CI
 
 on:
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+  [push]
 
 jobs:
   build:
