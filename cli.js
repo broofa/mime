@@ -40,8 +40,8 @@ if (args.includes('--version') || args.includes('-v') || args.includes('--v')) {
   `);
   process.exit(0);
 } else if (args.includes('--reverse') || args.includes('-r') || args.includes('--r')) {
-  let mime = args[0];
-  let extension = mime.getExtension(mime);
+  let mimeType = args[0];
+  let extension = mime.getExtension(mimeType);
   process.stdout.write(extension + '\n');
   process.exit(0);
 }
