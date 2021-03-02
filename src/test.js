@@ -301,5 +301,12 @@ describe('mime CLI', function() {
       done();
     });
   });
+  it('returns extension', function(done) {
+    exec('./cli.js -r video/mpeg', (err, stdout, stderr) => {
+      if (err) done(err);
+      assert.equal(stdout, 'mpeg\n');
+      done();
+    });
+  });
 });
 
