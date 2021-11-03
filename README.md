@@ -7,16 +7,6 @@ A comprehensive, compact MIME type module.
 
 [![Build Status](https://travis-ci.org/broofa/mime.svg?branch=master)](https://travis-ci.org/broofa/mime)
 
-## Version 2 Notes
-
-Version 2 is a breaking change from 1.x as the semver implies.  Specifically:
-
-* `lookup()` renamed to `getType()`
-* `extension()` renamed to `getExtension()`
-* `charset()` and `load()` methods have been removed
-
-If you prefer the legacy version of this module please `npm install mime@^1`.  Version 1 docs may be found [here](https://github.com/broofa/mime/tree/v1.4.0).
-
 ## Install
 
 ### NPM
@@ -28,20 +18,21 @@ npm install mime
 
 It is recommended that you use a bundler such as
 [webpack](https://webpack.github.io/) or [browserify](http://browserify.org/) to
-package your code.  However, browser-ready versions are available via wzrd.in.
-E.g. For the full version:
+package your code.  However, browser-ready versions are available via
+skypack.dev as follows:
+```
+// Full version
+<script type="module">
+import mime from "https://cdn.skypack.dev/mime";
+</script>
+```
 
-    <script src="https://wzrd.in/standalone/mime@latest"></script>
-    <script>
-    mime.getType(...); // etc.
-    </script>
-
-Or, for the `mime/lite` version:
-
-    <script src="https://wzrd.in/standalone/mime%2flite@latest"></script>
-    <script>
-    mimelite.getType(...); // (Note `mimelite` here)
-    </script>
+```
+// "lite" version
+<script type="module">
+import mime from "https://cdn.skypack.dev/mime/lite";
+</script>
+```
 
 ## Quick Start
 
@@ -58,9 +49,9 @@ See [Mime API](#mime-api) below for API details.
 
 ## Lite Version
 
-There is also a "lite" version of this module that omits vendor-specific
-(`*/vnd.*`) and experimental (`*/x-*`) types.  It weighs in at ~2.5KB, compared
-to 8KB for the full version.  To load the lite version:
+The "lite" version of this module omits vendor-specific (`*/vnd.*`) and
+experimental (`*/x-*`) types.  It weighs in at ~2.5KB, compared to 8KB for the
+full version.  To load the lite version:
 
 ```javascript
 const mime = require('mime/lite');
