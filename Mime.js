@@ -67,7 +67,7 @@ Mime.prototype.define = function(typeMap, force) {
     // Use first extension as default
     if (force || !this._extensions[type]) {
       const ext = extensions[0];
-      this._extensions[type] = (ext[0] !== '*') ? ext : ext.substr(1);
+      this._extensions[type] = (ext[0] !== '*') ? ext : ext.slice(1);
     }
   }
 };
