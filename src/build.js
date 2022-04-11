@@ -43,7 +43,7 @@ for (let type in db) {
       );
     }
 
-    // Cache the hightest ranking type for this extension
+    // Cache the highest ranking type for this extension
     if (keep === entry) byExtension[ext] = entry;
   });
 }
