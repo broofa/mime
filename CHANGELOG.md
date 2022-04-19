@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/broofa/mime/compare/v2.6.0...v3.0.0) (2021-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for node < 10.x
+
+### Bug Fixes
+
+* skypack.dev for direct browser import, fixes [#263](https://github.com/broofa/mime/issues/263) ([41db4c0](https://github.com/broofa/mime/commit/41db4c042ccf50ea7baf3d2160ea37dcca37998d))
+
+
+### update
+
+* drop support for node < 10.x ([8857363](https://github.com/broofa/mime/commit/8857363ae0446ed0229b17291cf4483cf801f0d0))
+
+## [2.6.0](https://github.com/broofa/mime/compare/v2.5.2...v2.6.0) (2021-11-02)
+
+
+### Features
+
+* mime-db@1.50.0 ([cef0cc4](https://github.com/broofa/mime/commit/cef0cc484ff6d05ff1e12b54ca3e8b856fbc14d8))
+
 ### [2.5.2](https://github.com/broofa/mime/compare/v2.5.0...v2.5.2) (2021-02-17)
 
 
