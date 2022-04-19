@@ -23,6 +23,7 @@ if (args.includes('--version') || args.includes('-v') || args.includes('--v')) {
     --help, -h                     Show this message
     --version, -v                  Display the version
     --name, -n                     Print the name of the program
+    --reverse, -r                  Print the extension of the mime type
 
   Note: the command will exit after it executes if a command is specified
   The path_or_extension is the path to the file or the extension of the file.
@@ -32,10 +33,16 @@ if (args.includes('--version') || args.includes('-v') || args.includes('--v')) {
     mime --version
     mime --name
     mime -v
+    mime --reverse application/text
     mime src/log.js
     mime new.py
     mime foo.sh
   `);
+  process.exit(0);
+} else if (args.includes('--reverse') || args.includes('-r')) {
+  let mimeType = args[args.length-1];
+  let extension = mime.getExtension(mimeType);
+  process.stdout.write(extension + '\n');
   process.exit(0);
 }
 
