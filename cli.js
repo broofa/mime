@@ -39,7 +39,7 @@ if (args.includes('--version') || args.includes('-v') || args.includes('--v')) {
     mime foo.sh
   `);
   process.exit(0);
-} else if (args.includes('--reverse') || args.includes('-r') || args.includes('--r')) {
+} else if (args.includes('--reverse') || args.includes('-r')) {
   let mimeType = args[args.length-1];
   let extension = mime.getExtension(mimeType);
   process.stdout.write(extension + '\n');
