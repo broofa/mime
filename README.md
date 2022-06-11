@@ -5,7 +5,10 @@
 
 A comprehensive, compact MIME type module.
 
-[![Build Status](https://travis-ci.org/broofa/mime.svg?branch=master)](https://travis-ci.org/broofa/mime)
+[![Mime CI](https://github.com/broofa/mime/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/broofa/mime/actions/workflows/ci.yml?query=branch%3Amain)
+[![NPM version](https://img.shields.io/npm/v/mime)](https://www.npmjs.com/package/mime)
+[![NPM downloads](https://img.shields.io/npm/dm/mime)](https://www.npmjs.com/package/mime)
+
 
 ## Install
 
