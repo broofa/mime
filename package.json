@@ -21,7 +21,7 @@
     "mime-db": "1.50.0",
     "mime-score": "1.2.0",
     "mime-types": "2.1.33",
-    "mocha": "9.1.3",
+    "mocha": "9.2.2",
     "runmd": "*",
     "standard-version": "9.3.2"
   },
