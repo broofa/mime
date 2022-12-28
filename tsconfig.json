@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "strict": true,
+    "target": "ESNext",
+  },
+  "inputs": [ "./src/**/*.ts", "./build/**/*.ts" ]
+}

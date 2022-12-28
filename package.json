@@ -4,39 +4,44 @@
     "url": "http://github.com/broofa",
     "email": "robert@broofa.com"
   },
+  "type": "module",
   "engines": {
     "node": ">=10.0.0"
   },
   "bin": {
-    "mime": "cli.js"
+    "mime": "dist/cli.js"
   },
   "contributors": [],
   "description": "A comprehensive library for mime-type mapping",
   "license": "MIT",
+  "peerDependencies": {
+    "mime-db": "1.x"
+  },
   "devDependencies": {
+    "@types/benchmark": "2.1.2",
+    "@types/jest": "^29.2.4",
+    "@types/mime-db": "^1.43.1",
+    "@types/mime-types": "^2.1.1",
+    "@types/node": "^18.11.18",
     "benchmark": "*",
     "chalk": "4.1.2",
-    "eslint": "8.29.0",
-    "mime-db": "1.52.0",
     "mime-score": "1.2.0",
     "mime-types": "2.1.35",
-    "mocha": "10.2.0",
+    "prettier": "^2.8.1",
     "runmd": "1.3.6",
-    "standard-version": "9.5.0"
+    "standard-version": "9.5.0",
+    "typescript": "^4.9.4"
   },
   "files": [
-    "index.js",
-    "lite.js",
-    "Mime.js",
-    "cli.js",
-    "/types"
+    "dist/*.js"
   ],
   "scripts": {
-    "prepare": "node src/build.js && runmd --output README.md src/README_js.md",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "prepare": "tsc",
     "release": "standard-version",
-    "benchmark": "node src/benchmark.js",
-    "md": "runmd --watch --output README.md src/README_js.md",
-    "test": "mocha src/test.js"
+    "benchmark": "node dist/benchmark.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest dist/build/test.js"
   },
   "keywords": [
     "util",
@@ -50,5 +55,8 @@
   "version": "3.0.0",
   "funding": [
     "https://github.com/sponsors/broofa"
-  ]
+  ],
+  "dependencies": {
+    "jest": "^29.3.1"
+  }
 }

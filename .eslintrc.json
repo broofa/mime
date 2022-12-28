@@ -7,7 +7,7 @@
     "browser": true,
     "commonjs": true,
     "node": true,
-    "mocha": true
+    "jest": true
   },
   "ignorePatterns": ["types/"],
   "extends": ["eslint:recommended"],

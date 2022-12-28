@@ -1,10 +1,10 @@
 'use strict';
 
-const mime = require('..');
-const mimeTypes = require('../node_modules/mime-types');
-const assert = require('assert');
-const chalk = require('chalk');
-const {exec} = require('child_process');
+import mime from '../src/index.js';
+import mimeTypes from 'mime-types';
+import assert from 'assert';
+import chalk from 'chalk';
+import {exec} from 'child_process';
 
 describe('class Mime', function() {
   it('mime and mime/lite coexist', function() {
@@ -301,7 +301,7 @@ describe('mime CLI', function() {
       done();
     });
   });
-  
+
   it('returns extension', function(done) {
     exec('./cli.js -r video/mpeg', (err, stdout, stderr) => {
       if (err) done(err);
