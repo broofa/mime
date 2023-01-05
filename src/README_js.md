@@ -42,7 +42,7 @@ import mime from "https://cdn.skypack.dev/mime/lite";
 For the full version (800+ MIME types, 1,000+ extensions):
 
 ```javascript --run default
-const mime = require('mime');
+import mime from 'mime';
 
 mime.getType('txt');                    // RESULT
 mime.getExtension('text/plain');        // RESULT
@@ -57,7 +57,7 @@ experimental (`*/x-*`) types.  It weighs in at ~2.5KB, compared to 8KB for the
 full version.  To load the lite version:
 
 ```javascript
-const mime = require('mime/lite');
+import mime from 'mime/lite';
 ```
 
 ## Mime .vs. mime-types .vs. mime-db modules
@@ -89,7 +89,7 @@ Module | Size
 
 ## Mime API
 
-Both `require('mime')` and `require('mime/lite')` return instances of the MIME
+Both `import mime from 'mime'` and `import mime from 'mime/lite'` return instances of the MIME
 class, documented below.
 
 Note: Inputs to this API are case-insensitive.  Outputs (returned values) will
@@ -102,8 +102,8 @@ However if you would like to create custom mappings, you may do so as follows
 ...
 
 ```javascript --run default
-// Require Mime class
-const Mime = require('mime/Mime');
+// import default Mime class
+import Mime from 'mime/Mime';
 
 // Define mime type -> extensions map
 const typeMap = {

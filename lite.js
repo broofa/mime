@@ -1,4 +1,4 @@
-'use strict';
+import Mime from './Mime.js';
+import standard from './types/standard.js';
 
-let Mime = require('./Mime');
-module.exports = new Mime(require('./types/standard'));
+export default new Mime(standard);

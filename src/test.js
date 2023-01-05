@@ -1,21 +1,14 @@
-'use strict';
+import {exec} from 'node:child_process';
+import assert from 'node:assert';
 
-const mime = require('..');
-const mimeTypes = require('../node_modules/mime-types');
-const assert = require('assert');
-const chalk = require('chalk');
-const {exec} = require('child_process');
+import chalk from 'chalk';
+
+import mime from '../index.js';
+import mimeTypes from '../node_modules/mime-types/index.js';
+import Mime from '../Mime.js';
 
 describe('class Mime', function() {
-  it('mime and mime/lite coexist', function() {
-    assert.doesNotThrow(function() {
-      require('../lite');
-    });
-  });
-
   it('new constructor()', function() {
-    let Mime = require('../Mime');
-
     let mime = new Mime(
       {'text/a': ['a', 'a1']},
       {'text/b': ['b', 'b1']}
@@ -35,8 +28,6 @@ describe('class Mime', function() {
   });
 
   it('define()', function() {
-    let Mime = require('../Mime');
-
     let mime = new Mime({'text/a': ['a']}, {'text/b': ['b']});
 
     assert.throws(function() {
@@ -60,8 +51,6 @@ describe('class Mime', function() {
   });
 
   it('define() *\'ed types', function() {
-    let Mime = require('../Mime');
-
     let mime = new Mime(
       {'text/a': ['*b']},
       {'text/b': ['b']}
@@ -78,7 +67,6 @@ describe('class Mime', function() {
   });
 
   it ('case-insensitive', function() {
-    let Mime = require('../Mime');
     const mime = new Mime({
       'TEXT/UPPER': ['UP'],
       'text/lower': ['low'],
@@ -301,7 +289,7 @@ describe('mime CLI', function() {
       done();
     });
   });
-  
+
   it('returns extension', function(done) {
     exec('./cli.js -r video/mpeg', (err, stdout, stderr) => {
       if (err) done(err);
@@ -310,4 +298,3 @@ describe('mime CLI', function() {
     });
   });
 });
-

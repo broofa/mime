@@ -1,8 +1,6 @@
-'use strict';
-
-const Benchmark = require('benchmark');
-const mime = require('..');
-const mimeLite = require('../lite');
+import Benchmark from 'benchmark';
+import mime from '../index.js';
+import mimeLite from '../lite.js';
 
 const suite = new Benchmark.Suite();
 

@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 
-'use strict';
+import fs from 'node:fs';
 
-let fs = require('fs');
-let path = require('path');
-let mimeScore = require('mime-score');
-
-let db = require('mime-db');
-let chalk = require('chalk');
+import mimeScore from 'mime-score';
+import db from 'mime-db';
+import chalk from 'chalk';
 
 let STANDARD_FACET_SCORE = 900;
 
@@ -49,7 +46,7 @@ for (let type in db) {
 }
 
 function writeTypesFile(types, path) {
-  fs.writeFileSync(path, 'module.exports = ' + JSON.stringify(types) + ';');
+  fs.writeFileSync(path, 'export default ' + JSON.stringify(types) + ';');
 }
 
 // Segregate into standard and non-standard types based on facet per
@@ -69,5 +66,5 @@ Object.keys(db).sort().forEach(function(k) {
   }
 });
 
-writeTypesFile(standard, path.join(__dirname, '../types', 'standard.js'));
-writeTypesFile(other, path.join(__dirname, '../types', 'other.js'));
+writeTypesFile(standard, new URL('../types/standard.js', import.meta.url));
+writeTypesFile(other, new URL('../types/other.js', import.meta.url));

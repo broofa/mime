@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-'use strict';
-
 process.title = 'mime';
-let mime = require('.');
-let pkg = require('./package.json');
+
+import mime from './index.js';
+import pkg from './package.json' assert { type: "json" };
+
 let args = process.argv.splice(2);
 
 if (args.includes('--version') || args.includes('-v') || args.includes('--v')) {
@@ -50,4 +50,3 @@ let file = args[0];
 let type = mime.getType(file);
 
 process.stdout.write(type + '\n');
-
