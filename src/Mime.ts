@@ -1,19 +1,13 @@
+type TypeMap = { [key: string]: string[] };
+
 export default class Mime {
-  _types = Object.create(null);
-  _extensions = Object.create(null);
+  #types = new Map<string, string>();
+  #extensions = new Map<string, string>();
 
-  /**
-   * @param typeMap [Object] Map of MIME type -> Array[extensions]
-   * @param ...
-   */
-  constructor() {
-    for (let i = 0; i < arguments.length; i++) {
-      this.define(arguments[i]);
+  constructor(...args: TypeMap[]) {
+    for (const arg of args) {
+      this.define(arg);
     }
-
-    this.define = this.define.bind(this);
-    this.getType = this.getType.bind(this);
-    this.getExtension = this.getExtension.bind(this);
   }
 
   /**
@@ -23,59 +17,43 @@ export default class Mime {
    *
    * e.g. mime.define({'audio/ogg', ['oga', 'ogg', 'spx']});
    *
-   * If a type declares an extension that has already been defined, an error will
-   * be thrown.  To suppress this error and force the extension to be associated
-   * with the new type, pass `force`=true.  Alternatively, you may prefix the
-   * extension with "*" to map the type to extension, without mapping the
-   * extension to the type.
+   * If a mapping for an extension has already been defined an error will be
+   * thrown unless the `force` argument is set to `true`.  Alternatively,
+   * extensions maybe prefixed with a "*" to map the type to the extension
+   * without mapping the extension to the type.
    *
    * e.g. mime.define({'audio/wav', ['wav']}, {'audio/x-wav', ['*wav']});
-   *
-   *
-   * @param map (Object) type definitions
-   * @param force (Boolean) if true, force overriding of existing definitions
    */
-  define(typeMap: Record<string, string[]>, force = false) {
-    for (let type in typeMap) {
-      let extensions = typeMap[type].map(function (t) {
-        return t.toLowerCase();
-      });
-      type = type.toLowerCase();
+  define(typeMap: TypeMap, force = false) {
+    for (let [userType, userExtensions] of Object.entries(typeMap)) {
+      // lowercase-ify
+      userExtensions = userExtensions.map((t) => t.toLowerCase());
+      userType = userType.toLowerCase();
 
-      for (let i = 0; i < extensions.length; i++) {
-        const ext = extensions[i];
-
+      for (const ext of userExtensions) {
         // '*' prefix = not the preferred type for this extension.  So fixup the
         // extension, and skip it.
-        if (ext[0] === '*') {
-          continue;
-        }
+        if (ext.startsWith('*')) continue;
 
-        if (!force && ext in this._types) {
+        if (!force && this.#types.has(ext)) {
           throw new Error(
-            'Attempt to change mapping for "' +
-              ext +
-              '" extension from "' +
-              this._types[ext] +
-              '" to "' +
-              type +
-              '". Pass `force=true` to allow this, otherwise remove "' +
-              ext +
-              '" from the list of extensions for "' +
-              type +
-              '".'
+            `"${ext}" extension already maps to "${this.#types.get(
+              ext,
+            )}". Pass \`force=true\` to override this setting, otherwise remove "${ext}" from the list of extensions for "${userType}".`,
           );
         }
 
-        this._types[ext] = type;
+        this.#types.set(ext, userType);
       }
 
       // Use first extension as default
-      if (force || !this._extensions[type]) {
-        const ext = extensions[0];
-        this._extensions[type] = ext[0] !== '*' ? ext : ext.slice(1);
+      if (force || !this.#extensions.has(userType)) {
+        const ext = userExtensions[0];
+        this.#extensions.set(userType, ext[0] !== '*' ? ext : ext.slice(1));
       }
     }
+
+    return this;
   }
 
   /**
@@ -83,20 +61,48 @@ export default class Mime {
    */
   getType(path: string) {
     path = String(path);
-    let last = path.replace(/^.*[/\\]/, '').toLowerCase();
-    let ext = last.replace(/^.*\./, '').toLowerCase();
+    // Remove chars preceeding `/` or `\`
+    const last = path.replace(/^.*[/\\]/, '').toLowerCase();
 
-    let hasPath = last.length < path.length;
-    let hasDot = ext.length < last.length - 1;
+    // Remove chars preceeding '.'
+    const ext = last.replace(/^.*\./, '').toLowerCase();
 
-    return ((hasDot || !hasPath) && this._types[ext]) || null;
+    const hasPath = last.length < path.length;
+    const hasDot = ext.length < last.length - 1;
+
+    // Extension-less file?
+    if (!hasDot && hasPath) return null;
+
+    return this.#types.get(ext) ?? null;
   }
 
   /**
    * Return file extension associated with a mime type
    */
   getExtension(type: string) {
-    type = type.replace(/;.*/, '').trim().toLowerCase();
-    return this._extensions[type] ?? null;
+    // Remove http header parameter(s) (specifically, charset)
+    type = type?.split?.(';')[0];
+
+    return (type && this.#extensions.get(type.trim().toLowerCase())) ?? null;
+  }
+
+  //
+  // INTERNAL USE ONLY
+  //
+
+  _freeze() {
+    this.define = () => {
+      throw new Error('mime.define() is not allowed on default Mime objects.');
+    };
+    Object.freeze(this);
+
+    return this;
+  }
+
+  _getTestState() {
+    return {
+      types: this.#types,
+      extensions: this.#extensions,
+    };
   }
 }

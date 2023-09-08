@@ -1,7 +1,5 @@
-import mimeDB from 'mime-db' assert { type: 'json' };
+import otherTypes from '../types/other.js';
+import standardTypes from '../types/standard.js';
+import Mime from './Mime.js';
 
-for (const [type, typeEntry] of Object.entries(mimeDB)) {
-  console.log(type);
-}
-
-export default mime;
+export default new Mime().define(standardTypes).define(otherTypes)._freeze();

@@ -2,12 +2,12 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "./dist",
-    "sourceMap": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
     "strict": true,
-    "target": "ESNext",
-  },
-  "inputs": [ "./src/**/*.ts", "./build/**/*.ts" ]
+    "target": "ESNext"
+  }
 }

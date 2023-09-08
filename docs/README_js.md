@@ -1,6 +1,7 @@
-<!--
-  -- This file is auto-generated from src/README_js.md. Changes should be made there.
-  -->
+```javascript --hide
+runmd.onRequire = (path) => path.replace(/^mime/, '../dist/src/index.js');
+```
+
 # Mime
 
 A comprehensive, compact MIME type module.
@@ -11,8 +12,7 @@ A comprehensive, compact MIME type module.
 
 ## Install
 
-### NPM
-```
+```bash
 npm install mime
 ```
 
@@ -22,16 +22,16 @@ IMPORTANT: `mime >= 4` is ESM-only.  If CommonJS support is required, `npm insta
 
 For the full version (800+ MIME types, 1,000+ extensions):
 
-```javascript
+```javascript --run default
 import mime from 'mime';
 
-mime.getType('txt');                    // ⇨ 'text/plain'
-mime.getExtension('text/plain');        // ⇨ 'txt'
+mime.getType('txt'); // RESULT
+mime.getExtension('text/plain'); // RESULT
 ```
 
 See [Mime API](#mime-api) below for API details.
 
-## Lite Version
+### Lite Version
 
 The "lite" version of this module omits vendor-specific (`*/vnd.*`) and
 experimental (`*/x-*`) types. It weighs in at ~2.5KB, compared to 8KB for the
@@ -55,16 +55,12 @@ wrapper around mime-db that provides an API drop-in compatible(ish) with `mime @
 `mime` (this project) is similar to `mime-types`, but with the following enhancements:
 
 - Resolves type conflicts (See [mime-score](https://github.com/broofa/mime-score) for details)
-- Compact footprint. (2KB vs 18KB)
+- Compact footprint (2-8KB .vs. 18KB)
 - Native TS support
 
 ## Mime API
 
-Both `require('mime')` and `require('mime/lite')` return instances of the MIME
-class, documented below.
-
-Note: Inputs to this API are case-insensitive. Outputs (returned values) will
-be lowercase.
+Both `require('mime')` and `require('mime/lite')` return instances of the `Mime` class, documented below.
 
 ### new Mime(typeMap, ... more maps)
 
@@ -72,7 +68,7 @@ Most users of this module will not need to create Mime instances directly.
 However if you would like to create custom mappings, you may do so as follows
 ...
 
-```javascript
+```javascript --run default
 // Require Mime class
 import { Mime } from 'mime';
 
@@ -84,8 +80,8 @@ const typeMap = {
 
 // Create and use Mime instance
 const myMime = new Mime(typeMap);
-myMime.getType('abc');            // ⇨ 'text/abc'
-myMime.getExtension('text/def');  // ⇨ 'leppard'
+myMime.getType('abc'); // RESULT
+myMime.getExtension('text/def'); // RESULT
 ```
 
 If more than one map argument is provided, each map is `define()`ed (see below), in order.
@@ -94,22 +90,22 @@ If more than one map argument is provided, each map is `define()`ed (see below),
 
 Get mime type for the given path or extension. E.g.
 
-```javascript
-mime.getType('js');             // ⇨ 'application/javascript'
-mime.getType('json');           // ⇨ 'application/json'
+```javascript --run default
+mime.getType('js'); // RESULT
+mime.getType('json'); // RESULT
 
-mime.getType('txt');            // ⇨ 'text/plain'
-mime.getType('dir/text.txt');   // ⇨ 'text/plain'
-mime.getType('dir\\text.txt');  // ⇨ 'text/plain'
-mime.getType('.text.txt');      // ⇨ 'text/plain'
-mime.getType('.txt');           // ⇨ 'text/plain'
+mime.getType('txt'); // RESULT
+mime.getType('dir/text.txt'); // RESULT
+mime.getType('dir\\text.txt'); // RESULT
+mime.getType('.text.txt'); // RESULT
+mime.getType('.txt'); // RESULT
 ```
 
 `null` is returned in cases where an extension is not detected or recognized
 
-```javascript
-mime.getType('foo/txt');        // ⇨ null
-mime.getType('bogus_type');     // ⇨ null
+```javascript --run default
+mime.getType('foo/txt'); // RESULT
+mime.getType('bogus_type'); // RESULT
 ```
 
 ### mime.getExtension(type)
@@ -117,10 +113,10 @@ mime.getType('bogus_type');     // ⇨ null
 Get extension for the given mime type. Charset options (often included in
 Content-Type headers) are ignored.
 
-```javascript
-mime.getExtension('text/plain');               // ⇨ 'txt'
-mime.getExtension('application/json');         // ⇨ 'json'
-mime.getExtension('text/html; charset=utf8');  // ⇨ 'html'
+```javascript --run default
+mime.getExtension('text/plain'); // RESULT
+mime.getExtension('application/json'); // RESULT
+mime.getExtension('text/html; charset=utf8'); // RESULT
 ```
 
 ### mime.define(typeMap[, force = false])
@@ -133,11 +129,11 @@ By default this method will throw an error if you try to map a type to an
 extension that is already assigned to another type. Passing `true` for the
 `force` argument will suppress this behavior (overriding any previous mapping).
 
-```javascript
-mime.define({'text/x-abc': ['abc', 'abcd']});
+```javascript --run default
+mime.define({ 'text/x-abc': ['abc', 'abcd'] });
 
-mime.getType('abcd');            // ⇨ 'text/x-abc'
-mime.getExtension('text/x-abc')  // ⇨ 'abc'
+mime.getType('abcd'); // RESULT
+mime.getExtension('text/x-abc'); // RESULT
 ```
 
 ## Command Line
@@ -148,6 +144,3 @@ E.g.
 
     > mime scripts/jquery.js
     application/javascript
-
-----
-Markdown generated from [src/README_js.md](src/README_js.md) by [![RunMD Logo](https://i.imgur.com/h0FVyzU.png)](https://github.com/broofa/runmd)

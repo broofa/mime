@@ -6,46 +6,62 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=16"
   },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./lite": "./dist/index_lite.js",
+    "./Mime": "./dist/Mime.js",
+    "./standard.js": "./dist/types/standard.js",
+    "./other.js": "./dist/types/other.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/src/*",
+    "dist/types/*",
+    "bin/*"
+  ],
   "bin": {
-    "mime": "dist/cli.js"
+    "mime": "bin/cli.js"
   },
   "contributors": [],
   "description": "A comprehensive library for mime-type mapping",
   "license": "MIT",
-  "peerDependencies": {
-    "mime-db": "1.x"
-  },
   "devDependencies": {
-    "@types/benchmark": "2.1.2",
-    "@types/jest": "^29.2.4",
-    "@types/mime-db": "^1.43.1",
-    "@types/mime-types": "^2.1.1",
-    "@types/node": "^18.11.18",
-    "benchmark": "*",
-    "chalk": "4.1.2",
-    "mime-score": "1.2.0",
+    "@types/mime-db": "1.*",
+    "@types/mime-types": "2.1.1",
+    "@types/node": "20.5.9",
+    "@typescript-eslint/eslint-plugin": "6.6.0",
+    "@typescript-eslint/parser": "6.6.0",
+    "chalk": "5.3.0",
+    "mime-score": "2.0.3",
     "mime-types": "2.1.35",
-    "prettier": "^2.8.1",
-    "runmd": "1.3.6",
+    "prettier": "3.0.3",
+    "runmd": "1.3.9",
     "standard-version": "9.5.0",
-    "typescript": "^4.9.4"
+    "typescript": "5.2.2"
   },
-  "files": [
-    "dist/*.js"
-  ],
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "prepare": "tsc",
+    "build": "npm run build:clean && tsc",
+    "build:clean": "rm -fr dist",
+    "build:types": "node dist/scripts/build.js",
+    "build:watch": "npm run build:clean && tsc --watch",
+    "lint": "prettier -c .",
+    "lint:fix": "prettier -w .",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build:types",
     "release": "standard-version",
-    "benchmark": "node dist/benchmark.js",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest dist/build/test.js"
+    "test": "node --test",
+    "test:watch": "node test --watch"
   },
   "keywords": [
-    "util",
-    "mime"
+    "extension",
+    "file",
+    "mime",
+    "mime-db",
+    "mimetypes",
+    "util"
   ],
   "name": "mime",
   "repository": {
@@ -55,8 +71,5 @@
   "version": "3.0.0",
   "funding": [
     "https://github.com/sponsors/broofa"
-  ],
-  "dependencies": {
-    "jest": "^29.3.1"
-  }
+  ]
 }
