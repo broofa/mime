@@ -1,8 +1,9 @@
 type TypeMap = { [key: string]: string[] };
 
 export default class Mime {
-  #types = new Map<string, string>();
-  #extensions = new Map<string, string>();
+  #extensionToType = new Map<string, string>();
+  #typeToExtension = new Map<string, string>();
+  #typeToExtensions = new Map<string, Set<string>>();
 
   constructor(...args: TypeMap[]) {
     for (const arg of args) {
@@ -18,38 +19,47 @@ export default class Mime {
    * e.g. mime.define({'audio/ogg', ['oga', 'ogg', 'spx']});
    *
    * If a mapping for an extension has already been defined an error will be
-   * thrown unless the `force` argument is set to `true`.  Alternatively,
-   * extensions maybe prefixed with a "*" to map the type to the extension
-   * without mapping the extension to the type.
+   * thrown unless the `force` argument is set to `true`.
    *
    * e.g. mime.define({'audio/wav', ['wav']}, {'audio/x-wav', ['*wav']});
    */
   define(typeMap: TypeMap, force = false) {
-    for (let [userType, userExtensions] of Object.entries(typeMap)) {
-      // lowercase-ify
-      userExtensions = userExtensions.map((t) => t.toLowerCase());
-      userType = userType.toLowerCase();
+    for (let [type, extensions] of Object.entries(typeMap)) {
+      // Lowercase thingz
+      type = type.toLowerCase();
+      extensions = extensions.map((ext) => ext.toLowerCase());
 
-      for (const ext of userExtensions) {
-        // '*' prefix = not the preferred type for this extension.  So fixup the
-        // extension, and skip it.
-        if (ext.startsWith('*')) continue;
+      if (!this.#typeToExtensions.has(type)) {
+        this.#typeToExtensions.set(type, new Set<string>());
+      }
+      const allExtensions = this.#typeToExtensions.get(type);
 
-        if (!force && this.#types.has(ext)) {
+      let first = true;
+      for (let extension of extensions) {
+        const starred = extension.startsWith('*');
+
+        extension = starred ? extension.slice(1) : extension;
+
+        // Add to list of extensions for the type
+        allExtensions?.add(extension);
+
+        if (first) {
+          // Map type to default extension (first in list)
+          this.#typeToExtension.set(type, extension);
+        }
+        first = false;
+
+        // Starred types are not eligible to be the default extension
+        if (starred) continue;
+
+        // Map extension to type
+        const currentType = this.#extensionToType.get(extension);
+        if (currentType && currentType != type && !force) {
           throw new Error(
-            `"${ext}" extension already maps to "${this.#types.get(
-              ext,
-            )}". Pass \`force=true\` to override this setting, otherwise remove "${ext}" from the list of extensions for "${userType}".`,
+            `"${type} -> ${extension}" conflicts with "${currentType} -> ${extension}". Pass \`force=true\` to override this definition.`,
           );
         }
-
-        this.#types.set(ext, userType);
-      }
-
-      // Use first extension as default
-      if (force || !this.#extensions.has(userType)) {
-        const ext = userExtensions[0];
-        this.#extensions.set(userType, ext[0] !== '*' ? ext : ext.slice(1));
+        this.#extensionToType.set(extension, type);
       }
     }
 
@@ -60,7 +70,8 @@ export default class Mime {
    * Lookup a mime type based on extension
    */
   getType(path: string) {
-    path = String(path);
+    if (typeof path !== 'string') return null;
+
     // Remove chars preceeding `/` or `\`
     const last = path.replace(/^.*[/\\]/, '').toLowerCase();
 
@@ -73,17 +84,29 @@ export default class Mime {
     // Extension-less file?
     if (!hasDot && hasPath) return null;
 
-    return this.#types.get(ext) ?? null;
+    return this.#extensionToType.get(ext) ?? null;
   }
 
   /**
    * Return file extension associated with a mime type
    */
   getExtension(type: string) {
+    if (typeof type !== 'string') return null;
+
     // Remove http header parameter(s) (specifically, charset)
     type = type?.split?.(';')[0];
 
-    return (type && this.#extensions.get(type.trim().toLowerCase())) ?? null;
+    return (
+      (type && this.#typeToExtension.get(type.trim().toLowerCase())) ?? null
+    );
+  }
+
+  getAllExtensions(type: string) {
+    if (typeof type !== 'string') return [];
+
+    const extensions = this.#typeToExtensions.get(type.toLowerCase());
+
+    return extensions ? [...extensions] : [];
   }
 
   //
@@ -92,17 +115,22 @@ export default class Mime {
 
   _freeze() {
     this.define = () => {
-      throw new Error('mime.define() is not allowed on default Mime objects.');
+      throw new Error('define() not allowed for built-in Mime objects.');
     };
+
     Object.freeze(this);
+
+    for (const extensions of this.#typeToExtensions.values()) {
+      Object.freeze([...extensions]);
+    }
 
     return this;
   }
 
   _getTestState() {
     return {
-      types: this.#types,
-      extensions: this.#extensions,
+      types: this.#extensionToType,
+      extensions: this.#typeToExtension,
     };
   }
 }

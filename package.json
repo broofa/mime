@@ -53,7 +53,7 @@
     "prepublishOnly": "npm run build:types",
     "release": "standard-version",
     "test": "node --test",
-    "test:watch": "clear && node --test --watch test"
+    "test:watch": "clear && node --enable-source-maps --test --watch test"
   },
   "keywords": [
     "extension",

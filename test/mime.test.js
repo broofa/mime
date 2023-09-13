@@ -40,12 +40,16 @@ describe('class Mime', (t) => {
   it('define()', (t) => {
     const mime = new Mime({ 'text/a': ['a'] }, { 'text/b': ['b'] });
 
+    // Should throw when trying to override an existing type->ext mapping
     assert.throws(() => mime.define({ 'text/c': ['b'] }));
-    assert.doesNotThrow(() => mime.define({ 'text/c': ['b'] }, true));
+
+    // Should not throw if it's a mapping we already have
+    assert.doesNotThrow(() => mime.define({ 'text/c': ['b', 'c'] }, true));
 
     testGetType(t, mime, [
       { input: 'a', expected: 'text/a' },
       { input: 'b', expected: 'text/c' },
+      { input: 'c', expected: 'text/c' },
     ]);
 
     testGetExtension(t, mime, [
@@ -143,6 +147,11 @@ describe('class Mime', (t) => {
       { input: {}, expected: null },
     ]);
   });
+});
+
+it('getAllExtensions()', () => {
+  const mime = new Mime({ 'text/a': ['a', 'b'] }, { 'text/a': ['b', 'c'] });
+  assert.deepEqual(mime.getAllExtensions('text/a').sort(), ['a', 'b', 'c']);
 });
 
 describe('DB', () => {
