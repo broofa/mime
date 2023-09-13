@@ -10,6 +10,8 @@ A comprehensive, compact MIME type module.
 [![NPM downloads](https://img.shields.io/npm/dm/mime)](https://www.npmjs.com/package/mime)
 
 > **Important**
+> `mime@4` is currently in **beta**. To try in out, `npm install mime@beta`.  See the [Changelog](https://github.com/broofa/mime/blob/main/CHANGELOG.md) for details.
+>
 > Starting with `mime@4`:
 > * ESM module support is required.  See the [ESM Module FAQ](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).  If you need CommonJS support (e.g. `require('mime')`), use `mime@3`.
 > * [ES2019](https://caniuse.com/?search=es2020) support is required**.
@@ -17,8 +19,7 @@ A comprehensive, compact MIME type module.
 
 ## Install
 
-### NPM
-```
+```bash
 npm install mime
 ```
 
@@ -123,6 +124,9 @@ mime.getExtension('text/plain');               // ⇨ 'txt'
 mime.getExtension('application/json');         // ⇨ 'json'
 mime.getExtension('text/html; charset=utf8');  // ⇨ 'html'
 ### mime.getAllExtensions(type)
+
+> **Note**
+> New in `mime@4`
 
 Get all extensions for the given mime type.
 

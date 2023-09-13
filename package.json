@@ -38,7 +38,7 @@
     "mime-score": "2.0.3",
     "mime-types": "2.1.35",
     "prettier": "3.0.3",
-    "runmd": "1.3.9",
+    "runmd": "1.3.9",:
     "standard-version": "9.5.0",
     "typescript": "5.2.2"
   },

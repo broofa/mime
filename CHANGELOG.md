@@ -22,7 +22,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * drop CJS support, switch to TS ([cf20ba0](https://github.com/broofa/mime/commit/cf20ba0db586a256307f875c585b112b96db9c9a))
 * exit from CLI with non-zero exit code when no result ([591eb30](https://github.com/broofa/mime/commit/591eb30c2d5aefcbac9cda8ad1fca17f7ed23fff))
-* skypack.dev for direct browser import, fixes [#263](https://github.com/broofa/mime/issues/263) ([41db4c0](https://github.com/broofa/mime/commit/41db4c042ccf50ea7baf3d2160ea37dcca37998d))
 * update outdated deps, rebuild ([ef6ebd0](https://github.com/broofa/mime/commit/ef6ebd0c8e0c412f21389d8fee642cfceca2b975))
 
 
