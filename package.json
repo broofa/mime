@@ -4,50 +4,71 @@
     "url": "http://github.com/broofa",
     "email": "robert@broofa.com"
   },
+  "type": "module",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=16"
   },
+  "main": "./dist/src/index.js",
+  "exports": {
+    ".": "./dist/src/index.js",
+    "./lite": "./dist/src/index_lite.js",
+    "./Mime": "./dist/src/Mime.js",
+    "./standard.js": "./dist/types/standard.js",
+    "./other.js": "./dist/types/other.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/src/*",
+    "dist/types/*",
+    "bin/*"
+  ],
   "bin": {
-    "mime": "cli.js"
+    "mime": "bin/cli.js"
   },
   "contributors": [],
   "description": "A comprehensive library for mime-type mapping",
   "license": "MIT",
   "devDependencies": {
-    "benchmark": "*",
-    "chalk": "4.1.2",
-    "eslint": "8.29.0",
-    "mime-db": "1.52.0",
-    "mime-score": "1.2.0",
+    "@types/mime-db": "1.*",
+    "@types/mime-types": "2.1.1",
+    "@types/node": "20.5.9",
+    "@typescript-eslint/eslint-plugin": "6.6.0",
+    "@typescript-eslint/parser": "6.6.0",
+    "chalk": "5.3.0",
+    "mime-score": "2.0.3",
     "mime-types": "2.1.35",
-    "mocha": "10.2.0",
-    "runmd": "1.3.6",
-    "standard-version": "9.5.0"
+    "prettier": "3.0.3",
+    "runmd": "1.3.9",
+    "standard-version": "9.5.0",
+    "typescript": "5.2.2"
   },
-  "files": [
-    "index.js",
-    "lite.js",
-    "Mime.js",
-    "cli.js",
-    "/types"
-  ],
   "scripts": {
-    "prepare": "node src/build.js && runmd --output README.md src/README_js.md",
+    "build": "npm run build:clean && tsc",
+    "build:clean": "rm -fr dist",
+    "build:types": "node dist/scripts/build.js",
+    "build:watch": "npm run build:clean && tsc --watch",
+    "lint": "prettier -c .",
+    "lint:fix": "prettier -w .",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build && npm run build:types",
     "release": "standard-version",
-    "benchmark": "node src/benchmark.js",
-    "md": "runmd --watch --output README.md src/README_js.md",
-    "test": "mocha src/test.js"
+    "test": "node --test",
+    "test:watch": "clear && node --enable-source-maps --test --watch test"
   },
   "keywords": [
-    "util",
-    "mime"
+    "extension",
+    "file",
+    "mime",
+    "mime-db",
+    "mimetypes",
+    "util"
   ],
   "name": "mime",
   "repository": {
     "url": "https://github.com/broofa/mime",
     "type": "git"
   },
-  "version": "3.0.0",
+  "version": "4.0.0-beta.0",
   "funding": [
     "https://github.com/sponsors/broofa"
   ]
