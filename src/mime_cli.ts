@@ -6,17 +6,18 @@ import { fileURLToPath } from 'node:url';
 import mime from './index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = __dirname.replace(/\/mime\/.*/, '/mime');
-
-console.log('CWD', process.cwd());
-console.log('ROOT_DIR', ROOT_DIR);
 
 export default async function () {
   process.title = 'mime';
 
-  // TODO: Use json imports to access package.json once
-  // https://github.com/tc39/proposal-import-attributes lands
-  const json = await fs.readFile(path.join(ROOT_DIR, 'package.json'), 'utf-8');
+  // TODO: Use json imports to access package.json once "import attributes" are
+  // a real, stable thing.
+  //
+  // See https://github.com/tc39/proposal-import-attributes
+  const json = await fs.readFile(
+    path.join(__dirname, '../../package.json'),
+    'utf-8',
+  );
   const pkg = JSON.parse(json);
 
   const args = process.argv.splice(2);
