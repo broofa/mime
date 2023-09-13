@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0-beta.0](https://github.com/broofa/mime/compare/v2.6.0...v4.0.0-beta.0) (2023-09-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop node < 18 from CI matrix
+* exit from CLI with non-zero exit code when no result
+* drop CJS support, switch to TS
+* drop support for node < 10.x
+
+### Features
+
+* add getAllExtensions() method ([f22b6f0](https://github.com/broofa/mime/commit/f22b6f0ddca2da78e6863317b6fc5ec88ef7edec))
+* add reverse lookup option (--reverse, -r) feature to CLI ([e0da103](https://github.com/broofa/mime/commit/e0da1036145da62242efd79aedf1f07d01608f25))
+
+
+### Bug Fixes
+
+* drop CJS support, switch to TS ([cf20ba0](https://github.com/broofa/mime/commit/cf20ba0db586a256307f875c585b112b96db9c9a))
+* exit from CLI with non-zero exit code when no result ([591eb30](https://github.com/broofa/mime/commit/591eb30c2d5aefcbac9cda8ad1fca17f7ed23fff))
+* skypack.dev for direct browser import, fixes [#263](https://github.com/broofa/mime/issues/263) ([41db4c0](https://github.com/broofa/mime/commit/41db4c042ccf50ea7baf3d2160ea37dcca37998d))
+* update outdated deps, rebuild ([ef6ebd0](https://github.com/broofa/mime/commit/ef6ebd0c8e0c412f21389d8fee642cfceca2b975))
+
+
+### update
+
+* drop support for node < 10.x ([8857363](https://github.com/broofa/mime/commit/8857363ae0446ed0229b17291cf4483cf801f0d0))
+
+
+### ci
+
+* drop node < 18 from CI matrix ([ef38fd5](https://github.com/broofa/mime/commit/ef38fd5c8c78f1d688487a06e52091a1efbf3341))
+
 ## [3.0.0](https://github.com/broofa/mime/compare/v2.6.0...v3.0.0) (2021-11-03)
 
 ### ⚠ BREAKING CHANGES
