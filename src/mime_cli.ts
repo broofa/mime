@@ -65,12 +65,17 @@ export default async function () {
   } else if (args.includes('--reverse') || args.includes('-r')) {
     const mimeType = args[args.length - 1];
     const extension = mime.getExtension(mimeType);
+
+    if (!extension) process.exit(1);
+
     process.stdout.write(extension + '\n');
     process.exit(0);
   }
 
   const file = args[0];
   const type = mime.getType(file);
+
+  if (!type) process.exit(1);
 
   process.stdout.write(type + '\n');
 }
