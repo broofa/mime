@@ -8,6 +8,9 @@ import mime from './index.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = __dirname.replace(/\/mime\/.*/, '/mime');
 
+console.log('CWD', process.cwd());
+console.log('ROOT_DIR', ROOT_DIR);
+
 export default async function () {
   process.title = 'mime';
 
