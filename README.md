@@ -123,15 +123,6 @@ Content-Type headers) are ignored.
 mime.getExtension('text/plain');               // ⇨ 'txt'
 mime.getExtension('application/json');         // ⇨ 'json'
 mime.getExtension('text/html; charset=utf8');  // ⇨ 'html'
-### mime.getAllExtensions(type)
-
-> **Note**
-> New in `mime@4`
-
-Get all extensions for the given mime type.
-
-```javascript --run default
-mime.getAllExtensions('image/jpeg'); // ⇨ [ 'jpeg', 'jpg', 'jpe' ]
 ```
 
 ### mime.define(typeMap[, force = false])
