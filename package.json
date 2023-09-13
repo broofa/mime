@@ -50,7 +50,7 @@
     "lint": "prettier -c .",
     "lint:fix": "prettier -w .",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run build:types",
+    "prepublishOnly": "npm run build && npm run build:types",
     "release": "standard-version",
     "test": "node --test",
     "test:watch": "clear && node --enable-source-maps --test --watch test"
