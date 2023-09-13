@@ -67,7 +67,7 @@ export default class Mime {
   }
 
   /**
-   * Lookup a mime type based on extension
+   * Get mime type associated with an extension
    */
   getType(path: string) {
     if (typeof path !== 'string') return null;
@@ -88,7 +88,7 @@ export default class Mime {
   }
 
   /**
-   * Return file extension associated with a mime type
+   * Get default file extension associated with a mime type
    */
   getExtension(type: string) {
     if (typeof type !== 'string') return null;
@@ -101,16 +101,17 @@ export default class Mime {
     );
   }
 
+  /**
+   * Get all file extensions associated with a mime type
+   */
   getAllExtensions(type: string) {
-    if (typeof type !== 'string') return [];
+    if (typeof type !== 'string') return null;
 
-    const extensions = this.#typeToExtensions.get(type.toLowerCase());
-
-    return extensions ? [...extensions] : [];
+    return this.#typeToExtensions.get(type.toLowerCase()) ?? null;
   }
 
   //
-  // INTERNAL USE ONLY
+  // Private API, for internal use only.  These APIs may change at any time
   //
 
   _freeze() {
@@ -121,7 +122,7 @@ export default class Mime {
     Object.freeze(this);
 
     for (const extensions of this.#typeToExtensions.values()) {
-      Object.freeze([...extensions]);
+      Object.freeze(extensions);
     }
 
     return this;

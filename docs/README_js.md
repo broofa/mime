@@ -54,13 +54,14 @@ here's a brief rundown ...
 truth" for MIME type information. It is a dataset (JSON file), not an API, with mime type definitions pulled from a variety of authoritative sources.
 
 [`mime-types`](https://github.com/jshttp/mime-types) is a thin
-wrapper around mime-db that provides an API drop-in compatible(ish) with `mime @ < v1.3.6` API.
+wrapper around mime-db that provides an API that is mostly-compatible with `mime @ < v1.3.6`.
 
-`mime` (this project) is similar to `mime-types`, but with the following enhancements:
+`mime` (this project) is like `mime-types`, but with the following enhancements:
 
 - Resolves type conflicts (See [mime-score](https://github.com/broofa/mime-score) for details)
-- Compact footprint (2-8KB .vs. 18KB)
-- Native TS support
+- Smaller (`mime` is 2-8KB, `mime-types` is 18KB)
+- Zero dependencies
+- Built-in TS support
 
 ## Mime API
 
@@ -121,6 +122,14 @@ Content-Type headers) are ignored.
 mime.getExtension('text/plain'); // RESULT
 mime.getExtension('application/json'); // RESULT
 mime.getExtension('text/html; charset=utf8'); // RESULT
+```
+
+### mime.getAllExtensions(type)
+
+Get all extensions for the given mime type.
+
+```javascript --run default
+mime.getAllExtensions('text/plain'); // RESULT
 ```
 
 ### mime.define(typeMap[, force = false])

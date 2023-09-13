@@ -151,7 +151,11 @@ describe('class Mime', (t) => {
 
 it('getAllExtensions()', () => {
   const mime = new Mime({ 'text/a': ['a', 'b'] }, { 'text/a': ['b', 'c'] });
-  assert.deepEqual(mime.getAllExtensions('text/a').sort(), ['a', 'b', 'c']);
+  assert.deepEqual([...mime.getAllExtensions('text/a')].sort(), [
+    'a',
+    'b',
+    'c',
+  ]);
 });
 
 describe('DB', () => {
