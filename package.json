@@ -53,7 +53,7 @@
     "prepublishOnly": "npm run build:types",
     "release": "standard-version",
     "test": "node --test",
-    "test:watch": "node test --watch"
+    "test:watch": "clear && node --test --watch test"
   },
   "keywords": [
     "extension",
