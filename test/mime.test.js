@@ -6,8 +6,6 @@ import Mime from '../dist/src/Mime.js';
 import mime from '../dist/src/index.js';
 import { testGetExtension, testGetType } from './test_util.js';
 
-console.log('CWD', process.cwd());
-
 describe('class Mime', (t) => {
   it('mime and mime/lite coexist', async function () {
     await assert.doesNotReject(() => import('../dist/src/index_lite.js'));

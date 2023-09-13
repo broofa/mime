@@ -8,6 +8,6 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ES2019"
   }
 }

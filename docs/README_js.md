@@ -10,13 +10,17 @@ A comprehensive, compact MIME type module.
 [![NPM version](https://img.shields.io/npm/v/mime)](https://www.npmjs.com/package/mime)
 [![NPM downloads](https://img.shields.io/npm/dm/mime)](https://www.npmjs.com/package/mime)
 
+> **Important**
+> Starting with `mime@4`:
+> * ESM module support is required.  See the [ESM Module FAQ](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).  If you need CommonJS support (e.g. `require('mime')`), use `mime@3`.
+> * [ES2019](https://caniuse.com/?search=es2020) support is required**.
+> * Typescript types are built-in.  (`@types/mime` is no longer needed)
+
 ## Install
 
 ```bash
 npm install mime
 ```
-
-IMPORTANT: `mime >= 4` is ESM-only.  If CommonJS support is required, `npm install mime@3`.  [ESM Module FAQ](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
 ## Quick Start
 
