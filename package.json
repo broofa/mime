@@ -48,7 +48,7 @@
     "lint:fix": "prettier -w .",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && npm run build:types",
-    "release": "standard-version",
+    "release": "standard-version --prerelease",
     "test": "node --test",
     "test:watch": "clear && node --enable-source-maps --test --watch test"
   },
