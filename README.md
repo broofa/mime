@@ -114,36 +114,28 @@ mime.getAllExtensions('image/jpeg'); // ⇨ Set(3) { 'jpeg', 'jpg', 'jpe' }
 
 ## Custom `Mime` instances
 
+The default objects exported by `mime` are immutable by design.  Mutable versions can be created as follows...
+### new Mime(type map [, type map, ...])
 
-### new Mime(typeMap, ... more maps)
-
-Most users of this module will not need to create Mime instances directly.
-However if you would like to create custom mappings, you may do so as follows
-...
+Create a new, custom mime instance.  For example, to create a mutable version of the default `mime` instance:
 
 ```javascript
-// Require Mime class
-import { Mime } from 'mime';
+import { Mime } from 'mime/lite';
 
-// Define mime type -> extensions map
-const typeMap = {
-  'text/abc': ['abc', 'alpha', 'bet'],
-  'text/def': ['leppard'],
-};
+import standardTypes from 'mime/types/standard.js';
+import otherTypes from 'mime/types/other.js';
 
-// Create and use Mime instance
-const myMime = new Mime(typeMap);
-myMime.getType('abc');            // ⇨ 'text/abc'
-myMime.getExtension('text/def');  // ⇨ 'leppard'
+const mime = new Mime(standardTypes, otherTypes);
 ```
 
-If more than one map argument is provided, each map is `define()`ed (see below), in order.
+Each argument is passed to the `define()` method, below. For example `new Mime(standardTypes, otherTypes)` is synonomous with `new Mime().define(standardTypes).define(otherTypes)`
 
-### mime.define(typeMap[, force = false])
+### `mime.define(type map [, force = false])`
 
-Define [more] type mappings.
+> **Note**
+> Only available on custom `Mime` instances
 
-`typeMap` is a map of MIME type -> extensions, as documented in `new Mime`, above.
+Define MIME type -> extensions.
 
 Attempting to map a type to an already-defined extension will `throw` unless the `force` argument is set to `true`.
 
