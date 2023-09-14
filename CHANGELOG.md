@@ -10,22 +10,11 @@ All notable changes to this project will be documented in this file. See [standa
 * drop node < 18 from CI matrix
 * exit from CLI with non-zero exit code when no result
 * drop CJS support, switch to TS
-* drop support for node < 10.x
 
 ### Features
 
 * add getAllExtensions() method ([f22b6f0](https://github.com/broofa/mime/commit/f22b6f0ddca2da78e6863317b6fc5ec88ef7edec))
 * add reverse lookup option (--reverse, -r) feature to CLI ([e0da103](https://github.com/broofa/mime/commit/e0da1036145da62242efd79aedf1f07d01608f25))
-
-
-### Bug Fixes
-
-* skypack.dev for direct browser import, fixes [#263](https://github.com/broofa/mime/issues/263) ([41db4c0](https://github.com/broofa/mime/commit/41db4c042ccf50ea7baf3d2160ea37dcca37998d))
-
-
-### update
-
-* drop support for node < 10.x ([8857363](https://github.com/broofa/mime/commit/8857363ae0446ed0229b17291cf4483cf801f0d0))
 
 
 ### ci
