@@ -3,4 +3,4 @@ import Mime from './Mime.js';
 
 export { default as Mime } from './Mime.js';
 
-export default new Mime().define(standardTypes)._freeze();
+export default new Mime(standardTypes)._freeze();
