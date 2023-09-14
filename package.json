@@ -50,7 +50,7 @@
     "lint:fix": "prettier -w .",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && npm run build:types",
-    "release": "standard-version --prerelease",
+    "release": "# `standard-version --dry-run --prerelease` is the command you're after",
     "test": "node --test",
     "test:watch": "clear && node --enable-source-maps --test --watch test"
   },
@@ -67,7 +67,7 @@
     "url": "https://github.com/broofa/mime",
     "type": "git"
   },
-  "version": "4.0.0-beta.0",
+  "version": "4.0.0-beta.1",
   "funding": [
     "https://github.com/sponsors/broofa"
   ]
