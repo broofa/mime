@@ -96,7 +96,9 @@ async function writeTypesFile(name: string, types: Record<string, string[]>) {
 
   await writeFile(
     filepath,
-    `export default ${JSON.stringify(types)} as {[key: string]: string[]};`,
+    `const types : {[key: string]: string[]} = ${JSON.stringify(types)};
+Object.freeze(types);
+export default types;`,
   );
 }
 
