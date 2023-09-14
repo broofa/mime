@@ -12,7 +12,6 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./lite": "./dist/src/index_lite.js",
-    "./Mime": "./dist/src/Mime.js",
     "./standard.js": "./dist/types/standard.js",
     "./other.js": "./dist/types/other.js",
     "./package.json": "./package.json"
