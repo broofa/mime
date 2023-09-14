@@ -11,12 +11,17 @@ A comprehensive, compact MIME type module.
 [![NPM downloads](https://img.shields.io/npm/dm/mime)](https://www.npmjs.com/package/mime)
 
 > **Important**
-> `mime@4` is currently in **beta**. To try in out, `npm install mime@beta`.  See the [Changelog](https://github.com/broofa/mime/blob/main/CHANGELOG.md) for details.
+> `mime@4` is currently in **beta**. To install:
+> ```bash
+> npm install mime@beta
+> ```
 >
 > Starting with `mime@4`:
 > * ESM module support is required.  See the [ESM Module FAQ](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).  If you need CommonJS support (e.g. `require('mime')`), use `mime@3`.
-> * [ES2019](https://caniuse.com/?search=es2020) support is required**.
+> * [ES2020](https://caniuse.com/?search=es2020) support is required
 > * Typescript types are built-in.  (`@types/mime` is no longer needed)
+>
+> See [CHANGELOG.md](https://github.com/broofa/mime/blob/main/CHANGELOG.md) for further details
 
 ## Install
 
@@ -39,9 +44,7 @@ See [Mime API](#mime-api) below for API details.
 
 ### Lite Version
 
-The "lite" version of this module omits vendor-specific (`*/vnd.*`) and
-experimental (`*/x-*`) types. It weighs in at ~2.5KB, compared to 8KB for the
-full version. To load the lite version:
+The "lite" version of this module omits vendor-specific (`*/vnd.*`) and experimental (`*/x-*`) types. It weighs in at ~2.5KB, compared to 8KB for the full version. To load the lite version:
 
 ```javascript
 import mime from 'mime/lite';
@@ -65,37 +68,11 @@ wrapper around mime-db that provides an API that is mostly-compatible with `mime
 - Zero dependencies
 - Built-in TS support
 
-## Mime API
+## API
 
-Both `require('mime')` and `require('mime/lite')` return instances of the `Mime` class, documented below.
+### `mime.getType(pathOrExtension)`
 
-### new Mime(typeMap, ... more maps)
-
-Most users of this module will not need to create Mime instances directly.
-However if you would like to create custom mappings, you may do so as follows
-...
-
-```javascript --run default
-// Require Mime class
-import { Mime } from 'mime';
-
-// Define mime type -> extensions map
-const typeMap = {
-  'text/abc': ['abc', 'alpha', 'bet'],
-  'text/def': ['leppard'],
-};
-
-// Create and use Mime instance
-const myMime = new Mime(typeMap);
-myMime.getType('abc'); // RESULT
-myMime.getExtension('text/def'); // RESULT
-```
-
-If more than one map argument is provided, each map is `define()`ed (see below), in order.
-
-### mime.getType(pathOrExtension)
-
-Get mime type for the given path or extension. E.g.
+Get mime type for the given file path or extension. E.g.
 
 ```javascript --run default
 mime.getType('js'); // RESULT
@@ -115,10 +92,9 @@ mime.getType('foo/txt'); // RESULT
 mime.getType('bogus_type'); // RESULT
 ```
 
-### mime.getExtension(type)
+### `mime.getExtension(type)`
 
-Get extension for the given mime type. Charset options (often included in
-Content-Type headers) are ignored.
+Get file extension for the given mime type. Charset options (often included in Content-Type headers) are ignored.
 
 ```javascript --run default
 mime.getExtension('text/plain'); // RESULT
@@ -126,26 +102,51 @@ mime.getExtension('application/json'); // RESULT
 mime.getExtension('text/html; charset=utf8'); // RESULT
 ```
 
-### mime.getAllExtensions(type)
+### `mime.getAllExtensions(type)`
 
 > **Note**
 > New in `mime@4`
 
-Get all extensions for the given mime type.
+Get all file extensions for the given mime type.
 
 ```javascript --run default
 mime.getAllExtensions('text/plain'); // RESULT
 ```
 
-### mime.define(typeMap[, force = false])
+## Custom `Mime` instances
+
+
+### new Mime(typeMap, ... more maps)
+
+Most users of this module will not need to create Mime instances directly.
+However if you would like to create custom mappings, you may do so as follows
+...
+
+```javascript --run default
+// Import Mime class
+import { Mime } from 'mime';
+
+// Define mime type -> extensions map
+const typeMap = {
+  'text/abc': ['abc', 'alpha', 'bet'],
+  'text/def': ['leppard'],
+};
+
+// Create and use Mime instance
+const myMime = new Mime(typeMap);
+myMime.getType('abc'); // RESULT
+myMime.getExtension('text/def'); // RESULT
+```
+
+If more than one map argument is provided, each map is `define()`ed (see below), in order.
+
+### `mime.define(typeMap[, force = false])`
 
 Define [more] type mappings.
 
-`typeMap` is a map of type -> extensions, as documented in `new Mime`, above.
+`typeMap` is a map of MIME type -> extensions, as documented in `new Mime`, above.
 
-By default this method will throw an error if you try to map a type to an
-extension that is already assigned to another type. Passing `true` for the
-`force` argument will suppress this behavior (overriding any previous mapping).
+Attempting to map a type to an already-defined extension will `throw` unless the `force` argument is set to `true`.
 
 ```javascript --run default
 mime.define({ 'text/x-abc': ['abc', 'abcd'] });
@@ -156,9 +157,12 @@ mime.getExtension('text/x-abc'); // RESULT
 
 ## Command Line
 
-    mime [path_or_extension]
+### Extension -> type
 
-E.g.
-
-    > mime scripts/jquery.js
+    $ mime scripts/jquery.js
     application/javascript
+
+### Type -> extension
+
+    $ npx mime -r image/jpeg
+    jpeg
