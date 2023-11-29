@@ -13,14 +13,14 @@ An API for MIME type information.
 - Full TS support
 
 
-> **Important**
-> `mime@4` is currently in **beta**. Changes include:
-> * ESM module support is required.  See the [ESM Module FAQ](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-> * [ES2020](https://caniuse.com/?search=es2020) support is required
-> * Typescript types are built-in
->
-> To install:  ` npm install mime@beta`
-## Install
+> [!Note]
+> `mime@4` is now `latest`.  If you're upgrading from `mime@3`, note the following:
+> * `mime@4` is API-compatible with `mime@3`, with one exception: `mime.define()` cannot be called on the default `mime` object.
+> * ESM module support is required.   [ESM Module FAQ](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+> * Requires an [ES2020](https://caniuse.com/?search=es2020) or newer runtime
+> * Built-in Typescript types (`@types/mime` no longer needed)
+
+## Installation
 
 ```bash
 npm install mime
@@ -81,7 +81,7 @@ mime.getExtension('text/html; charset=utf8');  // ⇨ 'html'
 
 ### `mime.getAllExtensions(type)`
 
-> **Note**
+> [!Note]
 > New in `mime@4`
 
 Get all file extensions for the given mime type.
@@ -92,7 +92,7 @@ mime.getAllExtensions('image/jpeg'); // ⇨ Set(3) { 'jpeg', 'jpg', 'jpe' }
 
 ## Custom `Mime` instances
 
-The default objects exported by `mime` are immutable by design.  Mutable versions can be created as follows...
+The default `mime` objects are immutable.  Custom, mutable versions can be created as follows...
 ### new Mime(type map [, type map, ...])
 
 Create a new, custom mime instance.  For example, to create a mutable version of the default `mime` instance:
@@ -110,7 +110,7 @@ Each argument is passed to the `define()` method, below. For example `new Mime(s
 
 ### `mime.define(type map [, force = false])`
 
-> **Note**
+> [!Note]
 > Only available on custom `Mime` instances
 
 Define MIME type -> extensions.
@@ -128,13 +128,14 @@ mime.getExtension('text/x-abc')  // ⇨ 'abc'
 
 ### Extension -> type
 
-    $ mime scripts/jquery.js
-    application/javascript
+```bash
+$ mime scripts/jquery.js
+application/javascript
+```
 
 ### Type -> extension
 
-    $ npx mime -r image/jpeg
-    jpeg
-
-----
-Markdown generated from [src/README_js.md](src/README_js.md) by [<img height="13" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" />](https://github.com/broofa/runmd)
+```bash
+$ mime -r image/jpeg
+jpeg
+```
