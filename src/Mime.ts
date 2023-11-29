@@ -116,7 +116,7 @@ export default class Mime {
 
   _freeze() {
     this.define = () => {
-      throw new Error('define() not allowed for built-in Mime objects.');
+      throw new Error('define() not allowed for built-in Mime objects. See https://github.com/broofa/mime/blob/main/README.md#custom-mime-instances');
     };
 
     Object.freeze(this);
