@@ -12,6 +12,7 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./lite": "./dist/src/index_lite.js",
+    "./lite.js": "./dist/src/index_lite.js",
     "./types/standard.js": "./dist/types/standard.js",
     "./types/other.js": "./dist/types/other.js",
     "./package.json": "./package.json"
