@@ -51,7 +51,7 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && npm run build:types",
     "release": "# `standard-version --dry-run --prerelease` is the command you're after",
-    "test": "node --test",
+    "test": "node --test && ./test/exports_test.sh",
     "test:watch": "clear && node --enable-source-maps --test --watch test"
   },
   "keywords": [
