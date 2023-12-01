@@ -19,6 +19,9 @@ echo "... testing imports"
 node --input-type=module - << EOF
   import mime from "mime";
   import mimelite from "mime/lite";
+  import standard from "mime/types/standard.js";
+  import other from "mime/types/other.js";
+  import pkg from "mime/package.json" assert {type: 'json'};
 
   console.log('okay');
 EOF
