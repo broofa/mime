@@ -15,7 +15,9 @@ An API for MIME type information.
 
 > [!Note]
 > `mime@4` is now `latest`.  If you're upgrading from `mime@3`, note the following:
-> * `mime@4` is API-compatible with `mime@3`, with one exception: `mime.define()` cannot be called on the default `mime` object.
+> * `mime@4` is API-compatible with `mime@3`, with ~~one~~ two exceptions:
+>   * Direct imports of `mime` properties [no longer supported](https://github.com/broofa/mime/issues/295)
+>   * `mime.define()` cannot be called on the default `mime` object
 > * ESM module support is required.   [ESM Module FAQ](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 > * Requires an [ES2020](https://caniuse.com/?search=es2020) or newer runtime
 > * Built-in Typescript types (`@types/mime` no longer needed)
