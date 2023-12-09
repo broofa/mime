@@ -131,7 +131,7 @@ async function main() {
       }
     });
 
-  await await Promise.all([
+  await Promise.all([
     writeTypesFile('standard', standard),
     writeTypesFile('other', other),
   ]);
