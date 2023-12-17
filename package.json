@@ -48,8 +48,7 @@
     "build:watch": "npm run build:clean && tsc --watch",
     "lint": "prettier -c .",
     "lint:fix": "prettier -w .",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run build && npm run build:types",
+    "prepublishOnly": "npm run build && npm run build:types && npm test",
     "release": "# `standard-version --dry-run --prerelease` is the command you're after",
     "test": "node --test && ./test/exports_test.sh",
     "test:watch": "clear && node --enable-source-maps --test --watch test"
