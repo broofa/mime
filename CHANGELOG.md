@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/broofa/mime/compare/v4.0.0-beta.1...v4.0.1) (2023-12-17)
+
+
+### Bug Fixes
+
+* update mime-score version, fixes [#297](https://github.com/broofa/mime/issues/297) ([c150f9b](https://github.com/broofa/mime/commit/c150f9be4e7286bb263085fc21f4778b527b7866))
+
 ## [4.0.0](https://github.com/broofa/mime/compare/v4.0.0-beta.1...v4.0.0) (2023-11-29)
 
 ## [4.0.0-beta.1](https://github.com/broofa/mime/compare/v4.0.0-beta.0...v4.0.0-beta.1) (2023-09-14)
