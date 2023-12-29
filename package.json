@@ -34,7 +34,7 @@
     "@typescript-eslint/eslint-plugin": "6.6.0",
     "@typescript-eslint/parser": "6.6.0",
     "chalk": "5.3.0",
-    "mime-score": "2.0.3",
+    "mime-score": "2.0.4",
     "mime-types": "2.1.35",
     "prettier": "3.0.3",
     "runmd": "1.3.9",
@@ -48,8 +48,7 @@
     "build:watch": "npm run build:clean && tsc --watch",
     "lint": "prettier -c .",
     "lint:fix": "prettier -w .",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run build && npm run build:types",
+    "prepublishOnly": "npm run build && npm run build:types && npm test",
     "release": "# `standard-version --dry-run --prerelease` is the command you're after",
     "test": "node --test && ./test/exports_test.sh",
     "test:watch": "clear && node --enable-source-maps --test --watch test"
@@ -67,7 +66,7 @@
     "url": "https://github.com/broofa/mime",
     "type": "git"
   },
-  "version": "4.0.0",
+  "version": "4.0.1",
   "funding": [
     "https://github.com/sponsors/broofa"
   ]
