@@ -1,6 +1,5 @@
 ---
 name: Bug report
-about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
@@ -13,6 +12,20 @@ Low quality / low effort issues make me grumpy and cause me to respond in [ways 
 2. Make the title descriptive, specific to your problem, and SEO-friendly.
 3. If your issue involves an error message or stacktrace _of any sort_, PROVIDE AN [MRE](https://stackoverflow.com/help/minimal-reproducible-example)
 
-I cannot emphasize that last point enough.  A stacktrace or error message by itself is rarely helpful, you must include an MRE!
+I cannot emphasize that last point enough.  A stacktrace or error message by itself is rarely helpful.  You must include an MRE in one of the following forms:
 
-> "That MRE article is kinda long" / "I don't know how to make an MRE" / "Making an MRE is hard" / "I don't have time"
+|   |   |
+|---|---|
+| 🙂 Acceptable | Code and instructions for reproducing the problem attached to your issue |
+| 😃 Better | Code and instructions in a public repository |
+| 🥳 Best | Project on a sandbox service such as [StackBlitz](https://stackblitz.com/), [CodePen](https://codepen.io/), or [CodeSandbox](https://codesandbox.com/) |
+
+> "I don't have time to read that MRE article"
+>
+> "I don't have time to make an MRE"
+>
+> "I don't know how to make an MRE"
+>
+> "Making an MRE is hard"
+
+Then don't bother creating an issue.
