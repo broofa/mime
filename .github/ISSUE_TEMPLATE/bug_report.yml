@@ -4,7 +4,7 @@ description: '`mime` support'
 body:
   - type: checkboxes
     attributes:
-      label: Idiot Checks™
+      label: Sanity Checks
       options:
         - label: This is NOT about a specific MIME type⬌extension.  Concerns with specific MIME types should be addressed in [the `mime-db` project](https://github.com/jshttp/mime-db/issues).  (Be sure to search the issues first.  Odds are good your concern has already been reported.)
           required: true
@@ -15,13 +15,13 @@ body:
 
   - type: input
     attributes:
-      label: MRE (link)
+      label: MRE (Link)
       description: URL to an MRE demonstrating your problem.  Ideally, this is a project on [StackBlitz](https://stackblitz.com/). [Codepen](https://codepen.io) and [CodeSandbox](https://codesandbox.io) are good alternatives.  A github repo also works but is not ideal.  Not sure where to start?  Here's [a StackBlitz template](https://stackblitz.com/edit/mime-sample-mre?file=index.js).
       placeholder: E.g. https://stackblitz.com/edit/mime-sample-mre?file=index.js
 
   - type: textarea
     attributes:
-      label: MRE (supporting details)
+      label: MRE (Supporting Details)
       description: Okay, we've opened your MRE link... now what?
       value: |
         Actual behavior:  ...
@@ -29,6 +29,6 @@ body:
 
   - type: textarea
     attributes:
-      label: "Actually, Let me just tell you about my problem ..."
+      label: '"Actually, let me just tell you about the problem ..."'
       description: |
-        This is a trap.  All issues are expected to include an MRE.  You can fill this out if you're feeling adventurous but doing so means this issue is likely to be closed without comment.
+        This is a trap.  All issues should be communicated in the form of an MRE.  You can use this field if you're feeling adventurous, but issues w/out an MRE are likely to be closed without comment.
