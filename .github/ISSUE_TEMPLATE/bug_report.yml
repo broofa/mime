@@ -8,7 +8,7 @@ body:
       options:
         - label: This is NOT about a specific MIME type⬌extension.  Concerns with specific MIME types should be addressed in [the `mime-db` project](https://github.com/jshttp/mime-db/issues).  (Be sure to search the issues first.  Odds are good your concern has already been reported.)
           required: true
-        - label: The title (above) is descriptive and specific to my problem (i.e. search-engine friendly)
+        - label: The issue title is descriptive and specific to my problem (i.e. search-engine friendly)
           required: true
         - label: I know what an "MRE" is and will provide one below.  (Not sure what an MRE is?  [Read this](https://stackoverflow.com/help/minimal-reproducible-example))
           required: true
