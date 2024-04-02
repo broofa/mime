@@ -26,9 +26,11 @@ body:
       value: |
         Actual behavior:  ...
         Expected behavior: ...
+      render: markdown
 
   - type: textarea
     attributes:
       label: 'Actually, Can I just tell you about my problem ...'
       description: |
         This is a trap.  Putting anything here means you're doing it wrong and this issue will be closed without comment. 😈
+      render: markdown
