@@ -29,6 +29,6 @@ body:
 
   - type: textarea
     attributes:
-      label: "Actually, let me just tell you about my problem instead ..."
+      label: '"Actually, let me just tell you about my problem instead ..."'
       description: |
         This is a trap.   You can fill this out if you're feeling adventurous but issues that omit an MRE are likely to be closed without comment.
