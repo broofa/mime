@@ -31,4 +31,4 @@ body:
     attributes:
       label: "Actually, Let me just tell you about my problem ..."
       description: |
-        This is a trap.  Putting anything here means you're doing it wrong and this issue will be closed without comment. 😈
+        This is a trap.  All issues are expected to include an MRE.  You can fill this out if you're feeling adventurous but doing so means this issue is likely to be closed without comment.
