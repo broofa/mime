@@ -16,19 +16,19 @@ body:
   - type: input
     attributes:
       label: MRE (link)
-      description: URL to an MRE demonstrating your problem.  This should be a project on StackBlitz, Codepen, or maybe CodeSandbox.  A github repo is also acceptable, but not ideal.  If you need a starting point, here's (a forkable-project on StackBlitz)[https://stackblitz.com/edit/mime-sample-mre?file=index.js]
+      description: URL to an MRE demonstrating your problem.  Ideally, this is a project on https://stackblitz.com/. https://codepen.io and https://codesandbox.io/ are good alternatives.  A github repo also works but is not ideal.  Not sure where to start?  Click "Fork" on https://stackblitz.com/edit/mime-sample-mre?file=index.js
       placeholder: E.g. https://stackblitz.com/edit/mime-sample-mre?file=index.js
 
   - type: textarea
     attributes:
       label: MRE (supporting details)
-      description: Someone has opened your MRE link... now what?
+      description: Okay, we've opened your MRE link... now what?
       value: |
         Actual behavior:  ...
         Expected behavior: ...
 
   - type: textarea
     attributes:
-      label: 'Actually, Can I just tell you about my problem ...'
+      label: "Actually, Let me just tell you about my problem ..."
       description: |
         This is a trap.  Putting anything here means you're doing it wrong and this issue will be closed without comment. 😈
