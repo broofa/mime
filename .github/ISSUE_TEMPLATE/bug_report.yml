@@ -6,29 +6,29 @@ body:
     attributes:
       label: Sanity Checks
       options:
-        - label: This is NOT about a specific MIME type⬌extension.  Concerns with specific MIME types should be addressed in [the `mime-db` project](https://github.com/jshttp/mime-db/issues).  (Be sure to search the issues first.  Odds are good your concern has already been reported.)
+        - label: This is NOT about a specific MIME type⬌extension mapping.  Such concerns should be addressed in [the `mime-db` project](https://github.com/jshttp/mime-db/issues).  (Be sure to search the issues first.  Odds are good your concern has already been reported.)
           required: true
-        - label: The issue title is descriptive and specific to my problem (i.e. search-engine friendly)
+        - label: Your issue title is descriptive and specific to the problem (i.e. search-engine friendly)
           required: true
-        - label: I know what an "MRE" is and will provide one below.  (Not sure what an MRE is?  [Read this](https://stackoverflow.com/help/minimal-reproducible-example))
+        - label: You understand what an "MRE" is, and why providing one is important.  (If not, [read this](https://stackoverflow.com/help/minimal-reproducible-example))
           required: true
 
   - type: input
     attributes:
-      label: MRE (Link)
-      description: URL to an MRE demonstrating your problem.  Ideally, this is a project on [StackBlitz](https://stackblitz.com/). [Codepen](https://codepen.io) and [CodeSandbox](https://codesandbox.io) are good alternatives.  A github repo also works but is not ideal.  Not sure where to start?  Here's [a StackBlitz template](https://stackblitz.com/edit/mime-sample-mre?file=index.js).
+      label: MRE (link)
+      description: URL to MRE demonstrating the problem.  Ideally, this is a project on [StackBlitz](https://stackblitz.com/). [Codepen](https://codepen.io) and [CodeSandbox](https://codesandbox.io) are good alternatives.  A github repo also works but is not ideal.  Not sure where to start?  Here's [a StackBlitz template](https://stackblitz.com/edit/mime-sample-mre?file=index.js).
       placeholder: E.g. https://stackblitz.com/edit/mime-sample-mre?file=index.js
 
   - type: textarea
     attributes:
-      label: MRE (Supporting Details)
-      description: Okay, we've opened your MRE link... now what?
+      label: MRE (supporting details)
+      description: '"Okay, we''ve opened your MRE link... now what?"'
       value: |
         Actual behavior:  ...
         Expected behavior: ...
 
   - type: textarea
     attributes:
-      label: '"Actually, let me just tell you about the problem ..."'
+      label: "Actually, let me just tell you about my problem instead ..."
       description: |
-        This is a trap.  All issues should be communicated in the form of an MRE.  You can use this field if you're feeling adventurous, but issues w/out an MRE are likely to be closed without comment.
+        This is a trap.   You can fill this out if you're feeling adventurous but issues that omit an MRE are likely to be closed without comment.
