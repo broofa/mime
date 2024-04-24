@@ -17,6 +17,7 @@
     "./package.json": "./package.json"
   },
   "files": [
+    "src/*",
     "dist/src/*",
     "dist/types/*",
     "bin/*"
