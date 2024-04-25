@@ -17,10 +17,11 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "src/*",
-    "dist/src/*",
-    "dist/types/*",
-    "bin/*"
+    "bin",
+    "dist/src",
+    "dist/types",
+    "src",
+    "types"
   ],
   "bin": {
     "mime": "bin/cli.js"
