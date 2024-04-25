@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.3](https://github.com/broofa/mime/compare/v4.0.2...v4.0.3) (2024-04-25)
+
+
+### Bug Fixes
+
+* add types dir to package.json#files, fixes [#310](https://github.com/broofa/mime/issues/310) ([a547ca7](https://github.com/broofa/mime/commit/a547ca719186ed42da1eb4c4196d1c889156a7cc))
+
 ### [4.0.2](https://github.com/broofa/mime/compare/v4.0.0-beta.1...v4.0.2) (2024-04-24)
 
 
