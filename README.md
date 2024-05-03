@@ -54,7 +54,7 @@ import mime from 'mime/lite';
 Get mime type for the given file path or extension. E.g.
 
 ```javascript
-mime.getType('js');             // ⇨ 'application/javascript'
+mime.getType('js');             // ⇨ 'text/javascript'
 mime.getType('json');           // ⇨ 'application/json'
 
 mime.getType('txt');            // ⇨ 'text/plain'
@@ -132,7 +132,7 @@ mime.getExtension('text/x-abc')  // ⇨ 'abc'
 
 ```bash
 $ mime scripts/jquery.js
-application/javascript
+text/javascript
 ```
 
 ### Type -> extension
