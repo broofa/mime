@@ -2,7 +2,7 @@
 set -e
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-TESTDIR="$SCRIPT_DIR/../tmp"
+TESTDIR="/tmp/mime_test"
 
 echo -e "\n\nExports test"
 \rm -fr $TESTDIR
