@@ -22,7 +22,7 @@ node --input-type=module --no-warnings - << EOF
   import mimelite from "mime/lite";
   import standard from "mime/types/standard.js";
   import other from "mime/types/other.js";
-  import pkg from "mime/package.json" assert {type: 'json'};
+  import pkg from "mime/package.json" with {type: 'json'};
 EOF
 
 echo "... cleanup"
