@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+set -e
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-TESTDIR="/tmp/mime_test"
+TESTDIR="$SCRIPT_DIR/../tmp"
 
 echo -e "\n\nExports test"
 \rm -fr $TESTDIR
@@ -16,13 +17,16 @@ cd $TESTDIR
 npm install --silent mime*.tgz
 
 echo "... testing imports"
-node --input-type=module - << EOF
+node --input-type=module --no-warnings - << EOF
   import mime from "mime";
   import mimelite from "mime/lite";
   import standard from "mime/types/standard.js";
   import other from "mime/types/other.js";
   import pkg from "mime/package.json" assert {type: 'json'};
-
-  console.log('okay');
 EOF
 
+echo "... cleanup"
+# Cleanup
+\rm -fr $TESTDIR
+
+echo "... done"
