@@ -25,9 +25,8 @@ jobs:
           token: ${{ secrets.MIME_RELEASE_PLEASE_TOKEN }}
           release-type: node
 
-      - run: echo "Release created?... ${{ steps.release.outputs.release_created }}"
-
       # Steps below handle publication to NPM
+
       - uses: actions/checkout@v4
         if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v4
