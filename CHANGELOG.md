@@ -1,7 +1,3 @@
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ### [4.0.4](https://github.com/broofa/mime/compare/v4.0.3...v4.0.4) (2024-07-06)
 
 ### [4.0.3](https://github.com/broofa/mime/compare/v4.0.2...v4.0.3) (2024-04-25)
