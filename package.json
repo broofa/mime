@@ -32,16 +32,16 @@
   "devDependencies": {
     "@types/mime-db": "1.*",
     "@types/mime-types": "2.1.4",
-    "@types/node": "20.14.10",
-    "@typescript-eslint/eslint-plugin": "7.15.0",
-    "@typescript-eslint/parser": "7.15.0",
+    "@types/node": "22.10.2",
+    "@typescript-eslint/eslint-plugin": "8.18.1",
+    "@typescript-eslint/parser": "8.18.1",
     "chalk": "5.3.0",
     "mime-score": "2.0.4",
     "mime-types": "2.1.35",
-    "prettier": "3.3.2",
+    "prettier": "3.4.2",
     "release-please": "16.15.0",
     "runmd": "1.3.9",
-    "typescript": "5.5.3"
+    "typescript": "5.7.2"
   },
   "scripts": {
     "build": "npm run build:clean && tsc",
@@ -72,5 +72,5 @@
   "funding": [
     "https://github.com/sponsors/broofa"
   ],
-  "packageManager": "npm@10.8.1+sha256.b8807aebb9656758e2872fa6e7c564b506aa2faa9297439a478d471d2fe32483"
+  "packageManager": "npm@11.0.0"
 }
