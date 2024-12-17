@@ -44,13 +44,13 @@
     "typescript": "5.7.2"
   },
   "scripts": {
-    "build": "npm run build:clean && tsc",
-    "build:clean": "rm -fr dist",
+    "build": "rm -fr dist && tsc",
     "build:types": "node dist/scripts/build.js",
-    "build:watch": "npm run build:clean && tsc --watch",
+    "build:watch": "npm run build -- --watch",
     "lint": "prettier -c .",
     "lint:fix": "prettier -w .",
     "prepack": "npm run build",
+    "pretest": "npm run build",
     "prepublishOnly": "npm test",
     "test": "node --test && ./test/exports_test.sh",
     "test:watch": "clear && node --enable-source-maps --test --watch test"
