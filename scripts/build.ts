@@ -6,6 +6,7 @@ import mimeScore, { FACET_SCORES } from 'mime-score';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import * as prettier from 'prettier';
 
 const MIME_DB_URL =
   'https://raw.githubusercontent.com/jshttp/mime-db/master/db.json';
@@ -22,6 +23,8 @@ type MimeScoreEntry = Omit<MimeEntry, 'extensions'> & {
   type: string;
   score: number;
 };
+
+const PRETTIER_OPTIONS = await prettier.resolveConfig(__dirname);
 
 function normalizeTypes(types: MimeDatabase) {
   const cloned: Record<string, MimeScoreEntry> = {};
@@ -94,12 +97,16 @@ async function writeTypesFile(name: string, types: Record<string, string[]>) {
   const filepath = path.join(dirpath, `${name}.ts`);
   await mkdir(dirpath, { recursive: true });
 
-  await writeFile(
-    filepath,
-    `const types : {[key: string]: string[]} = ${JSON.stringify(types)};
-Object.freeze(types);
-export default types;`,
-  );
+  let source = `const types : {[key: string]: string[]} = ${JSON.stringify(types)};
+    Object.freeze(types);
+    export default types;`;
+
+  source = await prettier.format(source, {
+    parser: 'typescript',
+    ...PRETTIER_OPTIONS,
+  });
+
+  await writeFile(filepath, source);
 }
 
 async function main() {
