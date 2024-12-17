@@ -39,8 +39,8 @@
     "mime-score": "2.0.4",
     "mime-types": "2.1.35",
     "prettier": "3.4.2",
+    "release-please": "16.15.0",
     "runmd": "1.3.9",
-    "standard-version": "9.5.0",
     "typescript": "5.7.2"
   },
   "scripts": {
@@ -50,9 +50,9 @@
     "build:watch": "npm run build:clean && tsc --watch",
     "lint": "prettier -c .",
     "lint:fix": "prettier -w .",
-    "prepublishOnly": "npm run build && npm run build:types && npm test",
-    "release": "# `standard-version --dry-run` is the command you're after",
-    "test": "npm run build && node --test && ./test/exports_test.sh",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm test",
+    "test": "node --test && ./test/exports_test.sh",
     "test:watch": "clear && node --enable-source-maps --test --watch test"
   },
   "keywords": [
