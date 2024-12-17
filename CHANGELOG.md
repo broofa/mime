@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.6](https://github.com/broofa/mime/compare/v4.0.5...v4.0.6) (2024-12-17)
+
+
+### Bug Fixes
+
+* remove sourcemaps ([#325](https://github.com/broofa/mime/issues/325)) ([c326c4e](https://github.com/broofa/mime/commit/c326c4e06db373164618ce01634c638aa35e3653))
+
 ## [4.0.5](https://github.com/broofa/mime/compare/v4.0.4...v4.0.5) (2024-12-17)
 
 
