@@ -10,7 +10,7 @@ mkdir -p $TESTDIR
 
 echo "... building tarball"
 cd $SCRIPT_DIR/..
-npm pack --silent --pack-destination $TESTDIR > /dev/null 2>&1
+npm pack --ignore-scripts --silent --pack-destination $TESTDIR > /dev/null 2>&1
 
 echo ... installing tarball
 cd $TESTDIR
