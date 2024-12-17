@@ -7,7 +7,6 @@
     "outDir": "./dist",
     "removeComments": true,
     "strict": true,
-    "sourceMap": true,
     "target": "ES2020"
   }
 }
