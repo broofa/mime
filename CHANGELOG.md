@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.7](https://github.com/broofa/mime/compare/v4.0.6...v4.0.7) (2025-04-03)
+
+
+### Bug Fixes
+
+* update mime types ([#332](https://github.com/broofa/mime/issues/332)) ([953ae3e](https://github.com/broofa/mime/commit/953ae3ebc59c387064f3760b73085eff6760a7f6))
+* use dotall modifier for getType() regexes ([#334](https://github.com/broofa/mime/issues/334)) ([d7871f3](https://github.com/broofa/mime/commit/d7871f3bac120df5e4776e7c395b39d0d8e7b562))
+
 ## [4.0.6](https://github.com/broofa/mime/compare/v4.0.5...v4.0.6) (2024-12-17)
 
 
