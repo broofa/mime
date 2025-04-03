@@ -72,11 +72,11 @@ export default class Mime {
   getType(path: string) {
     if (typeof path !== 'string') return null;
 
-    // Remove chars preceeding `/` or `\`
-    const last = path.replace(/^.*[/\\]/, '').toLowerCase();
+    // Remove chars preceding `/` or `\`
+    const last = path.replace(/^.*[/\\]/s, '').toLowerCase();
 
-    // Remove chars preceeding '.'
-    const ext = last.replace(/^.*\./, '').toLowerCase();
+    // Remove chars preceding '.'
+    const ext = last.replace(/^.*\./s, '').toLowerCase();
 
     const hasPath = last.length < path.length;
     const hasDot = ext.length < last.length - 1;
