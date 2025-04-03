@@ -71,10 +71,7 @@ describe('class Mime', (t) => {
   });
 
   it('case-insensitive', (t) => {
-    const mime = new Mime({
-      'TEXT/UPPER': ['UP'],
-      'text/lower': ['low'],
-    });
+    const mime = new Mime({ 'TEXT/UPPER': ['UP'], 'text/lower': ['low'] });
 
     testGetType(t, mime, [
       { input: 'up', expected: 'text/upper' },
@@ -123,6 +120,14 @@ describe('class Mime', (t) => {
       { input: '/path/to/.json', expected: null },
       { input: '/path/to/.config.json', expected: 'application/json' },
       { input: '.config.json', expected: 'application/json' },
+
+      // Filenames w/ unicode whitespace chars
+      { input: 'CARRIAGE\u000DRETURN.png', expected: 'image/png' },
+      { input: 'LINE\u000AFEED.png', expected: 'image/png' },
+      { input: 'LINE\u2028SEPARATOR.png', expected: 'image/png' },
+      { input: 'PARAGRAPH\u2029SEPARATOR.png', expected: 'image/png' },
+      { input: 'SPACE\u0020.png', expected: 'image/png' },
+      { input: 'TAB\u0009.png', expected: 'image/png' },
 
       // Non-sensical
       { input: null, expected: null },
