@@ -1,4 +1,4 @@
-const types: { [key: string]: string[] } = {
+const types = {
   'application/prs.cww': ['cww'],
   'application/prs.xsf+xml': ['xsf'],
   'application/vnd.1000minds.decision-model+xml': ['1km'],
@@ -713,6 +713,6 @@ const types: { [key: string]: string[] } = {
   'video/x-sgi-movie': ['movie'],
   'video/x-smv': ['smv'],
   'x-conference/x-cooltalk': ['ice'],
-};
+} satisfies Readonly<{ [key: string]: string[] }>;
 Object.freeze(types);
 export default types;
