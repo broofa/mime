@@ -1,4 +1,4 @@
-const types: { [key: string]: string[] } = {
+const types = {
   'application/andrew-inset': ['ez'],
   'application/appinstaller': ['appinstaller'],
   'application/applixware': ['aw'],
@@ -361,6 +361,6 @@ const types: { [key: string]: string[] } = {
   'video/ogg': ['ogv'],
   'video/quicktime': ['qt', 'mov'],
   'video/webm': ['webm'],
-};
+} satisfies Readonly<{ [key: string]: string[] }>;
 Object.freeze(types);
 export default types;
