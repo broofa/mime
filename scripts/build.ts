@@ -10,8 +10,11 @@ import * as prettier from 'prettier';
 
 const TYPES_MARKER = '/* TYPES GO HERE */';
 const TYPES_TEMPLATE = `const types = ${TYPES_MARKER} as const satisfies Readonly<{ [key: string]: string[] }>;
-    Object.freeze(types);
-    export default types;`;
+
+// Make readonly
+Object.freeze(types);
+
+export default types;`;
 
 const MIME_DB_URL =
   'https://raw.githubusercontent.com/jshttp/mime-db/master/db.json';
