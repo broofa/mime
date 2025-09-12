@@ -714,5 +714,8 @@ const types = {
   'video/x-smv': ['smv'],
   'x-conference/x-cooltalk': ['ice'],
 } as const satisfies Readonly<{ [key: string]: string[] }>;
+
+// Make readonly
 Object.freeze(types);
+
 export default types;
