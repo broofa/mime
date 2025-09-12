@@ -8,6 +8,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as prettier from 'prettier';
 
+const TYPES_MARKER = '/* TYPES GO HERE */';
+const TYPES_TEMPLATE = `const types = ${TYPES_MARKER} as const satisfies Readonly<{ [key: string]: string[] }>;
+
+// Make readonly
+Object.freeze(types);
+
+export default types;`;
+
 const MIME_DB_URL =
   'https://raw.githubusercontent.com/jshttp/mime-db/master/db.json';
 
@@ -97,10 +105,10 @@ async function writeTypesFile(name: string, types: Record<string, string[]>) {
   const filepath = path.join(dirpath, `${name}.ts`);
   await mkdir(dirpath, { recursive: true });
 
-  let source = `const types : {[key: string]: string[]} = ${JSON.stringify(types)};
-    Object.freeze(types);
-    export default types;`;
+  // Generate source content
+  let source = TYPES_TEMPLATE.replace(TYPES_MARKER, JSON.stringify(types));
 
+  // Format
   source = await prettier.format(source, {
     parser: 'typescript',
     ...PRETTIER_OPTIONS,
