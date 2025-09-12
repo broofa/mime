@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.1.0](https://github.com/broofa/mime/compare/v4.0.7...v4.1.0) (2025-09-12)
+
+
+### Features
+
+* enable literal type access to MIME types in Typescript ([#339](https://github.com/broofa/mime/issues/339)) ([7de528d](https://github.com/broofa/mime/commit/7de528dd7d73f00fb15bdc29a4d6b7f3b7dd5ec6))
+
+
+### Bug Fixes
+
+* update types ([#341](https://github.com/broofa/mime/issues/341)) ([0862cbf](https://github.com/broofa/mime/commit/0862cbffd2be9862d37b1e9192ea1b0ef9f11c29))
+
 ## [4.0.7](https://github.com/broofa/mime/compare/v4.0.6...v4.0.7) (2025-04-03)
 
 
