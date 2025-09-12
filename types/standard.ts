@@ -361,6 +361,6 @@ const types = {
   'video/ogg': ['ogv'],
   'video/quicktime': ['qt', 'mov'],
   'video/webm': ['webm'],
-} satisfies Readonly<{ [key: string]: string[] }>;
+} as const satisfies Readonly<{ [key: string]: string[] }>;
 Object.freeze(types);
 export default types;

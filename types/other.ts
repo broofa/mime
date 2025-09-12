@@ -713,6 +713,6 @@ const types = {
   'video/x-sgi-movie': ['movie'],
   'video/x-smv': ['smv'],
   'x-conference/x-cooltalk': ['ice'],
-} satisfies Readonly<{ [key: string]: string[] }>;
+} as const satisfies Readonly<{ [key: string]: string[] }>;
 Object.freeze(types);
 export default types;
