@@ -30,18 +30,18 @@
   "description": "A comprehensive library for mime-type mapping",
   "license": "MIT",
   "devDependencies": {
-    "@types/mime-db": "1.*",
-    "@types/mime-types": "2.1.4",
-    "@types/node": "22.14.0",
-    "@typescript-eslint/eslint-plugin": "8.29.0",
-    "@typescript-eslint/parser": "8.29.0",
-    "chalk": "5.4.1",
+    "@types/mime-db": "1.43.6",
+    "@types/mime-types": "3.0.1",
+    "@types/node": "24.3.1",
+    "@typescript-eslint/eslint-plugin": "8.43.0",
+    "@typescript-eslint/parser": "8.43.0",
+    "chalk": "5.6.2",
     "mime-score": "2.0.4",
     "mime-types": "3.0.1",
-    "prettier": "3.5.3",
-    "release-please": "17.0.0",
+    "prettier": "3.6.2",
+    "release-please": "17.1.2",
     "runmd": "1.4.1",
-    "typescript": "5.8.2"
+    "typescript": "5.9.2"
   },
   "scripts": {
     "build": "rm -fr dist && tsc",
@@ -72,5 +72,5 @@
   "funding": [
     "https://github.com/sponsors/broofa"
   ],
-  "packageManager": "npm@11.2.0"
+  "packageManager": "npm@11.6.0"
 }
