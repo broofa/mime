@@ -592,6 +592,7 @@ const types = {
   'image/prs.pti': ['pti'],
   'image/vnd.adobe.photoshop': ['psd'],
   'image/vnd.airzip.accelerator.azv': ['azv'],
+  'image/vnd.blockfact.facti': ['facti'],
   'image/vnd.dece.graphic': ['uvi', 'uvvi', 'uvg', 'uvvg'],
   'image/vnd.djvu': ['djvu', 'djv'],
   'image/vnd.dvb.subtitle': ['*sub'],
