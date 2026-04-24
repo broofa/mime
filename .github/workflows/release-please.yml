@@ -23,11 +23,10 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
-          token: ${{ secrets.MIME_RELEASE_PLEASE_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
 
       # Steps below handle publication to NPM
-
       - uses: actions/checkout@v4
         if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v4
@@ -42,5 +41,5 @@ jobs:
       - run: npm test
         if: ${{ steps.release.outputs.release_created }}
 
-      - run: npm publish
+      - run: npm publish --provenance --access public
         if: ${{ steps.release.outputs.release_created }}
