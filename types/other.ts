@@ -588,6 +588,7 @@ const types = {
   'chemical/x-cml': ['cml'],
   'chemical/x-csml': ['csml'],
   'chemical/x-xyz': ['xyz'],
+  'image/dicom': ['dcm'],
   'image/prs.btif': ['btif', 'btf'],
   'image/prs.pti': ['pti'],
   'image/vnd.adobe.photoshop': ['psd'],
