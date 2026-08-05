@@ -11,7 +11,7 @@ describe('class Mime', (t) => {
     await assert.doesNotReject(() => import('../dist/src/index_lite.js'));
   });
 
-  it('mime/lite resolves .ico (favicon) via IANA image/vnd.microsoft.icon', async function () {
+  it('mime/lite resolves .ico', async function () {
     const lite = (await import('../dist/src/index_lite.js')).default;
     assert.equal(lite.getType('ico'), 'image/vnd.microsoft.icon');
     assert.equal(lite.getType('favicon.ico'), 'image/vnd.microsoft.icon');
