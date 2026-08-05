@@ -39,7 +39,7 @@
     "prettier": "3.9.6",
     "release-please": "17.11.1",
     "runmd": "2.1.1",
-    "typescript": "5.9.3"
+    "typescript": "7.0.2"
   },
   "scripts": {
     "build": "rm -fr dist && tsc",
