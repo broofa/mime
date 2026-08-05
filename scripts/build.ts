@@ -129,6 +129,16 @@ async function main() {
 
   // Segregate into standard and non-standard types based on facet per
   // https://tools.ietf.org/html/rfc6838#section-3.1
+  //
+  // Exception: a tiny allowlist of IANA-registered `vnd.*` types that are
+  // foundational to the web platform. `mime/lite` only ships `standard`, and
+  // the `vnd.` facet scores below FACET_SCORES.default, so without this
+  // `.ico` → `image/vnd.microsoft.icon` is missing from lite. Servers that
+  // use mime/lite then fall back to `text/plain` for favicons (and browsers /
+  // Google Search refuse to show them when nosniff is set).
+  // https://www.iana.org/assignments/media-types/image/vnd.microsoft.icon
+  const STANDARD_VND_ALLOWLIST = new Set(['image/vnd.microsoft.icon']);
+
   const standard: Record<string, string[]> = {};
   const other: Record<string, string[]> = {};
 
@@ -138,7 +148,10 @@ async function main() {
       const entry = types[k];
 
       if (entry.extensions) {
-        if (mimeScore(entry.type, entry.source) >= FACET_SCORES.default) {
+        if (
+          mimeScore(entry.type, entry.source) >= FACET_SCORES.default ||
+          STANDARD_VND_ALLOWLIST.has(entry.type)
+        ) {
           standard[entry.type] = entry.extensions;
         } else {
           other[entry.type] = entry.extensions;

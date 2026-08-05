@@ -40,7 +40,7 @@ mime.getExtension('text/plain'); // RESULT
 
 ### Lite Version [![mime/lite's badge](https://deno.bundlejs.com/?q=mime/lite&badge)](https://bundlejs.com/?q=mime/lite)
 
-`mime/lite` is a drop-in `mime` replacement, stripped of unofficial ("`prs.*`", "`x-*`", "`vnd.*`") types:
+`mime/lite` is a drop-in `mime` replacement, stripped of unofficial ("`prs.*`", "`x-*`", "`vnd.*`") types. One exception: the IANA-registered favicon type `image/vnd.microsoft.icon` (`.ico`) is kept so static servers using lite do not fall back to `text/plain` for favicons:
 
 ```javascript
 import mime from 'mime/lite';

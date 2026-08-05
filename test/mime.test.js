@@ -11,6 +11,13 @@ describe('class Mime', (t) => {
     await assert.doesNotReject(() => import('../dist/src/index_lite.js'));
   });
 
+  it('mime/lite resolves .ico (favicon) via IANA image/vnd.microsoft.icon', async function () {
+    const lite = (await import('../dist/src/index_lite.js')).default;
+    assert.equal(lite.getType('ico'), 'image/vnd.microsoft.icon');
+    assert.equal(lite.getType('favicon.ico'), 'image/vnd.microsoft.icon');
+    assert.equal(lite.getExtension('image/vnd.microsoft.icon'), 'ico');
+  });
+
   it('new constructor()', (t) => {
     const mime = new Mime({ 'text/a': ['a', 'a1'] }, { 'text/b': ['b', 'b1'] });
 
