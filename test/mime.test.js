@@ -163,6 +163,18 @@ it('getAllExtensions()', () => {
   ]);
 });
 
+it('getAllExtensions() accepts content-type parameters and surrounding whitespace', () => {
+  const expected = mime.getAllExtensions('text/html');
+  for (const type of [
+    'text/html;charset=UTF-8',
+    ' text/HTML ; charset=UTF-8 ',
+    ' text/html ',
+  ]) {
+    assert.deepEqual(mime.getAllExtensions(type), expected);
+  }
+  assert.equal(mime.getAllExtensions(' unknown/type; charset=UTF-8 '), null);
+});
+
 describe('DB', () => {
   it('Consistency', () => {
     const { types, extensions } = mime._getTestState();
