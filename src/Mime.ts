@@ -107,7 +107,8 @@ export default class Mime {
   getAllExtensions(type: string) {
     if (typeof type !== 'string') return null;
 
-    return this.#typeToExtensions.get(type.toLowerCase()) ?? null;
+    type = type.split(';')[0].trim().toLowerCase();
+    return this.#typeToExtensions.get(type) ?? null;
   }
 
   //
