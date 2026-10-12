@@ -65,7 +65,7 @@
   ],
   "name": "mime",
   "repository": {
-    "url": "https://github.com/broofa/mime",
+    "url": "git+https://github.com/broofa/mime.git",
     "type": "git"
   },
   "version": "4.1.1",

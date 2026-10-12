@@ -4,6 +4,12 @@
 
 on:
   workflow_dispatch:
+    inputs:
+      release_created:
+        description: Publish even when Release Please did not create a release
+        type: boolean
+        required: false
+        default: false
 
   push:
     branches:
@@ -28,18 +34,18 @@ jobs:
 
       # Steps below handle publication to NPM
       - uses: actions/checkout@v7
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || inputs.release_created }}
       - uses: actions/setup-node@v7
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || inputs.release_created }}
 
       - run: npm ci
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || inputs.release_created }}
 
       - run: npm test
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || inputs.release_created }}
 
       - run: npm publish --provenance --access public
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || inputs.release_created }}
