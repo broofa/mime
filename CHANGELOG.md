@@ -1,5 +1,72 @@
 # Changelog
 
+## [5.0.0](https://github.com/broofa/mime/compare/v4.1.1...v5.0.0) (2026-10-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop node < 18 from CI matrix
+* exit from CLI with non-zero exit code when no result
+* drop CJS support, switch to TS
+* drop support for node < 10.x
+
+### update
+
+* drop support for node &lt; 10.x ([8857363](https://github.com/broofa/mime/commit/8857363ae0446ed0229b17291cf4483cf801f0d0))
+
+
+### Features
+
+* add getAllExtensions() method ([f22b6f0](https://github.com/broofa/mime/commit/f22b6f0ddca2da78e6863317b6fc5ec88ef7edec))
+* add reverse lookup option (--reverse, -r) feature to CLI ([e0da103](https://github.com/broofa/mime/commit/e0da1036145da62242efd79aedf1f07d01608f25))
+* add travis-ci testing ([7e39527](https://github.com/broofa/mime/commit/7e395278a3d238afe64528ce27b3b3c929e38122))
+* add travis-ci testing ([d64160f](https://github.com/broofa/mime/commit/d64160fc76fefc732cdd7dc5cb7627b1ab5fea33))
+* Bind exported methods ([9d2a7b8](https://github.com/broofa/mime/commit/9d2a7b8c812d90ff6617dd107d51847d6fe2bba1))
+* enable literal type access to MIME types in Typescript ([#339](https://github.com/broofa/mime/issues/339)) ([7de528d](https://github.com/broofa/mime/commit/7de528dd7d73f00fb15bdc29a4d6b7f3b7dd5ec6))
+* improved CLI ([#244](https://github.com/broofa/mime/issues/244)) ([c8a8356](https://github.com/broofa/mime/commit/c8a8356e3b27f3ef46b64b89b428fdb547b14d5f))
+* mime-db@1.50.0 ([cef0cc4](https://github.com/broofa/mime/commit/cef0cc484ff6d05ff1e12b54ca3e8b856fbc14d8))
+* Retain type-&gt;extension mappings for non-default types.  Fixes [#180](https://github.com/broofa/mime/issues/180) ([10f82ac](https://github.com/broofa/mime/commit/10f82aca85bdfc26c9d84d6607bc15479b5047ff))
+* update to mime-db@1.37.0 ([49e6e41](https://github.com/broofa/mime/commit/49e6e412f3e7b2c1b457621b8bb3054ea78df21b))
+* Upgrade to mime-db@1.32.0.  Fixes [#185](https://github.com/broofa/mime/issues/185) ([3f775ba](https://github.com/broofa/mime/commit/3f775bafa8bff0c1a4bd94bb07ab3065676e44f6))
+
+
+### Bug Fixes
+
+* [#192](https://github.com/broofa/mime/issues/192) ([3e01d27](https://github.com/broofa/mime/commit/3e01d273078144a2e2d09769ffe212bfdc862933))
+* 167 ([1df903f](https://github.com/broofa/mime/commit/1df903fdeb9ae7eaa048795b8d580ce2c98f40b0))
+* 171 ([de18593](https://github.com/broofa/mime/commit/de18593348f6fc9c415d233b2351a8a298fa8949))
+* 68 ([8aac435](https://github.com/broofa/mime/commit/8aac435e337f4412be5ed90296a07b376784079c))
+* add `src/*` to package.json#files, fixes [#310](https://github.com/broofa/mime/issues/310) ([#311](https://github.com/broofa/mime/issues/311)) ([fc4fa81](https://github.com/broofa/mime/commit/fc4fa81c09d8889bb0aa0a5eb34c206060cddaa9))
+* add types dir to package.json#files, fixes [#310](https://github.com/broofa/mime/issues/310) ([b025aeb](https://github.com/broofa/mime/commit/b025aeb4c183265264a932aef630cd046f9bbf23))
+* don't use arrow function introduced in 2.4.1 ([2e00b5c](https://github.com/broofa/mime/commit/2e00b5c94a549926b3618d22a33d7c16c3359b74))
+* drop CJS support, switch to TS ([cf20ba0](https://github.com/broofa/mime/commit/cf20ba0db586a256307f875c585b112b96db9c9a))
+* ES5 support (back to node v0.4) ([f14ccb6](https://github.com/broofa/mime/commit/f14ccb606914799fa5785d492413d52c763c4e0c))
+* exit from CLI with non-zero exit code when no result ([591eb30](https://github.com/broofa/mime/commit/591eb30c2d5aefcbac9cda8ad1fca17f7ed23fff))
+* fix [#192](https://github.com/broofa/mime/issues/192) ([5c35df6](https://github.com/broofa/mime/commit/5c35df6a93a879464ffad3c7ea55473fafce6d5c))
+* fix [#198](https://github.com/broofa/mime/issues/198) ([25ca180](https://github.com/broofa/mime/commit/25ca180aabfd5097958da3a8295d732071c4f1fe))
+* fix [#236](https://github.com/broofa/mime/issues/236) ([7f4ecd0](https://github.com/broofa/mime/commit/7f4ecd0d850ed22c9e3bfda2c11fc74e4dde12a7))
+* format types files with prettier ([#321](https://github.com/broofa/mime/issues/321)) ([e526816](https://github.com/broofa/mime/commit/e526816bbbbbe663fdcf006761a9bfa446fc6246))
+* normalize content types in getAllExtensions ([#365](https://github.com/broofa/mime/issues/365)) ([2a742a4](https://github.com/broofa/mime/commit/2a742a420c5c453fbf303590a74a2164d69d5e6c))
+* remove sourcemaps ([#325](https://github.com/broofa/mime/issues/325)) ([c326c4e](https://github.com/broofa/mime/commit/c326c4e06db373164618ce01634c638aa35e3653))
+* Retain type-&gt;extension mappings for non-default types.  Fixes [#180](https://github.com/broofa/mime/issues/180) ([b5c83fb](https://github.com/broofa/mime/commit/b5c83fb9cb06a971c37dd112f4e0ad4e2c96a251))
+* skypack.dev for direct browser import, fixes [#263](https://github.com/broofa/mime/issues/263) ([41db4c0](https://github.com/broofa/mime/commit/41db4c042ccf50ea7baf3d2160ea37dcca37998d))
+* update MDN and mime-db types ([3e567a9](https://github.com/broofa/mime/commit/3e567a9aa1aa8bbc98d16a5f7499a68702c1f739))
+* update mime types ([#332](https://github.com/broofa/mime/issues/332)) ([953ae3e](https://github.com/broofa/mime/commit/953ae3ebc59c387064f3760b73085eff6760a7f6))
+* update mime-score version, fixes [#297](https://github.com/broofa/mime/issues/297) ([#299](https://github.com/broofa/mime/issues/299)) ([533872a](https://github.com/broofa/mime/commit/533872ac66d45505b05742334f8c752ce06074b9))
+* update outdated deps, rebuild ([ef6ebd0](https://github.com/broofa/mime/commit/ef6ebd0c8e0c412f21389d8fee642cfceca2b975))
+* update to latest mime-db ([43b09ef](https://github.com/broofa/mime/commit/43b09eff0233eacc449af2b1f99a19ba9e104a44))
+* update to latest mime-db ([c5cb3f2](https://github.com/broofa/mime/commit/c5cb3f2ab8b07642a066efbde1142af1b90c927b))
+* update to mime-db@1.46.0, fixes [#253](https://github.com/broofa/mime/issues/253) ([f10e6aa](https://github.com/broofa/mime/commit/f10e6aa62e1356de7e2491d7fb4374c8dac65800))
+* update types ([#341](https://github.com/broofa/mime/issues/341)) ([0862cbf](https://github.com/broofa/mime/commit/0862cbffd2be9862d37b1e9192ea1b0ef9f11c29))
+* update types files to mime-db@1.32.0 ([85aac16](https://github.com/broofa/mime/commit/85aac1653ac40724ff7bc35932b121cd89b413d1))
+* use dotall modifier for getType() regexes ([#334](https://github.com/broofa/mime/issues/334)) ([d7871f3](https://github.com/broofa/mime/commit/d7871f3bac120df5e4776e7c395b39d0d8e7b562))
+* Use standard-version to build release ([7e1750e](https://github.com/broofa/mime/commit/7e1750efe9c56e5c9f05333a6f091cf07971f151))
+
+
+### Continuous Integration
+
+* drop node &lt; 18 from CI matrix ([ef38fd5](https://github.com/broofa/mime/commit/ef38fd5c8c78f1d688487a06e52091a1efbf3341))
+
 ## [4.1.1](https://github.com/broofa/mime/compare/v4.1.0...v4.1.1) (2026-10-12)
 
 
