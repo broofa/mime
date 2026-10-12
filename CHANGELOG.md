@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.1](https://github.com/broofa/mime/compare/v4.1.0...v4.1.1) (2026-10-12)
+
+
+### Bug Fixes
+
+* normalize content types in getAllExtensions ([#365](https://github.com/broofa/mime/issues/365)) ([2a742a4](https://github.com/broofa/mime/commit/2a742a420c5c453fbf303590a74a2164d69d5e6c))
+
 ## [4.1.0](https://github.com/broofa/mime/compare/v4.0.7...v4.1.0) (2025-09-12)
 
 
