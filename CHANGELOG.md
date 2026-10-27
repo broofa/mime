@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.2](https://github.com/broofa/mime/compare/v4.1.1...v4.1.2) (2026-10-27)
+
+
+### Bug Fixes
+
+* isolate getAllExtensions results ([#370](https://github.com/broofa/mime/issues/370)) ([44d3041](https://github.com/broofa/mime/commit/44d304111b405715eadae544711686d890f094c2))
+
 ## [4.1.1](https://github.com/broofa/mime/compare/v4.1.0...v4.1.1) (2026-10-12)
 
 
