@@ -29,10 +29,11 @@ export default class Mime {
       type = type.toLowerCase();
       extensions = extensions.map((ext) => ext.toLowerCase());
 
-      if (!this.#typeToExtensions.has(type)) {
-        this.#typeToExtensions.set(type, new Set<string>());
+      let allExtensions = this.#typeToExtensions.get(type);
+      if (!allExtensions) {
+        allExtensions = new Set<string>();
+        this.#typeToExtensions.set(type, allExtensions);
       }
-      const allExtensions = this.#typeToExtensions.get(type);
 
       let first = true;
       for (let extension of extensions) {
@@ -41,7 +42,7 @@ export default class Mime {
         extension = starred ? extension.slice(1) : extension;
 
         // Add to list of extensions for the type
-        allExtensions?.add(extension);
+        allExtensions.add(extension);
 
         if (first) {
           // Map type to default extension (first in list)
@@ -108,7 +109,8 @@ export default class Mime {
     if (typeof type !== 'string') return null;
 
     type = type.split(';')[0].trim().toLowerCase();
-    return this.#typeToExtensions.get(type) ?? null;
+    const extensions = this.#typeToExtensions.get(type);
+    return extensions ? new Set(extensions) : null;
   }
 
   //
@@ -122,9 +124,6 @@ export default class Mime {
 
     Object.freeze(this);
 
-    for (const extensions of this.#typeToExtensions.values()) {
-      Object.freeze(extensions);
-    }
 
     return this;
   }
