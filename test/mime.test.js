@@ -175,6 +175,21 @@ it('getAllExtensions() accepts content-type parameters and surrounding whitespac
   assert.equal(mime.getAllExtensions(' unknown/type; charset=UTF-8 '), null);
 });
 
+it('getAllExtensions() does not expose mutable internal mappings', () => {
+  for (const frozen of [false, true]) {
+    const instance = new Mime({ 'text/a': ['a', 'b'] });
+    if (frozen) instance._freeze();
+
+    const extensions = instance.getAllExtensions('text/a');
+    extensions.clear();
+    extensions.add('other');
+
+    assert.deepEqual(instance.getAllExtensions('text/a'), new Set(['a', 'b']));
+    assert.equal(instance.getExtension('text/a'), 'a');
+    assert.equal(instance.getType('other'), null);
+  }
+});
+
 describe('DB', () => {
   it('Consistency', () => {
     const { types, extensions } = mime._getTestState();
