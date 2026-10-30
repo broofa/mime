@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.3](https://github.com/broofa/mime/compare/v4.1.2...v4.1.3) (2026-10-30)
+
+
+### Bug Fixes
+
+* return null for empty media types ([#372](https://github.com/broofa/mime/issues/372)) ([ddc25d2](https://github.com/broofa/mime/commit/ddc25d2276759df702a8e91b257bc7b8738f5f4b))
+
 ## [4.1.2](https://github.com/broofa/mime/compare/v4.1.1...v4.1.2) (2026-10-27)
 
 
