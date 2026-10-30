@@ -95,11 +95,9 @@ export default class Mime {
     if (typeof type !== 'string') return null;
 
     // Remove http header parameter(s) (specifically, charset)
-    type = type?.split?.(';')[0];
+    type = type.split(';')[0].trim().toLowerCase();
 
-    return (
-      (type && this.#typeToExtension.get(type.trim().toLowerCase())) ?? null
-    );
+    return this.#typeToExtension.get(type) ?? null;
   }
 
   /**
