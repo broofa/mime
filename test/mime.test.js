@@ -146,6 +146,10 @@ describe('class Mime', (t) => {
 
       { input: 'application/x-bogus', expected: null },
       { input: 'bogus', expected: null },
+      { input: '', expected: null },
+      { input: '   ', expected: null },
+      { input: '; charset=UTF-8', expected: null },
+      { input: ' ; charset=UTF-8', expected: null },
       { input: null, expected: null },
       { input: undefined, expected: null },
       { input: 42, expected: null },
