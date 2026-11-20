@@ -77,7 +77,7 @@ export default class Mime {
     const last = path.replace(/^.*[/\\]/s, '').toLowerCase();
 
     // Remove chars preceding '.'
-    const ext = last.replace(/^.*\./s, '').toLowerCase();
+    const ext = last.slice(last.lastIndexOf('.') + 1);
 
     const hasPath = last.length < path.length;
     const hasDot = ext.length < last.length - 1;
