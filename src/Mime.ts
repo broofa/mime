@@ -95,7 +95,9 @@ export default class Mime {
     if (typeof type !== 'string') return null;
 
     // Remove http header parameter(s) (specifically, charset)
-    type = type.split(';')[0].trim().toLowerCase();
+    const semi = type.indexOf(';');
+    if (semi >= 0) type = type.slice(0, semi);
+    type = type.trim().toLowerCase();
 
     return this.#typeToExtension.get(type) ?? null;
   }
@@ -106,7 +108,9 @@ export default class Mime {
   getAllExtensions(type: string) {
     if (typeof type !== 'string') return null;
 
-    type = type.split(';')[0].trim().toLowerCase();
+    const semi = type.indexOf(';');
+    if (semi >= 0) type = type.slice(0, semi);
+    type = type.trim().toLowerCase();
     const extensions = this.#typeToExtensions.get(type);
     return extensions ? new Set(extensions) : null;
   }
